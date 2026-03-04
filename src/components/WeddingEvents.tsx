@@ -4,7 +4,7 @@ import { ScrollReveal } from "./ScrollReveal";
 import { Music, Heart, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
-const DecorativeCar = ({ className, size = 24 }: { className?: string, size?: number }) => (
+const GroomOnHorse = ({ className, size = 24 }: { className?: string, size?: number }) => (
   <svg
     width={size}
     height={size}
@@ -17,13 +17,19 @@ const DecorativeCar = ({ className, size = 24 }: { className?: string, size?: nu
     className={className}
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h2" />
-    <circle cx="7" cy="17" r="2" />
-    <path d="M9 17h6" />
-    <circle cx="17" cy="17" r="2" />
-    <path d="M13 8V5c0-.6-.4-1-1-1H9c-.6 0-1 .4-1 1v3" />
-    <circle cx="12" cy="13" r="1" fill="currentColor" />
-    <path d="M5 10c0-1 1-2 2-2h4" />
+    {/* Horse Body */}
+    <path d="M4 18c0-2 2-3 4-3h6c2 0 4 1 4 3" />
+    <path d="M6 15v4" />
+    <path d="M10 15v4" />
+    <path d="M14 15v4" />
+    <path d="M18 15v4" />
+    <path d="M18 15c1-1 2-4 1-6s-3-2-5-1" />
+    <path d="M14 8c1-2 1-4 0-5" />
+    {/* Groom */}
+    <circle cx="12" cy="7" r="2" fill="currentColor" opacity="0.3" />
+    <path d="M10 9c0 0 1 2 2 2s2-2 2-2" strokeWidth="1" />
+    <path d="M12 9v4" />
+    <path d="M10 11h4" />
   </svg>
 );
 
@@ -49,7 +55,7 @@ export function WeddingEvents() {
       title: "Arrival of Barat",
       time: "Oct 26, 04:00 PM",
       description: "Welcoming the groom and his family with grand celebrations.",
-      icon: <DecorativeCar className="text-primary" size={24} />,
+      icon: <GroomOnHorse className="text-primary" size={24} />,
     },
     {
       id: "3",
