@@ -79,18 +79,33 @@ export function InvitationHero() {
               </div>
             )}
 
-            {/* Bombarding Flowers */}
-            <div className="absolute -top-8 left-1/4 text-accent animate-blossom opacity-0" style={{ animationDelay: '0s' }}>
+            {/* Bombarding Flowers - Increased Quantity and Variety */}
+            <div className="absolute -top-12 left-0 text-accent animate-blossom opacity-0" style={{ animationDelay: '0s' }}>
+              <Flower size={24} fill="currentColor" />
+            </div>
+            <div className="absolute -top-16 left-1/2 text-primary animate-blossom opacity-0" style={{ animationDelay: '0.8s' }}>
+              <Flower2 size={20} fill="currentColor" />
+            </div>
+            <div className="absolute -top-10 right-0 text-accent animate-blossom opacity-0" style={{ animationDelay: '1.2s' }}>
+              <Flower size={22} fill="currentColor" />
+            </div>
+            <div className="absolute top-1/2 -left-12 text-primary animate-blossom opacity-0" style={{ animationDelay: '1.5s' }}>
+              <Flower2 size={18} fill="currentColor" />
+            </div>
+            <div className="absolute top-1/2 -right-12 text-accent animate-blossom opacity-0" style={{ animationDelay: '0.4s' }}>
               <Flower size={20} fill="currentColor" />
             </div>
-            <div className="absolute top-1/2 -left-8 text-primary animate-blossom opacity-0" style={{ animationDelay: '1s' }}>
+            <div className="absolute -bottom-12 left-1/4 text-primary animate-blossom opacity-0" style={{ animationDelay: '2s' }}>
               <Flower2 size={16} fill="currentColor" />
             </div>
-            <div className="absolute -bottom-4 left-1/2 text-accent animate-blossom opacity-0" style={{ animationDelay: '0.5s' }}>
-              <Flower size={14} fill="currentColor" />
+            <div className="absolute -bottom-16 right-1/4 text-accent animate-blossom opacity-0" style={{ animationDelay: '1s' }}>
+              <Flower size={18} fill="currentColor" />
             </div>
-            <div className="absolute top-0 right-1/4 text-primary animate-blossom opacity-0" style={{ animationDelay: '1.5s' }}>
-              <Flower2 size={18} fill="currentColor" />
+            <div className="absolute top-[20%] left-[10%] text-primary/60 animate-blossom opacity-0" style={{ animationDelay: '2.5s' }}>
+              <Flower2 size={14} fill="currentColor" />
+            </div>
+            <div className="absolute bottom-[20%] right-[10%] text-accent/60 animate-blossom opacity-0" style={{ animationDelay: '3s' }}>
+              <Flower size={14} fill="currentColor" />
             </div>
 
             <h1 className="text-6xl md:text-8xl font-headline text-primary mb-6 relative flex items-center justify-center gap-4">

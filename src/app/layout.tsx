@@ -40,12 +40,20 @@ export default function RootLayout({
           <div className="bg-orb w-[450px] h-[450px] bg-blue-400/20 bottom-1/4 -left-32 animate-drift" style={{ animationDelay: '-10s' }} />
           <div className="bg-orb w-[600px] h-[600px] bg-yellow-300/20 -bottom-32 right-0 animate-drift" style={{ animationDelay: '-15s' }} />
           
-          {/* Blooming Tulips */}
+          {/* Blooming Tulips - Increased Quantity */}
           <TulipIcon className="absolute top-20 left-[15%] w-12 h-12 text-accent/30 animate-blossom" style={{ animationDelay: '0s' }} />
           <TulipIcon className="absolute top-[40%] right-[10%] w-16 h-16 text-primary/30 animate-blossom" style={{ animationDelay: '2s' }} />
           <TulipIcon className="absolute bottom-[20%] left-[20%] w-10 h-10 text-red-300/30 animate-blossom" style={{ animationDelay: '4s' }} />
           <TulipIcon className="absolute top-[70%] right-[25%] w-14 h-14 text-green-300/30 animate-blossom" style={{ animationDelay: '1s' }} />
           <TulipIcon className="absolute bottom-10 right-[40%] w-8 h-8 text-blue-300/30 animate-blossom" style={{ animationDelay: '3s' }} />
+          
+          <TulipIcon className="absolute top-[10%] right-[30%] w-10 h-10 text-yellow-300/30 animate-blossom" style={{ animationDelay: '1.5s' }} />
+          <TulipIcon className="absolute top-[60%] left-[5%] w-14 h-14 text-accent/20 animate-blossom" style={{ animationDelay: '2.5s' }} />
+          <TulipIcon className="absolute bottom-[35%] right-[15%] w-12 h-12 text-primary/20 animate-blossom" style={{ animationDelay: '5s' }} />
+          <TulipIcon className="absolute top-[85%] left-[45%] w-9 h-9 text-red-400/30 animate-blossom" style={{ animationDelay: '0.8s' }} />
+          <TulipIcon className="absolute top-[25%] left-[35%] w-11 h-11 text-green-400/25 animate-blossom" style={{ animationDelay: '3.2s' }} />
+          <TulipIcon className="absolute bottom-[10%] left-[10%] w-13 h-13 text-blue-400/30 animate-blossom" style={{ animationDelay: '4.1s' }} />
+          <TulipIcon className="absolute top-[5%] right-[5%] w-15 h-15 text-accent/25 animate-blossom" style={{ animationDelay: '2.2s' }} />
         </div>
         
         <div className="relative z-10">
