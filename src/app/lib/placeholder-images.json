@@ -1,0 +1,47 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-wedding",
+      "description": "Couple holding hands in a field",
+      "imageUrl": "https://picsum.photos/seed/wedding1/1200/800",
+      "imageHint": "wedding couple"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Couple laughing together",
+      "imageUrl": "https://picsum.photos/seed/love1/600/400",
+      "imageHint": "couple happy"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Rings on a flower",
+      "imageUrl": "https://picsum.photos/seed/love2/600/400",
+      "imageHint": "wedding rings"
+    },
+    {
+      "id": "gallery-3",
+      "description": "Couple walking at sunset",
+      "imageUrl": "https://picsum.photos/seed/love3/600/400",
+      "imageHint": "sunset romance"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Detail of wedding dress",
+      "imageUrl": "https://picsum.photos/seed/love4/600/400",
+      "imageHint": "wedding detail"
+    },
+    {
+      "id": "gallery-5",
+      "description": "A close up of flowers",
+      "imageUrl": "https://picsum.photos/seed/love5/600/400",
+      "imageHint": "wedding flowers"
+    },
+    {
+      "id": "gallery-6",
+      "description": "Champagne glasses clinking",
+      "imageUrl": "https://picsum.photos/seed/love6/600/400",
+      "imageHint": "wedding toast"
+    }
+  ]
+}

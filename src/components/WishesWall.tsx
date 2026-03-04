@@ -1,0 +1,183 @@
+
+"use client";
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Sparkles, Send, MessageSquareHeart } from "lucide-react";
+import { aiGreetingAssistant } from "@/ai/flows/ai-greeting-assistant";
+import { ScrollReveal } from "./ScrollReveal";
+import { useToast } from "@/hooks/use-toast";
+
+interface Wish {
+  id: string;
+  name: string;
+  message: string;
+  date: string;
+}
+
+export function WishesWall() {
+  const { toast } = useToast();
+  const [wishes, setWishes] = useState<Wish[]>([
+    { id: "1", name: "Sarah & Mike", message: "Congratulations to the beautiful couple! Wishing you a lifetime of happiness together.", date: "Today" },
+    { id: "2", name: "Aunt Martha", message: "We are so thrilled for you both. Can't wait for the big day!", date: "Yesterday" },
+  ]);
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
+  const [keywords, setKeywords] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [suggestedMessages, setSuggestedMessages] = useState<string[]>([]);
+
+  const handleAddWish = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !message) return;
+    
+    const newWish = {
+      id: Math.random().toString(36).substr(2, 9),
+      name,
+      message,
+      date: "Just now"
+    };
+    
+    setWishes([newWish, ...wishes]);
+    setName("");
+    setMessage("");
+    toast({
+      title: "Wish Posted!",
+      description: "Your message has been added to the wall.",
+    });
+  };
+
+  const handleGenerateAI = async () => {
+    if (!keywords) {
+      toast({ title: "Keywords needed", description: "Please enter some keywords or a sentiment." });
+      return;
+    }
+    setIsGenerating(true);
+    try {
+      const result = await aiGreetingAssistant({ keywordsOrSentiments: keywords });
+      setSuggestedMessages(result.suggestedMessages);
+    } catch (error) {
+      console.error(error);
+      toast({ variant: "destructive", title: "AI Error", description: "Could not generate messages. Please try again." });
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  const useSuggestion = (msg: string) => {
+    setMessage(msg);
+    setSuggestedMessages([]);
+    setKeywords("");
+  };
+
+  return (
+    <section className="py-24 px-4 bg-primary/5">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <ScrollReveal>
+          <div className="space-y-6">
+            <h2 className="text-4xl font-headline text-primary flex items-center gap-3">
+              <MessageSquareHeart className="text-accent" />
+              Wishes Wall
+            </h2>
+            <p className="text-muted-foreground italic">
+              Leave a beautiful message for the happy couple.
+            </p>
+
+            <form onSubmit={handleAddWish} className="space-y-4 bg-white/80 p-6 rounded-2xl shadow-sm border border-primary/10">
+              <div className="space-y-2">
+                <Label htmlFor="wish-name">Your Name</Label>
+                <Input 
+                  id="wish-name" 
+                  value={name} 
+                  onChange={(e) => setName(e.target.value)} 
+                  placeholder="How should we call you?"
+                  required 
+                />
+              </div>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <Label htmlFor="wish-message">Message</Label>
+                  <div className="flex gap-2">
+                    <Input 
+                      placeholder="Keywords (e.g. 'joyful future')" 
+                      className="h-8 text-xs w-40 bg-white" 
+                      value={keywords}
+                      onChange={(e) => setKeywords(e.target.value)}
+                    />
+                    <Button 
+                      type="button" 
+                      size="sm" 
+                      variant="outline" 
+                      onClick={handleGenerateAI}
+                      disabled={isGenerating}
+                      className="h-8 text-xs flex gap-1 border-accent/20 hover:bg-accent/5"
+                    >
+                      <Sparkles size={14} className="text-accent" />
+                      {isGenerating ? "..." : "AI Suggest"}
+                    </Button>
+                  </div>
+                </div>
+                {suggestedMessages.length > 0 && (
+                  <div className="animate-fade-in space-y-2 mb-2 p-3 bg-accent/5 rounded-lg border border-accent/10">
+                    <p className="text-xs font-semibold text-accent mb-1 uppercase tracking-wider">AI Suggestions:</p>
+                    <div className="flex flex-col gap-2">
+                      {suggestedMessages.map((msg, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={() => useSuggestion(msg)}
+                          className="text-left text-sm p-2 hover:bg-accent/10 rounded border border-transparent hover:border-accent/20 transition-all italic text-muted-foreground"
+                        >
+                          "{msg}"
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <Textarea 
+                  id="wish-message" 
+                  value={message} 
+                  onChange={(e) => setMessage(e.target.value)} 
+                  placeholder="Share your love and congratulations..."
+                  className="min-h-[120px]"
+                  required 
+                />
+              </div>
+              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
+                <Send size={18} className="mr-2" />
+                Post My Wish
+              </Button>
+            </form>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={200}>
+          <div className="bg-white p-4 rounded-2xl shadow-inner border border-primary/5 h-[500px]">
+            <ScrollArea className="h-full pr-4">
+              <div className="space-y-4">
+                {wishes.map((wish) => (
+                  <Card key={wish.id} className="border-none shadow-sm bg-background/50 hover:bg-white transition-colors">
+                    <CardContent className="p-4 space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="font-headline font-bold text-primary">{wish.name}</span>
+                        <span className="text-xs text-muted-foreground uppercase">{wish.date}</span>
+                      </div>
+                      <p className="text-sm italic text-muted-foreground leading-relaxed">
+                        "{wish.message}"
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </ScrollArea>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
