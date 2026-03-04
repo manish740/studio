@@ -8,6 +8,12 @@
       "imageHint": "wedding couple"
     },
     {
+      "id": "bride-sakshi",
+      "description": "Sakshi in beautiful traditional attire",
+      "imageUrl": "https://picsum.photos/seed/sakshi/600/800",
+      "imageHint": "indian bride"
+    },
+    {
       "id": "gallery-1",
       "description": "Couple laughing together",
       "imageUrl": "https://picsum.photos/seed/love1/600/400",

@@ -1,9 +1,14 @@
+
 "use client";
 
+import Image from "next/image";
 import { ScrollReveal } from "./ScrollReveal";
 import { Users, MapPin, Heart } from "lucide-react";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function FamilyDetails() {
+  const bridePhoto = PlaceHolderImages.find(img => img.id === 'bride-sakshi');
+
   const groomFamily = {
     parents: "Mr. & Mrs. Ramesh Kumar",
     origin: "New Delhi",
@@ -27,10 +32,10 @@ export function FamilyDetails() {
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
           {/* Groom's Family */}
-          <ScrollReveal delay={100}>
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-primary/10 relative overflow-hidden group hover:border-accent/30 transition-colors">
+          <ScrollReveal delay={100} className="h-full">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-primary/10 relative overflow-hidden group hover:border-accent/30 transition-colors h-full flex flex-col justify-center">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Users size={80} className="text-primary" />
               </div>
@@ -62,31 +67,45 @@ export function FamilyDetails() {
           </ScrollReveal>
 
           {/* Bride's Family */}
-          <ScrollReveal delay={300}>
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-primary/10 relative overflow-hidden group hover:border-accent/30 transition-colors">
+          <ScrollReveal delay={300} className="h-full">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-primary/10 relative overflow-hidden group hover:border-accent/30 transition-colors h-full flex flex-col">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Users size={80} className="text-primary" />
               </div>
               
-              <div className="space-y-6 relative z-10">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent">
-                    <Heart size={24} />
+              <div className="flex flex-col md:flex-row gap-6 relative z-10 h-full">
+                {bridePhoto && (
+                  <div className="w-full md:w-32 h-48 md:h-full relative rounded-2xl overflow-hidden shrink-0 border-2 border-accent/20">
+                    <Image 
+                      src={bridePhoto.imageUrl} 
+                      alt="Bride Sakshi" 
+                      fill 
+                      className="object-cover"
+                      data-ai-hint={bridePhoto.imageHint}
+                    />
                   </div>
-                  <h3 className="text-3xl font-headline text-primary">Sakshi's Family</h3>
-                </div>
+                )}
                 
-                <div className="space-y-4">
-                  <div>
-                    <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1">Parents</span>
-                    <p className="text-xl font-semibold text-primary/80">{brideFamily.parents}</p>
+                <div className="space-y-6 flex-1 py-2">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent">
+                      <Heart size={24} />
+                    </div>
+                    <h3 className="text-3xl font-headline text-primary">Sakshi's Family</h3>
                   </div>
                   
-                  <div className="flex items-start gap-2">
-                    <MapPin size={18} className="text-accent mt-1 shrink-0" />
+                  <div className="space-y-4">
                     <div>
-                      <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1">Hailing From</span>
-                      <p className="text-lg text-muted-foreground">{brideFamily.origin}</p>
+                      <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1">Parents</span>
+                      <p className="text-xl font-semibold text-primary/80">{brideFamily.parents}</p>
+                    </div>
+                    
+                    <div className="flex items-start gap-2">
+                      <MapPin size={18} className="text-accent mt-1 shrink-0" />
+                      <div>
+                        <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1">Hailing From</span>
+                        <p className="text-lg text-muted-foreground">{brideFamily.origin}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
