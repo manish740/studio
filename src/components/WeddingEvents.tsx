@@ -1,9 +1,31 @@
-
 "use client";
 
 import { ScrollReveal } from "./ScrollReveal";
-import { Music, Truck, Heart, Clock } from "lucide-react";
+import { Music, Heart, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+
+const DecorativeCar = ({ className, size = 24 }: { className?: string, size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h2" />
+    <circle cx="7" cy="17" r="2" />
+    <path d="M9 17h6" />
+    <circle cx="17" cy="17" r="2" />
+    <path d="M13 8V5c0-.6-.4-1-1-1H9c-.6 0-1 .4-1 1v3" />
+    <circle cx="12" cy="13" r="1" fill="currentColor" />
+    <path d="M5 10c0-1 1-2 2-2h4" />
+  </svg>
+);
 
 interface WeddingEvent {
   id: string;
@@ -27,7 +49,7 @@ export function WeddingEvents() {
       title: "Arrival of Barat",
       time: "Oct 26, 04:00 PM",
       description: "Welcoming the groom and his family with grand celebrations.",
-      icon: <Truck className="text-primary" size={24} />,
+      icon: <DecorativeCar className="text-primary" size={24} />,
     },
     {
       id: "3",
