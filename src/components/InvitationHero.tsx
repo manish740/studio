@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -26,7 +27,6 @@ export function InvitationHero() {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Redundant background removed as it is now global in layout.tsx */}
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-8">
@@ -43,7 +43,7 @@ export function InvitationHero() {
           <div className="relative inline-block group">
             {/* Quby Stickers */}
             {quby1 && (
-              <div className="absolute -top-16 -left-12 w-20 h-20 md:w-24 md:h-24 animate-float z-20">
+              <div className="absolute -top-16 -left-12 w-20 h-20 md:w-24 md:h-24 animate-float z-20 transition-transform hover:scale-110 duration-300">
                 <Image 
                   src={quby1.imageUrl} 
                   alt="Cute Sticker" 
@@ -55,7 +55,7 @@ export function InvitationHero() {
               </div>
             )}
             {quby2 && (
-              <div className="absolute -bottom-8 -right-12 w-16 h-16 md:w-20 md:h-20 animate-sway z-20">
+              <div className="absolute -bottom-8 -right-12 w-16 h-16 md:w-20 md:h-20 animate-sway z-20 transition-transform hover:scale-110 duration-300">
                 <Image 
                   src={quby2.imageUrl} 
                   alt="Happy Sticker" 
@@ -67,30 +67,7 @@ export function InvitationHero() {
               </div>
             )}
 
-            {/* Bombarding Flowers */}
-            <div className="absolute -top-12 left-0 text-accent animate-blossom opacity-0" style={{ animationDelay: '0s' }}>
-              <Flower size={24} fill="currentColor" />
-            </div>
-            <div className="absolute -top-16 left-1/2 text-primary animate-blossom opacity-0" style={{ animationDelay: '0.8s' }}>
-              <Flower2 size={20} fill="currentColor" />
-            </div>
-            <div className="absolute -top-10 right-0 text-accent animate-blossom opacity-0" style={{ animationDelay: '1.2s' }}>
-              <Flower size={22} fill="currentColor" />
-            </div>
-            <div className="absolute top-1/2 -left-12 text-primary animate-blossom opacity-0" style={{ animationDelay: '1.5s' }}>
-              <Flower2 size={18} fill="currentColor" />
-            </div>
-            <div className="absolute top-1/2 -right-12 text-accent animate-blossom opacity-0" style={{ animationDelay: '0.4s' }}>
-              <Flower size={20} fill="currentColor" />
-            </div>
-            <div className="absolute -bottom-12 left-1/4 text-primary animate-blossom opacity-0" style={{ animationDelay: '2s' }}>
-              <Flower2 size={16} fill="currentColor" />
-            </div>
-            <div className="absolute -bottom-16 right-1/4 text-accent animate-blossom opacity-0" style={{ animationDelay: '1s' }}>
-              <Flower size={18} fill="currentColor" />
-            </div>
-
-            <h1 className="text-6xl md:text-8xl font-headline text-primary mb-6 relative flex items-center justify-center gap-4 drop-shadow-sm">
+            <h1 className="text-6xl md:text-8xl font-headline text-primary mb-6 relative flex items-center justify-center gap-4 drop-shadow-sm transition-all duration-500 hover:tracking-wider">
               <span className="relative inline-block">
                 Manish
                 <RoseIcon className="absolute -top-6 -left-6 w-8 h-8 text-accent animate-float" />
@@ -103,24 +80,24 @@ export function InvitationHero() {
             </h1>
           </div>
           
-          <p className="text-xl md:text-2xl font-light italic text-muted-foreground mt-4 max-w-xl mx-auto">
+          <p className="text-xl md:text-2xl font-light italic text-muted-foreground mt-4 max-w-xl mx-auto transition-colors hover:text-primary">
             Request the pleasure of your company at the celebration of their union
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={300}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 bg-white/60 backdrop-blur-md rounded-2xl shadow-xl border border-white/40">
-            <div className="flex flex-col items-center space-y-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 bg-white/60 backdrop-blur-md rounded-2xl shadow-xl border border-white/40 transition-all duration-300 hover:shadow-2xl hover:bg-white/80">
+            <div className="flex flex-col items-center space-y-2 group p-2 rounded-xl transition-colors hover:bg-primary/5">
               <span className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">The Day</span>
-              <span className="text-xl font-headline font-bold text-primary">October 26, 2024</span>
+              <span className="text-xl font-headline font-bold text-primary group-hover:text-accent transition-colors">October 26, 2024</span>
             </div>
-            <div className="flex flex-col items-center space-y-2">
+            <div className="flex flex-col items-center space-y-2 group p-2 rounded-xl transition-colors hover:bg-primary/5">
               <span className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">The Time</span>
-              <span className="text-xl font-headline font-bold text-primary">5:00 PM onwards</span>
+              <span className="text-xl font-headline font-bold text-primary group-hover:text-accent transition-colors">5:00 PM onwards</span>
             </div>
-            <div className="flex flex-col items-center space-y-2">
+            <div className="flex flex-col items-center space-y-2 group p-2 rounded-xl transition-colors hover:bg-primary/5">
               <span className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">The Place</span>
-              <span className="text-xl font-headline font-bold text-primary">The Grand Ballroom</span>
+              <span className="text-xl font-headline font-bold text-primary group-hover:text-accent transition-colors">The Grand Ballroom</span>
             </div>
           </div>
         </ScrollReveal>

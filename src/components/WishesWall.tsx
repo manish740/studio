@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -79,23 +80,24 @@ export function WishesWall() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
         <ScrollReveal>
           <div className="space-y-6">
-            <h2 className="text-4xl font-headline text-primary flex items-center gap-3">
-              <MessageSquareHeart className="text-accent" />
+            <h2 className="text-4xl font-headline text-primary flex items-center gap-3 group">
+              <MessageSquareHeart className="text-accent group-hover:scale-110 transition-transform" />
               Wishes Wall
             </h2>
             <p className="text-muted-foreground italic">
               Leave a beautiful message for the happy couple.
             </p>
 
-            <form onSubmit={handleAddWish} className="space-y-4 bg-white/80 p-6 rounded-2xl shadow-sm">
-              <div className="space-y-2">
-                <Label htmlFor="wish-name">Your Name</Label>
+            <form onSubmit={handleAddWish} className="space-y-4 bg-white/80 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="space-y-2 group/input">
+                <Label htmlFor="wish-name" className="group-hover/input:text-accent transition-colors">Your Name</Label>
                 <Input 
                   id="wish-name" 
                   value={name} 
                   onChange={(e) => setName(e.target.value)} 
                   placeholder="How should we call you?"
                   required 
+                  className="bg-white/50 focus:bg-white transition-colors"
                 />
               </div>
               <div className="space-y-2">
@@ -114,9 +116,9 @@ export function WishesWall() {
                       variant="outline" 
                       onClick={handleGenerateAI}
                       disabled={isGenerating}
-                      className="h-8 text-xs flex gap-1 border-accent/20 hover:bg-accent/5"
+                      className="h-8 text-xs flex gap-1 border-accent/20 hover:bg-accent/5 transition-all"
                     >
-                      <Sparkles size={14} className="text-accent" />
+                      <Sparkles size={14} className="text-accent group-hover:animate-pulse" />
                       {isGenerating ? "..." : "AI Suggest"}
                     </Button>
                   </div>
@@ -143,12 +145,12 @@ export function WishesWall() {
                   value={message} 
                   onChange={(e) => setMessage(e.target.value)} 
                   placeholder="Share your love and congratulations..."
-                  className="min-h-[120px]"
+                  className="min-h-[120px] bg-white/50 focus:bg-white transition-colors"
                   required 
                 />
               </div>
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
-                <Send size={18} className="mr-2" />
+              <Button type="submit" className="w-full bg-primary hover:bg-accent text-primary-foreground font-semibold transition-all hover:scale-[1.01]">
+                <Send size={18} className="mr-2 group-hover:translate-x-1 transition-transform" />
                 Post My Wish
               </Button>
             </form>
@@ -160,13 +162,13 @@ export function WishesWall() {
             <ScrollArea className="h-full pr-4">
               <div className="space-y-4">
                 {wishes.map((wish) => (
-                  <Card key={wish.id} className="border-none shadow-sm bg-background/50 hover:bg-white transition-colors">
+                  <Card key={wish.id} className="border-none shadow-sm bg-background/50 group hover:bg-white hover:shadow-md transition-all duration-300">
                     <CardContent className="p-4 space-y-2">
                       <div className="flex justify-between items-center">
-                        <span className="font-headline font-bold text-primary">{wish.name}</span>
-                        <span className="text-xs text-muted-foreground uppercase">{wish.date}</span>
+                        <span className="font-headline font-bold text-primary group-hover:text-accent transition-colors">{wish.name}</span>
+                        <span className="text-xs text-muted-foreground uppercase opacity-60 group-hover:opacity-100">{wish.date}</span>
                       </div>
-                      <p className="text-sm italic text-muted-foreground leading-relaxed">
+                      <p className="text-sm italic text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
                         "{wish.message}"
                       </p>
                     </CardContent>

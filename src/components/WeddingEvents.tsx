@@ -1,3 +1,4 @@
+
 "use client";
 
 import { ScrollReveal } from "./ScrollReveal";
@@ -51,20 +52,20 @@ export function WeddingEvents() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {events.map((event, index) => (
             <ScrollReveal key={event.id} delay={index * 150}>
-              <Card className="h-full border-none shadow-lg bg-white/60 backdrop-blur-sm hover:translate-y-[-5px] transition-all duration-300">
+              <Card className="h-full border-none shadow-lg bg-white/60 backdrop-blur-sm group hover:translate-y-[-8px] hover:shadow-2xl hover:bg-white/90 transition-all duration-300 cursor-default">
                 <CardContent className="p-8 flex flex-col items-center text-center space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-background flex items-center justify-center shadow-inner mb-2">
+                  <div className="w-16 h-16 rounded-full bg-background flex items-center justify-center shadow-inner mb-2 group-hover:scale-110 group-hover:rotate-6 transition-transform">
                     {event.icon}
                   </div>
                   
-                  <h3 className="text-2xl font-headline text-primary">{event.title}</h3>
+                  <h3 className="text-2xl font-headline text-primary group-hover:text-accent transition-colors">{event.title}</h3>
                   
-                  <div className="flex items-center gap-2 px-4 py-1.5 bg-primary/10 rounded-full text-primary font-semibold text-sm">
-                    <Clock size={14} />
+                  <div className="flex items-center gap-2 px-4 py-1.5 bg-primary/10 rounded-full text-primary font-semibold text-sm group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                    <Clock size={14} className="group-hover:animate-spin-slow" />
                     <span className="truncate max-w-[150px]">{event.time}</span>
                   </div>
                   
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground transition-colors">
                     {event.description}
                   </p>
                 </CardContent>
