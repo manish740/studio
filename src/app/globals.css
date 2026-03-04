@@ -77,3 +77,21 @@
 .animate-blossom {
   animation: blossom 3s ease-out infinite;
 }
+
+/* Decorative Curvy Border Styles */
+.app-frame {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  border: 16px solid transparent;
+  border-image-source: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20C0 8.9543 8.9543 0 20 0H80C91.0457 0 100 8.9543 100 20V80C100 91.0457 91.0457 100 80 100H20C8.9543 100 0 91.0457 0 80V20Z' fill='none' stroke='%237DB68E' stroke-width='4' stroke-dasharray='10 5'/%3E%3Cpath d='M10 10C10 10 15 5 25 5M75 5C85 5 90 10 90 10M90 90C90 90 85 95 75 95M25 95C15 95 10 90 10 90' stroke='%237DB68E' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  border-image-slice: 30;
+  border-image-repeat: round;
+}
+
+@media (max-width: 768px) {
+  .app-frame {
+    border-width: 8px;
+  }
+}
