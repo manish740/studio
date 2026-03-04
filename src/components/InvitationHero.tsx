@@ -21,25 +21,13 @@ const RoseIcon = ({ className }: { className?: string }) => (
 );
 
 export function InvitationHero() {
-  const heroImage = PlaceHolderImages.find(img => img.id === 'hero-wedding');
   const quby1 = PlaceHolderImages.find(img => img.id === 'quby-sticker-1');
   const quby2 = PlaceHolderImages.find(img => img.id === 'quby-sticker-2');
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        {heroImage && (
-          <Image
-            src={heroImage.imageUrl}
-            alt={heroImage.description}
-            fill
-            priority
-            className="object-cover opacity-30 grayscale-[20%]"
-            data-ai-hint={heroImage.imageHint}
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
-      </div>
+      {/* Redundant background removed as it is now global in layout.tsx */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-8">
         <ScrollReveal>
@@ -48,7 +36,7 @@ export function InvitationHero() {
             <Heart className="mx-4 text-accent animate-pulse" size={24} />
             <div className="h-[1px] w-12 bg-primary/50" />
           </div>
-          <h2 className="text-lg md:text-xl uppercase tracking-[0.3em] text-muted-foreground mb-4">
+          <h2 className="text-lg md:text-xl uppercase tracking-[0.3em] text-muted-foreground mb-4 font-semibold">
             Together with their families
           </h2>
           
@@ -79,7 +67,7 @@ export function InvitationHero() {
               </div>
             )}
 
-            {/* Bombarding Flowers - Increased Quantity and Variety */}
+            {/* Bombarding Flowers */}
             <div className="absolute -top-12 left-0 text-accent animate-blossom opacity-0" style={{ animationDelay: '0s' }}>
               <Flower size={24} fill="currentColor" />
             </div>
@@ -101,14 +89,8 @@ export function InvitationHero() {
             <div className="absolute -bottom-16 right-1/4 text-accent animate-blossom opacity-0" style={{ animationDelay: '1s' }}>
               <Flower size={18} fill="currentColor" />
             </div>
-            <div className="absolute top-[20%] left-[10%] text-primary/60 animate-blossom opacity-0" style={{ animationDelay: '2.5s' }}>
-              <Flower2 size={14} fill="currentColor" />
-            </div>
-            <div className="absolute bottom-[20%] right-[10%] text-accent/60 animate-blossom opacity-0" style={{ animationDelay: '3s' }}>
-              <Flower size={14} fill="currentColor" />
-            </div>
 
-            <h1 className="text-6xl md:text-8xl font-headline text-primary mb-6 relative flex items-center justify-center gap-4">
+            <h1 className="text-6xl md:text-8xl font-headline text-primary mb-6 relative flex items-center justify-center gap-4 drop-shadow-sm">
               <span className="relative inline-block">
                 Manish
                 <RoseIcon className="absolute -top-6 -left-6 w-8 h-8 text-accent animate-float" />
@@ -121,24 +103,24 @@ export function InvitationHero() {
             </h1>
           </div>
           
-          <p className="text-xl md:text-2xl font-light italic text-muted-foreground mt-4">
+          <p className="text-xl md:text-2xl font-light italic text-muted-foreground mt-4 max-w-xl mx-auto">
             Request the pleasure of your company at the celebration of their union
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={300}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 bg-white/50 backdrop-blur-sm rounded-2xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 bg-white/60 backdrop-blur-md rounded-2xl shadow-xl border border-white/40">
             <div className="flex flex-col items-center space-y-2">
-              <span className="text-sm uppercase tracking-widest text-muted-foreground">The Day</span>
-              <span className="text-xl font-headline font-semibold">October 26, 2024</span>
+              <span className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">The Day</span>
+              <span className="text-xl font-headline font-bold text-primary">October 26, 2024</span>
             </div>
             <div className="flex flex-col items-center space-y-2">
-              <span className="text-sm uppercase tracking-widest text-muted-foreground">The Time</span>
-              <span className="text-xl font-headline font-semibold">5:00 PM onwards</span>
+              <span className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">The Time</span>
+              <span className="text-xl font-headline font-bold text-primary">5:00 PM onwards</span>
             </div>
             <div className="flex flex-col items-center space-y-2">
-              <span className="text-sm uppercase tracking-widest text-muted-foreground">The Place</span>
-              <span className="text-xl font-headline font-semibold">The Grand Ballroom</span>
+              <span className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">The Place</span>
+              <span className="text-xl font-headline font-bold text-primary">The Grand Ballroom</span>
             </div>
           </div>
         </ScrollReveal>

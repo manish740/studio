@@ -1,5 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
+import Image from "next/image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export const metadata: Metadata = {
   title: 'LoveBloom Invites | Manish & Sakshi',
@@ -22,17 +24,13 @@ const TulipIcon = ({ className, style }: { className?: string, style?: React.CSS
 
 const RoseCorner = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 100 100" className={className} xmlns="http://www.w3.org/2000/svg">
-    {/* Intertwined Thorn Vines */}
     <path d="M0,50 Q20,40 40,60 T80,30" fill="none" stroke="#1a2a1a" strokeWidth="1.5" />
     <path d="M50,0 Q40,20 60,40 T30,80" fill="none" stroke="#1a2a1a" strokeWidth="1.5" />
-    {/* Thorns */}
     <path d="M20,45 L18,40 M35,55 L38,60 M55,30 L60,28 M45,15 L40,12" stroke="#000" strokeWidth="1" />
-    {/* Rose Buds & Blooms */}
     <circle cx="20" cy="45" r="5" fill="#660000" />
     <circle cx="60" cy="25" r="8" fill="#880000" />
     <path d="M20,45 Q22,42 24,45" fill="none" stroke="#2a4a2a" strokeWidth="1" />
     <path d="M60,25 Q65,20 70,25" fill="none" stroke="#2a4a2a" strokeWidth="1" />
-    {/* Leaves */}
     <path d="M15,40 Q10,35 15,30 Q20,35 15,40" fill="#2a4a2a" />
     <path d="M65,35 Q70,40 75,35 Q70,30 65,35" fill="#2a4a2a" />
   </svg>
@@ -46,7 +44,6 @@ const ThornVineEdge = ({ vertical = false, className }: { vertical?: boolean, cl
       stroke="#1a2a1a" 
       strokeWidth="1" 
     />
-    {/* Scattered Thorns */}
     {vertical ? (
       <>
         <path d="M12,20 L16,18" stroke="#000" strokeWidth="0.5" />
@@ -68,6 +65,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const heroImage = PlaceHolderImages.find(img => img.id === 'hero-wedding');
+
   return (
     <html lang="en">
       <head>
@@ -76,23 +75,23 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased bg-background relative">
-        {/* Botanical Thorn & Rose Frame */}
-        <div className="fixed inset-0 z-50 pointer-events-none">
-          {/* Corners */}
-          <RoseCorner className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48" />
-          <RoseCorner className="absolute top-0 right-0 w-32 h-32 md:w-48 md:h-48 -scale-x-100" />
-          <RoseCorner className="absolute bottom-0 left-0 w-32 h-32 md:w-48 md:h-48 -scale-y-100" />
-          <RoseCorner className="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 -scale-x-100 -scale-y-100" />
-          
-          {/* Edges */}
-          <ThornVineEdge className="absolute top-0 left-32 md:left-48 right-32 md:right-48 h-10" />
-          <ThornVineEdge className="absolute bottom-0 left-32 md:left-48 right-32 md:right-48 h-10 -scale-y-100" />
-          <ThornVineEdge vertical className="absolute left-0 top-32 md:top-48 bottom-32 md:bottom-48 w-10" />
-          <ThornVineEdge vertical className="absolute right-0 top-32 md:top-48 bottom-32 md:bottom-48 w-10 -scale-x-100" />
-        </div>
-
-        {/* Colorful RGBY Background Elements */}
+        {/* Global Background Layer */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+          {/* Background Photo with 40% opacity */}
+          {heroImage && (
+            <div className="absolute inset-0 opacity-40">
+              <Image
+                src={heroImage.imageUrl}
+                alt="Manish and Sakshi"
+                fill
+                priority
+                className="object-cover"
+                data-ai-hint={heroImage.imageHint}
+              />
+            </div>
+          )}
+
+          {/* Colorful RGBY Orbs */}
           <div className="bg-orb w-[400px] h-[400px] bg-red-400/20 -top-20 -left-20 animate-drift" />
           <div className="bg-orb w-[500px] h-[500px] bg-green-300/20 top-1/4 -right-20 animate-drift" style={{ animationDelay: '-5s' }} />
           <div className="bg-orb w-[450px] h-[450px] bg-blue-400/20 bottom-1/4 -left-32 animate-drift" style={{ animationDelay: '-10s' }} />
@@ -107,6 +106,19 @@ export default function RootLayout({
           <TulipIcon className="absolute top-[10%] right-[30%] w-10 h-10 text-yellow-300/30 animate-blossom" style={{ animationDelay: '1.5s' }} />
           <TulipIcon className="absolute top-[60%] left-[5%] w-14 h-14 text-accent/20 animate-blossom" style={{ animationDelay: '2.5s' }} />
           <TulipIcon className="absolute bottom-[35%] right-[15%] w-12 h-12 text-primary/20 animate-blossom" style={{ animationDelay: '5s' }} />
+        </div>
+
+        {/* Botanical Thorn & Rose Frame */}
+        <div className="fixed inset-0 z-50 pointer-events-none">
+          <RoseCorner className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48" />
+          <RoseCorner className="absolute top-0 right-0 w-32 h-32 md:w-48 md:h-48 -scale-x-100" />
+          <RoseCorner className="absolute bottom-0 left-0 w-32 h-32 md:w-48 md:h-48 -scale-y-100" />
+          <RoseCorner className="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 -scale-x-100 -scale-y-100" />
+          
+          <ThornVineEdge className="absolute top-0 left-32 md:left-48 right-32 md:right-48 h-10" />
+          <ThornVineEdge className="absolute bottom-0 left-32 md:left-48 right-32 md:right-48 h-10 -scale-y-100" />
+          <ThornVineEdge vertical className="absolute left-0 top-32 md:top-48 bottom-32 md:bottom-48 w-10" />
+          <ThornVineEdge vertical className="absolute right-0 top-32 md:top-48 bottom-32 md:bottom-48 w-10 -scale-x-100" />
         </div>
         
         <div className="relative z-10 px-6 md:px-12 py-12">
