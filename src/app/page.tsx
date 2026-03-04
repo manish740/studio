@@ -1,6 +1,6 @@
 import { InvitationHero } from "@/components/InvitationHero";
 import { PhotoGallery } from "@/components/PhotoGallery";
-import { RSVPForm } from "@/components/RSVPForm";
+import { FamilyDetails } from "@/components/FamilyDetails";
 import { WishesWall } from "@/components/WishesWall";
 import { EventMap } from "@/components/EventMap";
 import { Toaster } from "@/components/ui/toaster";
@@ -11,7 +11,7 @@ export default function Home() {
     <main className="min-h-screen">
       <InvitationHero />
       <PhotoGallery />
-      <RSVPForm />
+      <FamilyDetails />
       <WishesWall />
       <EventMap />
       
