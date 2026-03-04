@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -88,7 +87,7 @@ export function WishesWall() {
               Leave a beautiful message for the happy couple.
             </p>
 
-            <form onSubmit={handleAddWish} className="space-y-4 bg-white/80 p-6 rounded-2xl shadow-sm border border-primary/10">
+            <form onSubmit={handleAddWish} className="space-y-4 bg-white/80 p-6 rounded-2xl shadow-sm">
               <div className="space-y-2">
                 <Label htmlFor="wish-name">Your Name</Label>
                 <Input 
@@ -157,7 +156,7 @@ export function WishesWall() {
         </ScrollReveal>
 
         <ScrollReveal delay={200}>
-          <div className="bg-white p-4 rounded-2xl shadow-inner border border-primary/5 h-[500px]">
+          <div className="bg-white p-4 rounded-2xl shadow-inner h-[500px]">
             <ScrollArea className="h-full pr-4">
               <div className="space-y-4">
                 {wishes.map((wish) => (

@@ -112,12 +112,12 @@ export function InvitationHero() {
         </ScrollReveal>
 
         <ScrollReveal delay={300}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 border-y border-primary/20 bg-white/50 backdrop-blur-sm rounded-2xl shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 bg-white/50 backdrop-blur-sm rounded-2xl">
             <div className="flex flex-col items-center space-y-2">
               <span className="text-sm uppercase tracking-widest text-muted-foreground">The Day</span>
               <span className="text-xl font-headline font-semibold">October 26, 2024</span>
             </div>
-            <div className="flex flex-col items-center space-y-2 border-x border-primary/10">
+            <div className="flex flex-col items-center space-y-2">
               <span className="text-sm uppercase tracking-widest text-muted-foreground">The Time</span>
               <span className="text-xl font-headline font-semibold">5:00 PM onwards</span>
             </div>

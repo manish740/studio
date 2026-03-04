@@ -1,4 +1,3 @@
-
 "use client";
 
 import { ScrollReveal } from "./ScrollReveal";
@@ -44,7 +43,7 @@ export function EventMap() {
           </ScrollReveal>
 
           <ScrollReveal delay={200} className="lg:col-span-2">
-            <div className="w-full h-[450px] bg-muted rounded-2xl overflow-hidden relative border border-primary/10 shadow-lg">
+            <div className="w-full h-[450px] bg-muted rounded-2xl overflow-hidden relative shadow-lg">
               {/* Mock map interface since we don't have a real key here */}
               <div className="absolute inset-0 bg-[#f8f9fa] flex items-center justify-center">
                 <div className="text-center space-y-4 p-8">

@@ -16,7 +16,7 @@ export default function Home() {
       <EventMap />
       
       {/* Footer */}
-      <footer className="py-16 bg-white border-t border-primary/10 text-center">
+      <footer className="py-16 bg-white text-center">
         <div className="max-w-4xl mx-auto px-4">
           <Heart className="mx-auto text-accent mb-6 opacity-50" size={32} />
           <h3 className="text-3xl font-headline text-primary mb-4">Manish & Sakshi</h3>
