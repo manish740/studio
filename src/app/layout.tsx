@@ -4,8 +4,8 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export const metadata: Metadata = {
-  title: 'LoveBloom Invites | Manish & Sakshi',
-  description: 'Join us as we celebrate the union of Manish & Sakshi. Digital wedding invitation and RSVP.',
+  title: 'LoveBloom Invites | Groom & Sakshi',
+  description: 'Join us as we celebrate the union of the Groom & Sakshi. Digital wedding invitation and RSVP.',
 };
 
 const TulipIcon = ({ className, style }: { className?: string, style?: React.CSSProperties }) => (
@@ -95,7 +95,7 @@ export default function RootLayout({
             <div className="absolute inset-0 opacity-40">
               <Image
                 src={heroImage.imageUrl}
-                alt="Manish and Sakshi"
+                alt="The Happy Couple"
                 fill
                 priority
                 className="object-cover"
@@ -110,7 +110,7 @@ export default function RootLayout({
           <div className="bg-orb w-[280px] md:w-[450px] h-[280px] md:h-[450px] bg-blue-400/20 bottom-1/4 -left-32 animate-drift" style={{ animationDelay: '-10s' }} />
           <div className="bg-orb w-[350px] md:w-[600px] h-[350px] md:h-[600px] bg-yellow-300/20 -bottom-32 right-0 animate-drift" style={{ animationDelay: '-15s' }} />
           
-          {/* Blooming Tulips - Responsive density */}
+          {/* Blooming Tulips */}
           <TulipIcon className="absolute top-10 left-[5%] w-8 h-8 md:w-12 md:h-12 text-accent/30 animate-blossom" style={{ animationDelay: '0s' }} />
           <TulipIcon className="absolute top-[30%] right-[5%] w-10 h-10 md:w-16 md:h-16 text-primary/30 animate-blossom" style={{ animationDelay: '2s' }} />
           <TulipIcon className="absolute bottom-[10%] left-[10%] w-8 h-8 md:w-10 md:h-10 text-red-300/30 animate-blossom" style={{ animationDelay: '4s' }} />
@@ -121,20 +121,20 @@ export default function RootLayout({
 
         {/* Scrollable Botanical Frame Border - Absolute to body */}
         <div className="absolute inset-0 z-[100] pointer-events-none h-full w-full overflow-hidden">
-          {/* Corners - Scaled for mobile */}
+          {/* Corners */}
           <RoseCorner className="absolute top-0 left-0 w-24 h-24 md:w-48 md:h-48" />
           <RoseCorner className="absolute top-0 right-0 w-24 h-24 md:w-48 md:h-48 -scale-x-100" />
           <RoseCorner className="absolute bottom-0 left-0 w-24 h-24 md:w-48 md:h-48 -scale-y-100" />
           <RoseCorner className="absolute bottom-0 right-0 w-24 h-24 md:w-48 md:h-48 -scale-x-100 -scale-y-100" />
           
-          {/* Edges - Scaled for mobile */}
+          {/* Edges */}
           <ThornVineEdge className="absolute top-0 left-24 md:left-48 right-24 md:right-48 h-8 md:h-12" />
           <ThornVineEdge className="absolute bottom-0 left-24 md:left-48 right-24 md:right-48 h-8 md:h-12 -scale-y-100" />
           <ThornVineEdge vertical className="absolute left-0 top-24 md:top-48 bottom-24 md:bottom-48 w-8 md:w-12" />
           <ThornVineEdge vertical className="absolute right-0 top-24 md:top-48 bottom-24 md:bottom-48 w-8 md:w-12 -scale-x-100" />
         </div>
         
-        {/* Content Container - Responsive padding */}
+        {/* Content Container */}
         <div className="relative z-10 px-6 sm:px-12 md:px-24 py-12 md:py-24 max-w-[100vw] overflow-x-hidden">
           {children}
         </div>

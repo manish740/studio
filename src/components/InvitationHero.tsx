@@ -40,7 +40,7 @@ export function InvitationHero() {
           </h2>
           
           <div className="relative inline-block w-full">
-            {/* Quby Stickers - Adjusted for mobile */}
+            {/* Quby Stickers */}
             {quby1 && (
               <div className="absolute -top-12 md:-top-16 -left-4 md:-left-12 w-16 h-16 md:w-24 md:h-24 animate-float z-20 transition-transform hover:scale-110 duration-300">
                 <Image 
@@ -54,7 +54,7 @@ export function InvitationHero() {
               </div>
             )}
             {quby2 && (
-              <div className="absolute -bottom-6 md:-bottom-8 -right-4 md:-right-12 w-14 h-14 md:w-20 md:h-20 animate-sway z-20 transition-transform hover:scale-110 duration-300">
+              <div className="absolute -bottom-6 md:-bottom-8 -right-4 md:-right-12 w-14 h-14 md:w-20 md:h-20 animate-drift z-20 transition-transform hover:scale-110 duration-300" style={{ animationDelay: '-3s' }}>
                 <Image 
                   src={quby2.imageUrl} 
                   alt="Happy Sticker" 
@@ -68,13 +68,13 @@ export function InvitationHero() {
 
             <h1 className="text-4xl sm:text-6xl md:text-8xl font-headline text-primary mb-6 relative flex flex-wrap items-center justify-center gap-2 md:gap-4 drop-shadow-sm transition-all duration-500 hover:tracking-wider">
               <span className="relative inline-block">
-                Manish
+                Groom
                 <RoseIcon className="absolute -top-4 md:-top-6 -left-4 md:-left-6 w-6 h-6 md:w-8 md:h-8 text-accent animate-float" />
               </span>
               <span className="text-accent italic">&</span>
               <span className="relative inline-block">
                 Sakshi
-                <RoseIcon className="absolute -bottom-4 md:-bottom-6 -right-4 md:-right-6 w-6 h-6 md:w-8 md:h-8 text-accent animate-sway" />
+                <RoseIcon className="absolute -bottom-4 md:-bottom-6 -right-4 md:-right-6 w-6 h-6 md:w-8 md:h-8 text-accent animate-drift" style={{ animationDelay: '-1s' }} />
               </span>
             </h1>
           </div>

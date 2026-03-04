@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -23,7 +22,7 @@ export function CoupleIntroduction() {
             {couplePhoto && (
               <Image
                 src={couplePhoto.imageUrl}
-                alt="Manish and Sakshi"
+                alt="The Happy Couple"
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
                 data-ai-hint={couplePhoto.imageHint}
@@ -41,11 +40,11 @@ export function CoupleIntroduction() {
           <div className="space-y-12">
             <ScrollReveal delay={400} className="space-y-4 group">
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-accent font-headline text-4xl italic transition-transform group-hover:scale-110">M</span>
-                <h3 className="text-3xl font-headline text-primary group-hover:text-accent transition-colors">Manish</h3>
+                <span className="text-accent font-headline text-4xl italic transition-transform group-hover:scale-110">G</span>
+                <h3 className="text-3xl font-headline text-primary group-hover:text-accent transition-colors">The Groom</h3>
               </div>
               <p className="text-lg text-muted-foreground leading-relaxed italic transition-colors group-hover:text-foreground">
-                A dreamer and a doer, Manish is known for his calm nature and infectious smile. He believes that true love is found in the smallest moments of everyday life.
+                A dreamer and a doer, the groom is known for his calm nature and infectious smile. He believes that true love is found in the smallest moments of everyday life.
               </p>
               <div className="h-[1px] w-full bg-primary/10 group-hover:bg-accent/30 transition-colors" />
             </ScrollReveal>
