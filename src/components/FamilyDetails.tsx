@@ -45,7 +45,7 @@ export function FamilyDetails() {
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-accent/10 group-hover:text-accent transition-colors">
                     <Heart size={24} className="group-hover:fill-current" />
                   </div>
-                  <h3 className="text-3xl font-headline text-primary group-hover:text-accent transition-colors">Manish's Family</h3>
+                  <h3 className="text-3xl font-headline text-primary group-hover:text-accent transition-colors">Groom's Family</h3>
                 </div>
                 
                 <div className="space-y-4">
@@ -91,7 +91,7 @@ export function FamilyDetails() {
                     <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent/20 transition-colors">
                       <Heart size={24} className="group-hover:fill-current" />
                     </div>
-                    <h3 className="text-3xl font-headline text-primary group-hover:text-accent transition-colors">Sakshi's Family</h3>
+                    <h3 className="text-3xl font-headline text-primary group-hover:text-accent transition-colors">Bride's Family</h3>
                   </div>
                   
                   <div className="space-y-4">
