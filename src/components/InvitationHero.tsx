@@ -6,6 +6,21 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Heart, Flower, Flower2 } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
 
+const RoseIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 2C10.5 2 9 3 8 4.5C7 3 5.5 2 4 2C2 2 1 3.5 1 5.5C1 8.5 4 11.5 8 15C8 15 8 15 8 15C8 15 8 15 8 15C12 11.5 15 8.5 15 5.5C15 3.5 14 2 12 2Z" />
+    <path d="M18 7C17.2 7 16.5 7.4 16 8.1C15.5 7.4 14.8 7 14 7C12.9 7 12 7.9 12 9C12 10.8 13.8 12.6 16 14.5C18.2 12.6 20 10.8 20 9C20 7.9 19.1 7 18 7Z" />
+    <path d="M12 15V22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+    <path d="M12 18C10.5 18.5 9 17.5 9 17.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+    <path d="M12 19.5C13.5 20 15 19 15 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+  </svg>
+);
+
 export function InvitationHero() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-wedding');
   const quby1 = PlaceHolderImages.find(img => img.id === 'quby-sticker-1');
@@ -79,8 +94,16 @@ export function InvitationHero() {
               <Flower2 size={18} fill="currentColor" />
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-headline text-primary mb-6 relative">
-              John <span className="text-accent italic">&</span> Jane
+            <h1 className="text-6xl md:text-8xl font-headline text-primary mb-6 relative flex items-center justify-center gap-4">
+              <span className="relative inline-block">
+                John
+                <RoseIcon className="absolute -top-6 -left-6 w-8 h-8 text-accent animate-float" />
+              </span>
+              <span className="text-accent italic">&</span>
+              <span className="relative inline-block">
+                Jane
+                <RoseIcon className="absolute -bottom-6 -right-6 w-8 h-8 text-accent animate-sway" />
+              </span>
             </h1>
           </div>
           
