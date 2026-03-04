@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -96,12 +95,12 @@ export function InvitationHero() {
 
             <h1 className="text-6xl md:text-8xl font-headline text-primary mb-6 relative flex items-center justify-center gap-4">
               <span className="relative inline-block">
-                John
+                Manish
                 <RoseIcon className="absolute -top-6 -left-6 w-8 h-8 text-accent animate-float" />
               </span>
               <span className="text-accent italic">&</span>
               <span className="relative inline-block">
-                Jane
+                Sakshi
                 <RoseIcon className="absolute -bottom-6 -right-6 w-8 h-8 text-accent animate-sway" />
               </span>
             </h1>

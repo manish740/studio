@@ -1,4 +1,3 @@
-
 import { InvitationHero } from "@/components/InvitationHero";
 import { PhotoGallery } from "@/components/PhotoGallery";
 import { RSVPForm } from "@/components/RSVPForm";
@@ -20,7 +19,7 @@ export default function Home() {
       <footer className="py-16 bg-white border-t border-primary/10 text-center">
         <div className="max-w-4xl mx-auto px-4">
           <Heart className="mx-auto text-accent mb-6 opacity-50" size={32} />
-          <h3 className="text-3xl font-headline text-primary mb-4">John & Jane</h3>
+          <h3 className="text-3xl font-headline text-primary mb-4">Manish & Sakshi</h3>
           <p className="text-muted-foreground italic mb-8">
             "We are better together."
           </p>

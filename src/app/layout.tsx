@@ -1,10 +1,9 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
   title: 'LoveBloom Invites | Celebration of Love',
-  description: 'Join us as we celebrate the union of John & Jane. Digital wedding invitation and RSVP.',
+  description: 'Join us as we celebrate the union of Manish & Sakshi. Digital wedding invitation and RSVP.',
 };
 
 export default function RootLayout({
