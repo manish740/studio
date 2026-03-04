@@ -33,7 +33,6 @@ const RoseCorner = ({ className }: { className?: string }) => (
     <path d="M60,25 Q65,20 70,25" fill="none" stroke="#2a4a2a" strokeWidth="1" />
     <path d="M15,40 Q10,35 15,30 Q20,35 15,40" fill="#2a4a2a" />
     <path d="M65,35 Q70,40 75,35 Q70,30 65,35" fill="#2a4a2a" />
-    {/* Additional Thorns */}
     <path d="M10,60 L5,65" stroke="#1a2a1a" strokeWidth="1" />
     <path d="M65,10 L70,5" stroke="#1a2a1a" strokeWidth="1" />
   </svg>
@@ -47,7 +46,6 @@ const ThornVineEdge = ({ vertical = false, className }: { vertical?: boolean, cl
       stroke="#1a2a1a" 
       strokeWidth="2" 
     />
-    {/* Intertwined second vine */}
     <path 
       d={vertical ? "M15,0 Q5,30 25,60 T15,100" : "M0,15 Q30,5 60,25 T100,15"} 
       fill="none" 
@@ -90,7 +88,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased bg-background relative min-h-screen">
-        {/* Global Background Layer */}
+        {/* Global Background Layer - Fixed to viewport */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
           {/* Background Photo with 40% opacity */}
           {heroImage && (
@@ -123,11 +121,12 @@ export default function RootLayout({
           <TulipIcon className="absolute bottom-[35%] right-[15%] w-12 h-12 text-primary/20 animate-blossom" style={{ animationDelay: '5s' }} />
         </div>
 
-        {/* Fixed Botanical Frame Border */}
-        <div className="fixed inset-0 z-[100] pointer-events-none">
-          {/* Corners */}
+        {/* Scrollable Botanical Frame Border - Absolute to body */}
+        <div className="absolute inset-0 z-[100] pointer-events-none h-full w-full">
+          {/* Corners - Top */}
           <RoseCorner className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48" />
           <RoseCorner className="absolute top-0 right-0 w-32 h-32 md:w-48 md:h-48 -scale-x-100" />
+          {/* Corners - Bottom (at the end of content) */}
           <RoseCorner className="absolute bottom-0 left-0 w-32 h-32 md:w-48 md:h-48 -scale-y-100" />
           <RoseCorner className="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 -scale-x-100 -scale-y-100" />
           
@@ -138,7 +137,7 @@ export default function RootLayout({
           <ThornVineEdge vertical className="absolute right-0 top-32 md:top-48 bottom-32 md:bottom-48 w-12 -scale-x-100" />
         </div>
         
-        {/* Content Container - Increased padding to clear fixed border */}
+        {/* Content Container */}
         <div className="relative z-10 px-10 md:px-24 py-16 md:py-24">
           {children}
         </div>
