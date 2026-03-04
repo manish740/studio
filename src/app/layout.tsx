@@ -127,8 +127,8 @@ export default function RootLayout({
           <RoseCorner className="absolute bottom-0 left-0 w-24 h-24 md:w-48 md:h-48 -scale-y-100" />
           <RoseCorner className="absolute bottom-0 right-0 w-24 h-24 md:w-48 md:h-48 -scale-x-100 -scale-y-100" />
           
-          {/* Edges */}
-          <ThornVineEdge className="absolute top-0 left-24 md:left-48 right-24 md:right-48 h-8 md:h-12" />
+          {/* Edges - Top edge stretched to corners */}
+          <ThornVineEdge className="absolute top-0 left-0 right-0 h-8 md:h-12" />
           <ThornVineEdge className="absolute bottom-0 left-24 md:left-48 right-24 md:right-48 h-8 md:h-12 -scale-y-100" />
           <ThornVineEdge vertical className="absolute left-0 top-24 md:top-48 bottom-24 md:bottom-48 w-8 md:w-12" />
           <ThornVineEdge vertical className="absolute right-0 top-24 md:top-48 bottom-24 md:bottom-48 w-8 md:w-12 -scale-x-100" />
