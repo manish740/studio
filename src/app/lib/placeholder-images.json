@@ -42,6 +42,18 @@
       "description": "Champagne glasses clinking",
       "imageUrl": "https://picsum.photos/seed/love6/600/400",
       "imageHint": "wedding toast"
+    },
+    {
+      "id": "quby-sticker-1",
+      "description": "Cute character sticker",
+      "imageUrl": "https://picsum.photos/seed/quby1/200/200",
+      "imageHint": "cute sticker"
+    },
+    {
+      "id": "quby-sticker-2",
+      "description": "Cute character celebrating",
+      "imageUrl": "https://picsum.photos/seed/quby2/200/200",
+      "imageHint": "happy sticker"
     }
   ]
 }

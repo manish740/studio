@@ -3,11 +3,13 @@
 
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Heart, MapPin, Calendar, Clock } from "lucide-react";
+import { Heart, Flower, Flower2 } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
 
 export function InvitationHero() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-wedding');
+  const quby1 = PlaceHolderImages.find(img => img.id === 'quby-sticker-1');
+  const quby2 = PlaceHolderImages.find(img => img.id === 'quby-sticker-2');
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
@@ -35,10 +37,54 @@ export function InvitationHero() {
           <h2 className="text-lg md:text-xl uppercase tracking-[0.3em] text-muted-foreground mb-4">
             Together with their families
           </h2>
-          <h1 className="text-6xl md:text-8xl font-headline text-primary mb-6">
-            John <span className="text-accent italic">&</span> Jane
-          </h1>
-          <p className="text-xl md:text-2xl font-light italic text-muted-foreground">
+          
+          <div className="relative inline-block group">
+            {/* Quby Stickers */}
+            {quby1 && (
+              <div className="absolute -top-16 -left-12 w-20 h-20 md:w-24 md:h-24 animate-float z-20">
+                <Image 
+                  src={quby1.imageUrl} 
+                  alt="Cute Sticker" 
+                  width={100} 
+                  height={100} 
+                  className="rounded-full border-4 border-white shadow-lg"
+                  data-ai-hint="cute sticker"
+                />
+              </div>
+            )}
+            {quby2 && (
+              <div className="absolute -bottom-8 -right-12 w-16 h-16 md:w-20 md:h-20 animate-sway z-20">
+                <Image 
+                  src={quby2.imageUrl} 
+                  alt="Happy Sticker" 
+                  width={80} 
+                  height={80} 
+                  className="rounded-full border-4 border-white shadow-lg"
+                  data-ai-hint="happy sticker"
+                />
+              </div>
+            )}
+
+            {/* Bombarding Flowers */}
+            <div className="absolute -top-8 left-1/4 text-accent animate-blossom opacity-0" style={{ animationDelay: '0s' }}>
+              <Flower size={20} fill="currentColor" />
+            </div>
+            <div className="absolute top-1/2 -left-8 text-primary animate-blossom opacity-0" style={{ animationDelay: '1s' }}>
+              <Flower2 size={16} fill="currentColor" />
+            </div>
+            <div className="absolute -bottom-4 left-1/2 text-accent animate-blossom opacity-0" style={{ animationDelay: '0.5s' }}>
+              <Flower size={14} fill="currentColor" />
+            </div>
+            <div className="absolute top-0 right-1/4 text-primary animate-blossom opacity-0" style={{ animationDelay: '1.5s' }}>
+              <Flower2 size={18} fill="currentColor" />
+            </div>
+
+            <h1 className="text-6xl md:text-8xl font-headline text-primary mb-6 relative">
+              John <span className="text-accent italic">&</span> Jane
+            </h1>
+          </div>
+          
+          <p className="text-xl md:text-2xl font-light italic text-muted-foreground mt-4">
             Request the pleasure of your company at the celebration of their union
           </p>
         </ScrollReveal>
@@ -46,17 +92,14 @@ export function InvitationHero() {
         <ScrollReveal delay={300}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 border-y border-primary/20 bg-white/50 backdrop-blur-sm rounded-2xl shadow-sm">
             <div className="flex flex-col items-center space-y-2">
-              <Calendar className="text-accent mb-2" size={28} />
               <span className="text-sm uppercase tracking-widest text-muted-foreground">The Day</span>
               <span className="text-xl font-headline font-semibold">October 26, 2024</span>
             </div>
             <div className="flex flex-col items-center space-y-2 border-x border-primary/10">
-              <Clock className="text-accent mb-2" size={28} />
               <span className="text-sm uppercase tracking-widest text-muted-foreground">The Time</span>
               <span className="text-xl font-headline font-semibold">5:00 PM onwards</span>
             </div>
             <div className="flex flex-col items-center space-y-2">
-              <MapPin className="text-accent mb-2" size={28} />
               <span className="text-sm uppercase tracking-widest text-muted-foreground">The Place</span>
               <span className="text-xl font-headline font-semibold">The Grand Ballroom</span>
             </div>
