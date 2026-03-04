@@ -1,6 +1,7 @@
 import { InvitationHero } from "@/components/InvitationHero";
 import { PhotoGallery } from "@/components/PhotoGallery";
 import { FamilyDetails } from "@/components/FamilyDetails";
+import { WeddingEvents } from "@/components/WeddingEvents";
 import { WishesWall } from "@/components/WishesWall";
 import { EventMap } from "@/components/EventMap";
 import { Toaster } from "@/components/ui/toaster";
@@ -12,6 +13,7 @@ export default function Home() {
       <InvitationHero />
       <PhotoGallery />
       <FamilyDetails />
+      <WeddingEvents />
       <WishesWall />
       <EventMap />
       
