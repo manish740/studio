@@ -1,9 +1,8 @@
-
 "use client";
 
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Heart, Flower, Flower2 } from "lucide-react";
+import { Heart } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
 
 const RoseIcon = ({ className }: { className?: string }) => (
@@ -26,85 +25,85 @@ export function InvitationHero() {
   const quby2 = PlaceHolderImages.find(img => img.id === 'quby-sticker-2');
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center py-12">
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
 
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-8">
+      <div className="relative z-10 text-center px-4 w-full max-w-4xl mx-auto space-y-6 md:space-y-8">
         <ScrollReveal>
-          <div className="flex items-center justify-center mb-6">
-            <div className="h-[1px] w-12 bg-primary/50" />
-            <Heart className="mx-4 text-accent animate-pulse" size={24} />
-            <div className="h-[1px] w-12 bg-primary/50" />
+          <div className="flex items-center justify-center mb-4 md:mb-6">
+            <div className="h-[1px] w-8 md:w-12 bg-primary/50" />
+            <Heart className="mx-2 md:mx-4 text-accent animate-pulse" size={20} />
+            <div className="h-[1px] w-8 md:w-12 bg-primary/50" />
           </div>
-          <h2 className="text-lg md:text-xl uppercase tracking-[0.3em] text-muted-foreground mb-4 font-semibold">
+          <h2 className="text-sm md:text-xl uppercase tracking-[0.2em] md:tracking-[0.3em] text-muted-foreground mb-4 font-semibold">
             Together with their families
           </h2>
           
-          <div className="relative inline-block group">
-            {/* Quby Stickers */}
+          <div className="relative inline-block w-full">
+            {/* Quby Stickers - Adjusted for mobile */}
             {quby1 && (
-              <div className="absolute -top-16 -left-12 w-20 h-20 md:w-24 md:h-24 animate-float z-20 transition-transform hover:scale-110 duration-300">
+              <div className="absolute -top-12 md:-top-16 -left-4 md:-left-12 w-16 h-16 md:w-24 md:h-24 animate-float z-20 transition-transform hover:scale-110 duration-300">
                 <Image 
                   src={quby1.imageUrl} 
                   alt="Cute Sticker" 
                   width={100} 
                   height={100} 
-                  className="rounded-full border-4 border-white shadow-lg"
+                  className="rounded-full border-2 md:border-4 border-white shadow-lg"
                   data-ai-hint="cute sticker"
                 />
               </div>
             )}
             {quby2 && (
-              <div className="absolute -bottom-8 -right-12 w-16 h-16 md:w-20 md:h-20 animate-sway z-20 transition-transform hover:scale-110 duration-300">
+              <div className="absolute -bottom-6 md:-bottom-8 -right-4 md:-right-12 w-14 h-14 md:w-20 md:h-20 animate-sway z-20 transition-transform hover:scale-110 duration-300">
                 <Image 
                   src={quby2.imageUrl} 
                   alt="Happy Sticker" 
                   width={80} 
                   height={80} 
-                  className="rounded-full border-4 border-white shadow-lg"
+                  className="rounded-full border-2 md:border-4 border-white shadow-lg"
                   data-ai-hint="happy sticker"
                 />
               </div>
             )}
 
-            <h1 className="text-6xl md:text-8xl font-headline text-primary mb-6 relative flex items-center justify-center gap-4 drop-shadow-sm transition-all duration-500 hover:tracking-wider">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-headline text-primary mb-6 relative flex flex-wrap items-center justify-center gap-2 md:gap-4 drop-shadow-sm transition-all duration-500 hover:tracking-wider">
               <span className="relative inline-block">
                 Manish
-                <RoseIcon className="absolute -top-6 -left-6 w-8 h-8 text-accent animate-float" />
+                <RoseIcon className="absolute -top-4 md:-top-6 -left-4 md:-left-6 w-6 h-6 md:w-8 md:h-8 text-accent animate-float" />
               </span>
               <span className="text-accent italic">&</span>
               <span className="relative inline-block">
                 Sakshi
-                <RoseIcon className="absolute -bottom-6 -right-6 w-8 h-8 text-accent animate-sway" />
+                <RoseIcon className="absolute -bottom-4 md:-bottom-6 -right-4 md:-right-6 w-6 h-6 md:w-8 md:h-8 text-accent animate-sway" />
               </span>
             </h1>
           </div>
           
-          <p className="text-xl md:text-2xl font-light italic text-muted-foreground mt-4 max-w-xl mx-auto transition-colors hover:text-primary">
+          <p className="text-lg md:text-2xl font-light italic text-muted-foreground mt-4 max-w-xl mx-auto transition-colors hover:text-primary leading-snug">
             Request the pleasure of your company at the celebration of their union
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={300}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 bg-white/60 backdrop-blur-md rounded-2xl shadow-xl border border-white/40 transition-all duration-300 hover:shadow-2xl hover:bg-white/80">
-            <div className="flex flex-col items-center space-y-2 group p-2 rounded-xl transition-colors hover:bg-primary/5">
-              <span className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">The Day</span>
-              <span className="text-xl font-headline font-bold text-primary group-hover:text-accent transition-colors">October 26, 2024</span>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8 py-8 md:py-12 bg-white/60 backdrop-blur-md rounded-2xl shadow-xl border border-white/40 transition-all duration-300 hover:shadow-2xl hover:bg-white/80 px-4">
+            <div className="flex flex-col items-center space-y-1 md:space-y-2 group p-2 rounded-xl transition-colors hover:bg-primary/5">
+              <span className="text-xs md:text-sm uppercase tracking-widest text-muted-foreground font-semibold">The Day</span>
+              <span className="text-lg md:text-xl font-headline font-bold text-primary group-hover:text-accent transition-colors">October 26, 2024</span>
             </div>
-            <div className="flex flex-col items-center space-y-2 group p-2 rounded-xl transition-colors hover:bg-primary/5">
-              <span className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">The Time</span>
-              <span className="text-xl font-headline font-bold text-primary group-hover:text-accent transition-colors">5:00 PM onwards</span>
+            <div className="flex flex-col items-center space-y-1 md:space-y-2 group p-2 rounded-xl transition-colors hover:bg-primary/5">
+              <span className="text-xs md:text-sm uppercase tracking-widest text-muted-foreground font-semibold">The Time</span>
+              <span className="text-lg md:text-xl font-headline font-bold text-primary group-hover:text-accent transition-colors">5:00 PM onwards</span>
             </div>
-            <div className="flex flex-col items-center space-y-2 group p-2 rounded-xl transition-colors hover:bg-primary/5">
-              <span className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">The Place</span>
-              <span className="text-xl font-headline font-bold text-primary group-hover:text-accent transition-colors">The Grand Ballroom</span>
+            <div className="flex flex-col items-center space-y-1 md:space-y-2 group p-2 rounded-xl transition-colors hover:bg-primary/5">
+              <span className="text-xs md:text-sm uppercase tracking-widest text-muted-foreground font-semibold">The Place</span>
+              <span className="text-lg md:text-xl font-headline font-bold text-primary group-hover:text-accent transition-colors">The Grand Ballroom</span>
             </div>
           </div>
         </ScrollReveal>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-[1px] h-16 bg-primary/40" />
+      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden sm:block">
+        <div className="w-[1px] h-12 md:h-16 bg-primary/40" />
       </div>
     </section>
   );

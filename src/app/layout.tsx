@@ -105,40 +105,37 @@ export default function RootLayout({
           )}
 
           {/* Colorful RGBY Orbs */}
-          <div className="bg-orb w-[400px] h-[400px] bg-red-400/20 -top-20 -left-20 animate-drift" />
-          <div className="bg-orb w-[500px] h-[500px] bg-green-300/20 top-1/4 -right-20 animate-drift" style={{ animationDelay: '-5s' }} />
-          <div className="bg-orb w-[450px] h-[450px] bg-blue-400/20 bottom-1/4 -left-32 animate-drift" style={{ animationDelay: '-10s' }} />
-          <div className="bg-orb w-[600px] h-[600px] bg-yellow-300/20 -bottom-32 right-0 animate-drift" style={{ animationDelay: '-15s' }} />
+          <div className="bg-orb w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-red-400/20 -top-20 -left-20 animate-drift" />
+          <div className="bg-orb w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-green-300/20 top-1/4 -right-20 animate-drift" style={{ animationDelay: '-5s' }} />
+          <div className="bg-orb w-[280px] md:w-[450px] h-[280px] md:h-[450px] bg-blue-400/20 bottom-1/4 -left-32 animate-drift" style={{ animationDelay: '-10s' }} />
+          <div className="bg-orb w-[350px] md:w-[600px] h-[350px] md:h-[600px] bg-yellow-300/20 -bottom-32 right-0 animate-drift" style={{ animationDelay: '-15s' }} />
           
-          {/* Blooming Tulips */}
-          <TulipIcon className="absolute top-20 left-[15%] w-12 h-12 text-accent/30 animate-blossom" style={{ animationDelay: '0s' }} />
-          <TulipIcon className="absolute top-[40%] right-[10%] w-16 h-16 text-primary/30 animate-blossom" style={{ animationDelay: '2s' }} />
-          <TulipIcon className="absolute bottom-[20%] left-[20%] w-10 h-10 text-red-300/30 animate-blossom" style={{ animationDelay: '4s' }} />
-          <TulipIcon className="absolute top-[70%] right-[25%] w-14 h-14 text-green-300/30 animate-blossom" style={{ animationDelay: '1s' }} />
-          <TulipIcon className="absolute bottom-10 right-[40%] w-8 h-8 text-blue-300/30 animate-blossom" style={{ animationDelay: '3s' }} />
-          <TulipIcon className="absolute top-[10%] right-[30%] w-10 h-10 text-yellow-300/30 animate-blossom" style={{ animationDelay: '1.5s' }} />
-          <TulipIcon className="absolute top-[60%] left-[5%] w-14 h-14 text-accent/20 animate-blossom" style={{ animationDelay: '2.5s' }} />
-          <TulipIcon className="absolute bottom-[35%] right-[15%] w-12 h-12 text-primary/20 animate-blossom" style={{ animationDelay: '5s' }} />
+          {/* Blooming Tulips - Responsive density */}
+          <TulipIcon className="absolute top-10 left-[5%] w-8 h-8 md:w-12 md:h-12 text-accent/30 animate-blossom" style={{ animationDelay: '0s' }} />
+          <TulipIcon className="absolute top-[30%] right-[5%] w-10 h-10 md:w-16 md:h-16 text-primary/30 animate-blossom" style={{ animationDelay: '2s' }} />
+          <TulipIcon className="absolute bottom-[10%] left-[10%] w-8 h-8 md:w-10 md:h-10 text-red-300/30 animate-blossom" style={{ animationDelay: '4s' }} />
+          <TulipIcon className="absolute top-[60%] right-[15%] w-10 h-10 md:w-14 md:h-14 text-green-300/30 animate-blossom" style={{ animationDelay: '1s' }} />
+          <TulipIcon className="absolute bottom-5 right-[30%] w-6 h-6 md:w-8 md:h-8 text-blue-300/30 animate-blossom" style={{ animationDelay: '3s' }} />
+          <TulipIcon className="absolute top-[5%] right-[20%] w-8 h-8 md:w-10 md:h-10 text-yellow-300/30 animate-blossom" style={{ animationDelay: '1.5s' }} />
         </div>
 
         {/* Scrollable Botanical Frame Border - Absolute to body */}
-        <div className="absolute inset-0 z-[100] pointer-events-none h-full w-full">
-          {/* Corners - Top */}
-          <RoseCorner className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48" />
-          <RoseCorner className="absolute top-0 right-0 w-32 h-32 md:w-48 md:h-48 -scale-x-100" />
-          {/* Corners - Bottom (at the end of content) */}
-          <RoseCorner className="absolute bottom-0 left-0 w-32 h-32 md:w-48 md:h-48 -scale-y-100" />
-          <RoseCorner className="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 -scale-x-100 -scale-y-100" />
+        <div className="absolute inset-0 z-[100] pointer-events-none h-full w-full overflow-hidden">
+          {/* Corners - Scaled for mobile */}
+          <RoseCorner className="absolute top-0 left-0 w-24 h-24 md:w-48 md:h-48" />
+          <RoseCorner className="absolute top-0 right-0 w-24 h-24 md:w-48 md:h-48 -scale-x-100" />
+          <RoseCorner className="absolute bottom-0 left-0 w-24 h-24 md:w-48 md:h-48 -scale-y-100" />
+          <RoseCorner className="absolute bottom-0 right-0 w-24 h-24 md:w-48 md:h-48 -scale-x-100 -scale-y-100" />
           
-          {/* Edges */}
-          <ThornVineEdge className="absolute top-0 left-32 md:left-48 right-32 md:right-48 h-12" />
-          <ThornVineEdge className="absolute bottom-0 left-32 md:left-48 right-32 md:right-48 h-12 -scale-y-100" />
-          <ThornVineEdge vertical className="absolute left-0 top-32 md:top-48 bottom-32 md:bottom-48 w-12" />
-          <ThornVineEdge vertical className="absolute right-0 top-32 md:top-48 bottom-32 md:bottom-48 w-12 -scale-x-100" />
+          {/* Edges - Scaled for mobile */}
+          <ThornVineEdge className="absolute top-0 left-24 md:left-48 right-24 md:right-48 h-8 md:h-12" />
+          <ThornVineEdge className="absolute bottom-0 left-24 md:left-48 right-24 md:right-48 h-8 md:h-12 -scale-y-100" />
+          <ThornVineEdge vertical className="absolute left-0 top-24 md:top-48 bottom-24 md:bottom-48 w-8 md:w-12" />
+          <ThornVineEdge vertical className="absolute right-0 top-24 md:top-48 bottom-24 md:bottom-48 w-8 md:w-12 -scale-x-100" />
         </div>
         
-        {/* Content Container */}
-        <div className="relative z-10 px-10 md:px-24 py-16 md:py-24">
+        {/* Content Container - Responsive padding */}
+        <div className="relative z-10 px-6 sm:px-12 md:px-24 py-12 md:py-24 max-w-[100vw] overflow-x-hidden">
           {children}
         </div>
       </body>

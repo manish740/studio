@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -76,11 +75,11 @@ export function WishesWall() {
   };
 
   return (
-    <section className="py-24 px-4 bg-primary/5">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <section className="py-12 md:py-24 px-4 bg-primary/5">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
         <ScrollReveal>
           <div className="space-y-6">
-            <h2 className="text-4xl font-headline text-primary flex items-center gap-3 group">
+            <h2 className="text-3xl md:text-4xl font-headline text-primary flex items-center gap-3 group">
               <MessageSquareHeart className="text-accent group-hover:scale-110 transition-transform" />
               Wishes Wall
             </h2>
@@ -101,12 +100,12 @@ export function WishesWall() {
                 />
               </div>
               <div className="space-y-2">
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
                   <Label htmlFor="wish-message">Message</Label>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 w-full sm:w-auto">
                     <Input 
-                      placeholder="Keywords (e.g. 'joyful future')" 
-                      className="h-8 text-xs w-40 bg-white" 
+                      placeholder="Keywords..." 
+                      className="h-8 text-xs flex-1 sm:w-40 bg-white" 
                       value={keywords}
                       onChange={(e) => setKeywords(e.target.value)}
                     />
@@ -116,7 +115,7 @@ export function WishesWall() {
                       variant="outline" 
                       onClick={handleGenerateAI}
                       disabled={isGenerating}
-                      className="h-8 text-xs flex gap-1 border-accent/20 hover:bg-accent/5 transition-all"
+                      className="h-8 text-xs flex gap-1 border-accent/20 hover:bg-accent/5 transition-all whitespace-nowrap"
                     >
                       <Sparkles size={14} className="text-accent group-hover:animate-pulse" />
                       {isGenerating ? "..." : "AI Suggest"}
@@ -158,7 +157,7 @@ export function WishesWall() {
         </ScrollReveal>
 
         <ScrollReveal delay={200}>
-          <div className="bg-white p-4 rounded-2xl shadow-inner h-[500px]">
+          <div className="bg-white p-4 rounded-2xl shadow-inner h-[400px] md:h-[500px]">
             <ScrollArea className="h-full pr-4">
               <div className="space-y-4">
                 {wishes.map((wish) => (
