@@ -4,6 +4,7 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Heart } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
+import React, { useEffect, useState } from "react";
 
 const RoseIcon = ({ className }: { className?: string }) => (
   <svg
@@ -20,12 +21,84 @@ const RoseIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const CupidSticker = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 100 100"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {/* Soft Glowing Wings */}
+    <path 
+      d="M30,40 Q10,20 10,50 Q10,80 30,60" 
+      fill="rgba(255,255,255,0.8)" 
+      className="animate-wing-glow"
+    />
+    <path 
+      d="M70,40 Q90,20 90,50 Q90,80 70,60" 
+      fill="rgba(255,255,255,0.8)" 
+      className="animate-wing-glow"
+    />
+    
+    {/* Chubby Body */}
+    <circle cx="50" cy="55" r="18" fill="#fffaf0" stroke="#f0e68c" strokeWidth="0.5" />
+    <circle cx="50" cy="35" r="12" fill="#fffaf0" stroke="#f0e68c" strokeWidth="0.5" />
+    
+    {/* Smiling Face */}
+    <circle cx="46" cy="33" r="1.5" fill="#333" />
+    <circle cx="54" cy="33" r="1.5" fill="#333" />
+    <path d="M46,38 Q50,42 54,38" fill="none" stroke="#ff69b4" strokeWidth="1" strokeLinecap="round" />
+    <circle cx="43" cy="36" r="2" fill="#ffc0cb" opacity="0.5" />
+    <circle cx="57" cy="36" r="2" fill="#ffc0cb" opacity="0.5" />
+
+    {/* Small Golden Bow */}
+    <path 
+      d="M60,50 Q75,55 60,60" 
+      fill="none" 
+      stroke="#ffd700" 
+      strokeWidth="2" 
+    />
+    <line x1="60" y1="50" x2="60" y2="60" stroke="#fff" strokeWidth="0.5" />
+    
+    {/* Arms/Legs */}
+    <ellipse cx="35" cy="55" r="6" ry="4" fill="#fffaf0" transform="rotate(-30 35 55)" />
+    <ellipse cx="65" cy="55" r="6" ry="4" fill="#fffaf0" transform="rotate(30 65 55)" />
+  </svg>
+);
+
+const Petal = ({ delay, color, left }: { delay: number, color: string, left: string }) => (
+  <div 
+    className={`absolute w-3 h-3 rounded-full opacity-0 animate-petal-fall z-30 pointer-events-none ${color}`}
+    style={{ 
+      animationDelay: `${delay}s`,
+      left: left,
+      top: '-10px'
+    }}
+  >
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+    </svg>
+  </div>
+);
+
 export function InvitationHero() {
   const quby1 = PlaceHolderImages.find(img => img.id === 'quby-sticker-1');
   const quby2 = PlaceHolderImages.find(img => img.id === 'quby-sticker-2');
+  
+  const [petals, setPetals] = useState<{ id: number, delay: number, color: string, left: string }[]>([]);
+
+  useEffect(() => {
+    const petalColors = ['text-red-400/60', 'text-pink-300/60', 'text-white/80'];
+    const newPetals = Array.from({ length: 15 }).map((_, i) => ({
+      id: i,
+      delay: Math.random() * 5,
+      color: petalColors[Math.floor(Math.random() * petalColors.length)],
+      left: `${20 + Math.random() * 60}%`
+    }));
+    setPetals(newPetals);
+  }, []);
 
   return (
-    <section className="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center py-12">
+    <section className="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center py-12 overflow-hidden">
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
 
       <div className="relative z-10 text-center px-4 w-full max-w-4xl mx-auto space-y-6 md:space-y-8">
@@ -40,6 +113,15 @@ export function InvitationHero() {
           </h2>
           
           <div className="relative inline-block w-full">
+            {/* Cupid Animation */}
+            <div className="absolute -top-32 md:-top-48 left-1/2 -translate-x-1/2 w-32 h-32 md:w-48 md:h-48 z-40">
+              <CupidSticker className="w-full h-full animate-float drop-shadow-xl" />
+              {/* Petal Emitters */}
+              {petals.map((petal) => (
+                <Petal key={petal.id} delay={petal.delay} color={petal.color} left={petal.left} />
+              ))}
+            </div>
+
             {/* Quby Stickers */}
             {quby1 && (
               <div className="absolute -top-12 md:-top-16 -left-4 md:-left-12 w-16 h-16 md:w-24 md:h-24 animate-float z-20 transition-transform hover:scale-110 duration-300">
@@ -66,17 +148,22 @@ export function InvitationHero() {
               </div>
             )}
 
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-headline text-primary mb-6 relative flex flex-wrap items-center justify-center gap-2 md:gap-4 drop-shadow-sm transition-all duration-500 hover:tracking-wider">
-              <span className="relative inline-block">
-                Groom
-                <RoseIcon className="absolute -top-4 md:-top-6 -left-4 md:-left-6 w-6 h-6 md:w-8 md:h-8 text-accent animate-float" />
-              </span>
-              <span className="text-accent italic">&</span>
-              <span className="relative inline-block">
-                Sakshi
-                <RoseIcon className="absolute -bottom-4 md:-bottom-6 -right-4 md:-right-6 w-6 h-6 md:w-8 md:h-8 text-accent animate-drift" style={{ animationDelay: '-1s' }} />
-              </span>
-            </h1>
+            <div className="relative">
+              {/* Subtle Sparkles background for the name */}
+              <div className="absolute inset-0 bg-accent/5 blur-3xl rounded-full scale-150 opacity-30 animate-pulse pointer-events-none" />
+              
+              <h1 className="text-4xl sm:text-6xl md:text-8xl font-headline text-primary mb-6 relative flex flex-wrap items-center justify-center gap-2 md:gap-4 drop-shadow-sm transition-all duration-500 hover:tracking-wider animate-golden-glow">
+                <span className="relative inline-block">
+                  Groom
+                  <RoseIcon className="absolute -top-4 md:-top-6 -left-4 md:-left-6 w-6 h-6 md:w-8 md:h-8 text-accent animate-float" />
+                </span>
+                <span className="text-accent italic">&</span>
+                <span className="relative inline-block">
+                  Sakshi
+                  <RoseIcon className="absolute -bottom-4 md:-bottom-6 -right-4 md:-right-6 w-6 h-6 md:w-8 md:h-8 text-accent animate-drift" style={{ animationDelay: '-1s' }} />
+                </span>
+              </h1>
+            </div>
           </div>
           
           <p className="text-lg md:text-2xl font-light italic text-muted-foreground mt-4 max-w-xl mx-auto transition-colors hover:text-primary leading-snug">

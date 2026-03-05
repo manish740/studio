@@ -68,6 +68,37 @@
   100% { transform: scale(1.2) rotate(360deg); opacity: 0; }
 }
 
+@keyframes petal-fall {
+  0% {
+    transform: translateY(-20px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(200px) translateX(50px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes golden-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3), 0 0 20px rgba(212, 175, 55, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3);
+  }
+}
+
+@keyframes wing-glow {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); }
+  50% { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)); }
+}
+
 .animate-float {
   animation: float 8s ease-in-out infinite;
 }
@@ -78,6 +109,18 @@
 
 .animate-blossom {
   animation: blossom 3s ease-out infinite;
+}
+
+.animate-petal-fall {
+  animation: petal-fall 4s linear infinite;
+}
+
+.animate-golden-glow {
+  animation: golden-glow 3s ease-in-out infinite;
+}
+
+.animate-wing-glow {
+  animation: wing-glow 2s ease-in-out infinite;
 }
 
 .bg-orb {
