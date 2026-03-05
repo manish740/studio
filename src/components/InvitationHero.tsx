@@ -102,9 +102,9 @@ export function InvitationHero() {
             </div>
 
             <div className="relative py-12">
-              <h1 className="text-5xl sm:text-7xl md:text-9xl font-headline embossed-gold mb-8 flex flex-wrap items-center justify-center gap-4 md:gap-8 transition-all duration-700 hover:tracking-widest">
+              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold mb-8 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-8 transition-all duration-700 hover:tracking-widest whitespace-nowrap">
                 <span>Groom</span>
-                <span className="text-3xl md:text-5xl italic opacity-70 font-light">&</span>
+                <span className="text-2xl md:text-4xl lg:text-5xl italic opacity-70 font-light">&</span>
                 <span>Sakshi</span>
               </h1>
             </div>
