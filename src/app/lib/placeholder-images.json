@@ -1,65 +1,52 @@
-
 {
   "placeholderImages": [
     {
       "id": "hero-wedding",
-      "description": "Couple holding hands in a field",
-      "imageUrl": "https://picsum.photos/seed/wedding1/1200/800",
-      "imageHint": "wedding couple"
+      "description": "Royal palace wedding setup",
+      "imageUrl": "https://picsum.photos/seed/royal-wedding-1/1920/1080",
+      "imageHint": "royal palace wedding"
     },
     {
       "id": "bride-sakshi",
-      "description": "Sakshi in beautiful traditional attire",
-      "imageUrl": "https://picsum.photos/seed/sakshi/600/800",
-      "imageHint": "indian bride"
+      "description": "Sakshi in premium traditional gold attire",
+      "imageUrl": "https://picsum.photos/seed/royal-bride/600/800",
+      "imageHint": "indian royal bride"
     },
     {
       "id": "gallery-1",
-      "description": "Couple laughing together",
-      "imageUrl": "https://picsum.photos/seed/love1/600/400",
-      "imageHint": "couple happy"
+      "description": "Elegant luxury details",
+      "imageUrl": "https://picsum.photos/seed/luxury1/600/400",
+      "imageHint": "luxury wedding detail"
     },
     {
       "id": "gallery-2",
-      "description": "Rings on a flower",
-      "imageUrl": "https://picsum.photos/seed/love2/600/400",
-      "imageHint": "wedding rings"
+      "description": "Royal gold rings",
+      "imageUrl": "https://picsum.photos/seed/royal-rings/600/400",
+      "imageHint": "gold wedding rings"
     },
     {
       "id": "gallery-3",
-      "description": "Couple walking at sunset",
-      "imageUrl": "https://picsum.photos/seed/love3/600/400",
-      "imageHint": "sunset romance"
+      "description": "Palatial ceremony",
+      "imageUrl": "https://picsum.photos/seed/palace/600/400",
+      "imageHint": "royal palace ballroom"
     },
     {
       "id": "gallery-4",
-      "description": "Detail of wedding dress",
-      "imageUrl": "https://picsum.photos/seed/love4/600/400",
-      "imageHint": "wedding detail"
+      "description": "Silk and gold textures",
+      "imageUrl": "https://picsum.photos/seed/silk/600/400",
+      "imageHint": "silk wedding dress"
     },
     {
       "id": "gallery-5",
-      "description": "A close up of flowers",
-      "imageUrl": "https://picsum.photos/seed/love5/600/400",
-      "imageHint": "wedding flowers"
+      "description": "Luxury floral arrangement",
+      "imageUrl": "https://picsum.photos/seed/gold-flowers/600/400",
+      "imageHint": "luxury wedding flowers"
     },
     {
       "id": "gallery-6",
-      "description": "Champagne glasses clinking",
-      "imageUrl": "https://picsum.photos/seed/love6/600/400",
-      "imageHint": "wedding toast"
-    },
-    {
-      "id": "quby-sticker-1",
-      "description": "Cute character sticker",
-      "imageUrl": "https://picsum.photos/seed/quby1/200/200",
-      "imageHint": "cute sticker"
-    },
-    {
-      "id": "quby-sticker-2",
-      "description": "Cute character celebrating",
-      "imageUrl": "https://picsum.photos/seed/quby2/200/200",
-      "imageHint": "happy sticker"
+      "description": "Champagne celebration",
+      "imageUrl": "https://picsum.photos/seed/luxury-toast/600/400",
+      "imageHint": "luxury wedding toast"
     }
   ]
 }
