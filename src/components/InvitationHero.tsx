@@ -54,9 +54,12 @@ const FallingPetal = ({ delay, color, left }: { delay: number, color: string, le
 );
 
 export function InvitationHero() {
+  const [isMounted, setIsMounted] = useState(false);
   const [petals, setPetals] = useState<{ id: number, delay: number, color: string, left: string }[]>([]);
+  const [sparkles, setSparkles] = useState<{ id: number, top: string, left: string, delay: string }[]>([]);
 
   useEffect(() => {
+    setIsMounted(true);
     const petalColors = ['text-accent/40', 'text-primary/30', 'text-white/50'];
     const newPetals = Array.from({ length: 12 }).map((_, i) => ({
       id: i,
@@ -65,6 +68,14 @@ export function InvitationHero() {
       left: `${15 + Math.random() * 70}%`
     }));
     setPetals(newPetals);
+
+    const newSparkles = Array.from({ length: 15 }).map((_, i) => ({
+      id: i,
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 2}s`
+    }));
+    setSparkles(newSparkles);
   }, []);
 
   return (
@@ -81,7 +92,24 @@ export function InvitationHero() {
             The Royal Celebration of
           </h2>
           
-          <div className="relative inline-block w-full spotlight-glow">
+          <div className="relative inline-block w-full group">
+            {/* Ambient Background Glow for Names */}
+            <div className="absolute inset-0 bg-accent/5 blur-[100px] rounded-full scale-150 pointer-events-none group-hover:bg-accent/10 transition-colors duration-700" />
+
+            {/* Shimmer Sparkles around the name area */}
+            {isMounted && sparkles.map((s) => (
+              <div 
+                key={s.id}
+                className="absolute w-1 h-1 bg-white rounded-full animate-pulse opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{
+                  top: s.top,
+                  left: s.left,
+                  animationDelay: s.delay,
+                  boxShadow: '0 0 10px white'
+                }}
+              />
+            ))}
+
             {/* Butterflies */}
             <Butterfly 
               color="text-accent/40" 
@@ -95,22 +123,65 @@ export function InvitationHero() {
             />
 
             {/* Petal Emitters */}
-            <div className="absolute -top-40 left-0 w-full h-[120vh] z-40 pointer-events-none">
-              {petals.map((petal) => (
-                <FallingPetal key={petal.id} delay={petal.delay} color={petal.color} left={petal.left} />
-              ))}
-            </div>
+            {isMounted && (
+              <div className="absolute -top-40 left-0 w-full h-[120vh] z-40 pointer-events-none">
+                {petals.map((petal) => (
+                  <FallingPetal key={petal.id} delay={petal.delay} color={petal.color} left={petal.left} />
+                ))}
+              </div>
+            )}
 
-            <div className="relative py-12">
-              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold mb-8 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-8 transition-all duration-700 hover:tracking-widest whitespace-nowrap">
-                <span>Groom</span>
-                <span className="text-2xl md:text-4xl lg:text-5xl italic opacity-70 font-light">&</span>
-                <span>Sakshi</span>
-              </h1>
+            <div className="relative py-12 flex flex-col items-center justify-center gap-4 transition-all duration-700 group-hover:scale-[1.02]">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 w-full">
+                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold tracking-tighter group-hover:tracking-normal transition-all duration-700">
+                  Groom
+                </h1>
+
+                {/* Embossed Golden Heart Frame for WEDS */}
+                <div className="relative flex items-center justify-center mt-4 md:mt-8 translate-y-4">
+                  <div className="absolute inset-0 bg-accent/20 blur-2xl rounded-full animate-pulse group-hover:bg-accent/40" />
+                  <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 drop-shadow-2xl transition-transform duration-500 group-hover:scale-110">
+                    <defs>
+                      <linearGradient id="heartGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#d4af37" />
+                        <stop offset="50%" stopColor="#f9f295" />
+                        <stop offset="100%" stopColor="#b8860b" />
+                      </linearGradient>
+                      <filter id="innerShadow">
+                        <feOffset dx="0" dy="2"/>
+                        <feGaussianBlur stdDeviation="2" result="offset-blur"/>
+                        <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"/>
+                        <feFlood floodColor="black" floodOpacity="0.5" result="color"/>
+                        <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
+                        <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+                      </filter>
+                    </defs>
+                    <path 
+                      d="M50 88.9L43.4 82.3C17.2 58.5 0 42.9 0 24C0 10.7 10.4 0 23.7 0C31.2 0 38.4 3.5 43.1 9C47.8 3.5 55 0 62.5 0C75.8 0 86.2 10.7 86.2 24C86.2 42.9 69 58.5 42.8 82.3L50 88.9Z" 
+                      fill="url(#heartGold)" 
+                      filter="url(#innerShadow)"
+                      className="transition-all"
+                    />
+                    <text 
+                      x="43" 
+                      y="45" 
+                      textAnchor="middle" 
+                      className="font-headline font-bold text-[14px] fill-primary/80"
+                      style={{ filter: 'drop-shadow(0px 1px 1px white)' }}
+                    >
+                      WEDS
+                    </text>
+                  </svg>
+                </div>
+
+                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold tracking-tighter group-hover:tracking-normal transition-all duration-700">
+                  Sakshi
+                </h1>
+              </div>
             </div>
           </div>
           
-          <p className="text-xl md:text-3xl font-headline italic text-primary/70 mt-4 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-3xl font-headline italic text-primary/70 mt-8 max-w-2xl mx-auto leading-relaxed">
             Request the honor of your presence as we pledge our eternal love
           </p>
         </ScrollReveal>
