@@ -21,47 +21,35 @@ const RoseIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const CupidSticker = ({ className }: { className?: string }) => (
+const SwansIcon = ({ className }: { className?: string }) => (
   <svg
-    viewBox="0 0 100 100"
+    viewBox="0 0 100 60"
     className={className}
     xmlns="http://www.w3.org/2000/svg"
   >
-    {/* Soft Glowing Wings */}
-    <path 
-      d="M30,40 Q10,20 10,50 Q10,80 30,60" 
-      fill="rgba(255,255,255,0.8)" 
-      className="animate-wing-glow"
-    />
-    <path 
-      d="M70,40 Q90,20 90,50 Q90,80 70,60" 
-      fill="rgba(255,255,255,0.8)" 
-      className="animate-wing-glow"
-    />
+    {/* Left Swan Body */}
+    <path d="M10,50 Q30,55 50,45 Q40,30 30,30 Q20,30 10,50 Z" fill="white" opacity="0.9" />
+    {/* Left Swan Neck */}
+    <path d="M45,47 C55,40 55,20 45,15 C40,12 35,15 37,20" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
     
-    {/* Chubby Body */}
-    <circle cx="50" cy="55" r="18" fill="#fffaf0" stroke="#f0e68c" strokeWidth="0.5" />
-    <circle cx="50" cy="35" r="12" fill="#fffaf0" stroke="#f0e68c" strokeWidth="0.5" />
+    {/* Right Swan Body */}
+    <path d="M90,50 Q70,55 50,45 Q60,30 70,30 Q80,30 90,50 Z" fill="white" opacity="0.9" />
+    {/* Right Swan Neck */}
+    <path d="M55,47 C45,40 45,20 55,15 C60,12 65,15 63,20" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
     
-    {/* Smiling Face */}
-    <circle cx="46" cy="33" r="1.5" fill="#333" />
-    <circle cx="54" cy="33" r="1.5" fill="#333" />
-    <path d="M46,38 Q50,42 54,38" fill="none" stroke="#ff69b4" strokeWidth="1" strokeLinecap="round" />
-    <circle cx="43" cy="36" r="2" fill="#ffc0cb" opacity="0.5" />
-    <circle cx="57" cy="36" r="2" fill="#ffc0cb" opacity="0.5" />
-
-    {/* Small Golden Bow */}
-    <path 
-      d="M60,50 Q75,55 60,60" 
-      fill="none" 
-      stroke="#ffd700" 
-      strokeWidth="2" 
-    />
-    <line x1="60" y1="50" x2="60" y2="60" stroke="#fff" strokeWidth="0.5" />
+    {/* Subtle Heart shape with necks */}
+    <path d="M48,20 Q50,24 52,20" fill="none" stroke="#ffb6c1" strokeWidth="1" opacity="0.6" />
     
-    {/* Arms/Legs */}
-    <ellipse cx="35" cy="55" r="6" ry="4" fill="#fffaf0" transform="rotate(-30 35 55)" />
-    <ellipse cx="65" cy="55" r="6" ry="4" fill="#fffaf0" transform="rotate(30 65 55)" />
+    {/* Soft Glow */}
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
   </svg>
 );
 
@@ -113,9 +101,9 @@ export function InvitationHero() {
           </h2>
           
           <div className="relative inline-block w-full">
-            {/* Cupid Animation */}
-            <div className="absolute -top-32 md:-top-48 left-1/2 -translate-x-1/2 w-32 h-32 md:w-48 md:h-48 z-40">
-              <CupidSticker className="w-full h-full animate-float drop-shadow-xl" />
+            {/* Elegant Swans Animation */}
+            <div className="absolute -top-32 md:-top-48 left-1/2 -translate-x-1/2 w-48 h-32 md:w-64 md:h-48 z-40">
+              <SwansIcon className="w-full h-full animate-float drop-shadow-2xl" />
               {/* Petal Emitters */}
               {petals.map((petal) => (
                 <Petal key={petal.id} delay={petal.delay} color={petal.color} left={petal.left} />
