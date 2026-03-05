@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -6,6 +5,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Heart } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
 import React, { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 const RoseIcon = ({ className }: { className?: string }) => (
   <svg
@@ -20,6 +20,39 @@ const RoseIcon = ({ className }: { className?: string }) => (
     <path d="M12 18C10.5 18.5 9 17.5 9 17.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
     <path d="M12 19.5C13.5 20 15 19 15 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
   </svg>
+);
+
+const Butterfly = ({ 
+  className, 
+  color, 
+  delay, 
+  duration = "10s" 
+}: { 
+  className?: string, 
+  color: string, 
+  delay: string, 
+  duration?: string 
+}) => (
+  <div 
+    className={cn("absolute z-30 pointer-events-none", className)}
+    style={{ 
+      animation: `float ${duration} ease-in-out infinite`,
+      animationDelay: delay 
+    }}
+  >
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={cn(color, "animate-wing-glow")}
+      width="32"
+      height="32"
+    >
+      <g className="animate-wing-flap origin-center">
+        <path d="M12,12 C12,12 14.5,7 19,7 C22,7 24,9.5 24,13 C24,17 19,21 12,23 C5,21 0,17 0,13 C0,9.5 2,7 5,7 C9.5,7 12,12 12,12 Z" opacity="0.8" />
+        <circle cx="12" cy="14" r="1.5" fill="white" fillOpacity="0.5" />
+      </g>
+    </svg>
+  </div>
 );
 
 const Petal = ({ delay, color, left }: { delay: number, color: string, left: string }) => (
@@ -49,9 +82,6 @@ const Sparkle = ({ delay, left, top }: { delay: number, left: string, top: strin
 );
 
 export function InvitationHero() {
-  const quby1 = PlaceHolderImages.find(img => img.id === 'quby-sticker-1');
-  const quby2 = PlaceHolderImages.find(img => img.id === 'quby-sticker-2');
-  
   const [petals, setPetals] = useState<{ id: number, delay: number, color: string, left: string }[]>([]);
   const [sparkles, setSparkles] = useState<{ id: number, delay: number, left: string, top: string }[]>([]);
 
@@ -65,11 +95,11 @@ export function InvitationHero() {
     }));
     setPetals(newPetals);
 
-    const newSparkles = Array.from({ length: 12 }).map((_, i) => ({
+    const newSparkles = Array.from({ length: 20 }).map((_, i) => ({
       id: i,
-      delay: Math.random() * 2,
-      left: `${10 + Math.random() * 80}%`,
-      top: `${10 + Math.random() * 80}%`
+      delay: Math.random() * 3,
+      left: `${5 + Math.random() * 90}%`,
+      top: `${5 + Math.random() * 90}%`
     }));
     setSparkles(newSparkles);
   }, []);
@@ -90,40 +120,40 @@ export function InvitationHero() {
           </h2>
           
           <div className="relative inline-block w-full">
-            {/* Petal Emitters - falling over the names */}
+            {/* Butterflies - flying around the name */}
+            <Butterfly 
+              color="text-yellow-400" 
+              className="-top-12 left-[10%] md:left-[20%]" 
+              delay="0s" 
+              duration="12s" 
+            />
+            <Butterfly 
+              color="text-slate-100" 
+              className="-top-16 right-[15%] md:right-[25%]" 
+              delay="2s" 
+              duration="15s" 
+            />
+            <Butterfly 
+              color="text-yellow-200" 
+              className="bottom-0 left-[5%]" 
+              delay="5s" 
+              duration="14s" 
+            />
+            <Butterfly 
+              color="text-white" 
+              className="-bottom-10 right-[10%]" 
+              delay="3s" 
+              duration="11s" 
+            />
+
+            {/* Petal Emitters */}
             <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-full h-32 z-40 pointer-events-none">
               {petals.map((petal) => (
                 <Petal key={petal.id} delay={petal.delay} color={petal.color} left={petal.left} />
               ))}
             </div>
 
-            {/* Quby Stickers */}
-            {quby1 && (
-              <div className="absolute -top-12 md:-top-16 -left-4 md:-left-12 w-16 h-16 md:w-24 md:h-24 animate-float z-20 transition-transform hover:scale-110 duration-300">
-                <Image 
-                  src={quby1.imageUrl} 
-                  alt="Cute Sticker" 
-                  width={100} 
-                  height={100} 
-                  className="rounded-full border-2 md:border-4 border-white shadow-lg"
-                  data-ai-hint="cute sticker"
-                />
-              </div>
-            )}
-            {quby2 && (
-              <div className="absolute -bottom-6 md:-bottom-8 -right-4 md:-right-12 w-14 h-14 md:w-20 md:h-20 animate-drift z-20 transition-transform hover:scale-110 duration-300" style={{ animationDelay: '-3s' }}>
-                <Image 
-                  src={quby2.imageUrl} 
-                  alt="Happy Sticker" 
-                  width={80} 
-                  height={80} 
-                  className="rounded-full border-2 md:border-4 border-white shadow-lg"
-                  data-ai-hint="happy sticker"
-                />
-              </div>
-            )}
-
-            <div className="relative">
+            <div className="relative py-8 md:py-12">
               {/* Shimmer particles around the names */}
               <div className="absolute inset-0 pointer-events-none">
                 {sparkles.map((s) => (
@@ -131,7 +161,7 @@ export function InvitationHero() {
                 ))}
               </div>
 
-              {/* Subtle Sparkles background for the name */}
+              {/* Ambient Glow background */}
               <div className="absolute inset-0 bg-accent/5 blur-3xl rounded-full scale-150 opacity-30 animate-pulse pointer-events-none" />
               
               <h1 className="text-4xl sm:text-6xl md:text-8xl font-headline text-primary mb-6 relative flex flex-wrap items-center justify-center gap-2 md:gap-4 drop-shadow-sm transition-all duration-500 hover:tracking-wider animate-golden-glow">
