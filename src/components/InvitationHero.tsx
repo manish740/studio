@@ -27,29 +27,39 @@ const SwansIcon = ({ className }: { className?: string }) => (
     className={className}
     xmlns="http://www.w3.org/2000/svg"
   >
-    {/* Left Swan Body */}
-    <path d="M10,50 Q30,55 50,45 Q40,30 30,30 Q20,30 10,50 Z" fill="white" opacity="0.9" />
-    {/* Left Swan Neck */}
-    <path d="M45,47 C55,40 55,20 45,15 C40,12 35,15 37,20" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
-    
-    {/* Right Swan Body */}
-    <path d="M90,50 Q70,55 50,45 Q60,30 70,30 Q80,30 90,50 Z" fill="white" opacity="0.9" />
-    {/* Right Swan Neck */}
-    <path d="M55,47 C45,40 45,20 55,15 C60,12 65,15 63,20" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
-    
-    {/* Subtle Heart shape with necks */}
-    <path d="M48,20 Q50,24 52,20" fill="none" stroke="#ffb6c1" strokeWidth="1" opacity="0.6" />
-    
-    {/* Soft Glow */}
     <defs>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <linearGradient id="swan-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style={{ stopColor: '#D4AF37', stopOpacity: 1 }} />
+        <stop offset="50%" style={{ stopColor: '#F9F295', stopOpacity: 1 }} />
+        <stop offset="100%" style={{ stopColor: '#D4AF37', stopOpacity: 1 }} />
+      </linearGradient>
+      <filter id="royal-glow">
+        <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
         <feMerge>
           <feMergeNode in="coloredBlur"/>
           <feMergeNode in="SourceGraphic"/>
         </feMerge>
       </filter>
     </defs>
+    
+    {/* Left Swan */}
+    <g filter="url(#royal-glow)">
+      <path d="M10,50 Q30,55 50,45 Q40,30 30,30 Q20,30 10,50 Z" fill="white" opacity="0.95" />
+      <path d="M45,47 C58,38 52,12 40,12 C35,12 32,18 35,22" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" />
+      <path d="M35,22 L33,24" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" /> {/* Beak */}
+      <path d="M15,48 Q30,52 45,46" fill="none" stroke="url(#swan-gold)" strokeWidth="0.5" opacity="0.6" /> {/* Wing Detail */}
+    </g>
+    
+    {/* Right Swan */}
+    <g filter="url(#royal-glow)">
+      <path d="M90,50 Q70,55 50,45 Q60,30 70,30 Q80,30 90,50 Z" fill="white" opacity="0.95" />
+      <path d="M55,47 C42,38 48,12 60,12 C65,12 68,18 65,22" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" />
+      <path d="M65,22 L67,24" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" /> {/* Beak */}
+      <path d="M85,48 Q70,52 55,46" fill="none" stroke="url(#swan-gold)" strokeWidth="0.5" opacity="0.6" /> {/* Wing Detail */}
+    </g>
+
+    {/* Center Heart Glow */}
+    <path d="M48,20 Q50,24 52,20" fill="none" stroke="url(#swan-gold)" strokeWidth="1.5" opacity="0.8" />
   </svg>
 );
 
@@ -68,11 +78,23 @@ const Petal = ({ delay, color, left }: { delay: number, color: string, left: str
   </div>
 );
 
+const Sparkle = ({ delay, left, top }: { delay: number, left: string, top: string }) => (
+  <div 
+    className="absolute w-1 h-1 bg-yellow-200 rounded-full animate-shimmer pointer-events-none z-20"
+    style={{ 
+      animationDelay: `${delay}s`,
+      left,
+      top
+    }}
+  />
+);
+
 export function InvitationHero() {
   const quby1 = PlaceHolderImages.find(img => img.id === 'quby-sticker-1');
   const quby2 = PlaceHolderImages.find(img => img.id === 'quby-sticker-2');
   
   const [petals, setPetals] = useState<{ id: number, delay: number, color: string, left: string }[]>([]);
+  const [sparkles, setSparkles] = useState<{ id: number, delay: number, left: string, top: string }[]>([]);
 
   useEffect(() => {
     const petalColors = ['text-red-400/60', 'text-pink-300/60', 'text-white/80'];
@@ -83,6 +105,14 @@ export function InvitationHero() {
       left: `${20 + Math.random() * 60}%`
     }));
     setPetals(newPetals);
+
+    const newSparkles = Array.from({ length: 12 }).map((_, i) => ({
+      id: i,
+      delay: Math.random() * 2,
+      left: `${10 + Math.random() * 80}%`,
+      top: `${10 + Math.random() * 80}%`
+    }));
+    setSparkles(newSparkles);
   }, []);
 
   return (
@@ -101,9 +131,9 @@ export function InvitationHero() {
           </h2>
           
           <div className="relative inline-block w-full">
-            {/* Elegant Swans Animation */}
+            {/* Elegant Royal Swans Animation */}
             <div className="absolute -top-32 md:-top-48 left-1/2 -translate-x-1/2 w-48 h-32 md:w-64 md:h-48 z-40">
-              <SwansIcon className="w-full h-full animate-float drop-shadow-2xl" />
+              <SwansIcon className="w-full h-full animate-float drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]" />
               {/* Petal Emitters */}
               {petals.map((petal) => (
                 <Petal key={petal.id} delay={petal.delay} color={petal.color} left={petal.left} />
@@ -137,6 +167,13 @@ export function InvitationHero() {
             )}
 
             <div className="relative">
+              {/* Shimmer particles around the names */}
+              <div className="absolute inset-0 pointer-events-none">
+                {sparkles.map((s) => (
+                  <Sparkle key={s.id} delay={s.delay} left={s.left} top={s.top} />
+                ))}
+              </div>
+
               {/* Subtle Sparkles background for the name */}
               <div className="absolute inset-0 bg-accent/5 blur-3xl rounded-full scale-150 opacity-30 animate-pulse pointer-events-none" />
               
