@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -18,48 +19,6 @@ const RoseIcon = ({ className }: { className?: string }) => (
     <path d="M12 15V22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
     <path d="M12 18C10.5 18.5 9 17.5 9 17.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
     <path d="M12 19.5C13.5 20 15 19 15 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-  </svg>
-);
-
-const SwansIcon = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 100 60"
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <defs>
-      <linearGradient id="swan-gold" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{ stopColor: '#D4AF37', stopOpacity: 1 }} />
-        <stop offset="50%" style={{ stopColor: '#F9F295', stopOpacity: 1 }} />
-        <stop offset="100%" style={{ stopColor: '#D4AF37', stopOpacity: 1 }} />
-      </linearGradient>
-      <filter id="royal-glow">
-        <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
-        <feMerge>
-          <feMergeNode in="coloredBlur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-    </defs>
-    
-    {/* Left Swan */}
-    <g filter="url(#royal-glow)">
-      <path d="M10,50 Q30,55 50,45 Q40,30 30,30 Q20,30 10,50 Z" fill="white" opacity="0.95" />
-      <path d="M45,47 C58,38 52,12 40,12 C35,12 32,18 35,22" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" />
-      <path d="M35,22 L33,24" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" /> {/* Beak */}
-      <path d="M15,48 Q30,52 45,46" fill="none" stroke="url(#swan-gold)" strokeWidth="0.5" opacity="0.6" /> {/* Wing Detail */}
-    </g>
-    
-    {/* Right Swan */}
-    <g filter="url(#royal-glow)">
-      <path d="M90,50 Q70,55 50,45 Q60,30 70,30 Q80,30 90,50 Z" fill="white" opacity="0.95" />
-      <path d="M55,47 C42,38 48,12 60,12 C65,12 68,18 65,22" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" />
-      <path d="M65,22 L67,24" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" /> {/* Beak */}
-      <path d="M85,48 Q70,52 55,46" fill="none" stroke="url(#swan-gold)" strokeWidth="0.5" opacity="0.6" /> {/* Wing Detail */}
-    </g>
-
-    {/* Center Heart Glow */}
-    <path d="M48,20 Q50,24 52,20" fill="none" stroke="url(#swan-gold)" strokeWidth="1.5" opacity="0.8" />
   </svg>
 );
 
@@ -131,10 +90,8 @@ export function InvitationHero() {
           </h2>
           
           <div className="relative inline-block w-full">
-            {/* Elegant Royal Swans Animation */}
-            <div className="absolute -top-32 md:-top-48 left-1/2 -translate-x-1/2 w-48 h-32 md:w-64 md:h-48 z-40">
-              <SwansIcon className="w-full h-full animate-float drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]" />
-              {/* Petal Emitters */}
+            {/* Petal Emitters - falling over the names */}
+            <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-full h-32 z-40 pointer-events-none">
               {petals.map((petal) => (
                 <Petal key={petal.id} delay={petal.delay} color={petal.color} left={petal.left} />
               ))}
