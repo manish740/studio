@@ -5,6 +5,7 @@ import { Heart } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { ScratchToReveal } from "./ScratchToReveal";
 
 const Butterfly = ({ 
   className, 
@@ -92,15 +93,15 @@ export function InvitationHero() {
             The Royal Celebration of
           </h2>
           
-          <div className="relative inline-block w-full group">
+          <div className="relative inline-block w-full group/names">
             {/* Ambient Background Glow for Names */}
-            <div className="absolute inset-0 bg-accent/5 blur-[100px] rounded-full scale-150 pointer-events-none group-hover:bg-accent/10 transition-colors duration-700" />
+            <div className="absolute inset-0 bg-accent/5 blur-[100px] rounded-full scale-150 pointer-events-none group-hover/names:bg-accent/10 transition-colors duration-700" />
 
             {/* Shimmer Sparkles around the name area */}
             {isMounted && sparkles.map((s) => (
               <div 
                 key={s.id}
-                className="absolute w-1 h-1 bg-white rounded-full animate-pulse opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute w-1 h-1 bg-white rounded-full animate-pulse opacity-0 group-hover/names:opacity-100 transition-opacity"
                 style={{
                   top: s.top,
                   left: s.left,
@@ -131,16 +132,16 @@ export function InvitationHero() {
               </div>
             )}
 
-            <div className="relative py-12 flex flex-col items-center justify-center gap-4 transition-all duration-700 group-hover:scale-[1.02]">
+            <div className="relative py-12 flex flex-col items-center justify-center gap-4 transition-all duration-700 group-hover/names:scale-[1.02]">
               <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 w-full">
-                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold tracking-tighter group-hover:tracking-normal transition-all duration-700">
+                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold tracking-tighter group-hover/names:tracking-normal transition-all duration-700 group-hover/names:brightness-110">
                   Groom
                 </h1>
 
                 {/* Embossed Golden Heart Frame for WEDS */}
-                <div className="relative flex items-center justify-center mt-4 md:mt-8 translate-y-4">
-                  <div className="absolute inset-0 bg-accent/20 blur-2xl rounded-full animate-pulse group-hover:bg-accent/40" />
-                  <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-28 md:h-28 drop-shadow-2xl transition-transform duration-500 group-hover:scale-110">
+                <div className="relative flex items-center justify-center mt-8 translate-y-6">
+                  <div className="absolute inset-0 bg-accent/20 blur-2xl rounded-full animate-pulse group-hover/names:bg-accent/40" />
+                  <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-24 md:h-24 drop-shadow-2xl transition-transform duration-500 group-hover/names:scale-110">
                     <defs>
                       <linearGradient id="heartGold" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" stopColor="#d4af37" />
@@ -174,7 +175,7 @@ export function InvitationHero() {
                   </svg>
                 </div>
 
-                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold tracking-tighter group-hover:tracking-normal transition-all duration-700">
+                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold tracking-tighter group-hover/names:tracking-normal transition-all duration-700 group-hover/names:brightness-110">
                   Sakshi
                 </h1>
               </div>
@@ -187,22 +188,10 @@ export function InvitationHero() {
         </ScrollReveal>
 
         <ScrollReveal delay={400}>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-12 py-12 bg-white/40 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_rgba(212,175,55,0.1)] border border-white/60 px-8">
-            <div className="flex flex-col items-center space-y-2 group">
-              <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground font-bold">The Date</span>
-              <span className="text-xl md:text-2xl font-headline text-primary">October 26, 2024</span>
-              <div className="h-[1px] w-0 bg-accent/50 transition-all duration-500 group-hover:w-full" />
-            </div>
-            <div className="flex flex-col items-center space-y-2 group">
-              <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground font-bold">The Hour</span>
-              <span className="text-xl md:text-2xl font-headline text-primary">Five O'Clock</span>
-              <div className="h-[1px] w-0 bg-accent/50 transition-all duration-500 group-hover:w-full" />
-            </div>
-            <div className="flex flex-col items-center space-y-2 group">
-              <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground font-bold">The Venue</span>
-              <span className="text-xl md:text-2xl font-headline text-primary">Grand Ballroom</span>
-              <div className="h-[1px] w-0 bg-accent/50 transition-all duration-500 group-hover:w-full" />
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 py-12 bg-white/40 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_rgba(212,175,55,0.1)] border border-white/60 px-8">
+            <ScratchToReveal label="The Date" value="October 26, 2024" />
+            <ScratchToReveal label="The Hour" value="Five O'Clock" />
+            <ScratchToReveal label="The Venue" value="Grand Ballroom" />
           </div>
         </ScrollReveal>
       </div>
