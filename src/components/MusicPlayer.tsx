@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 /**
  * @fileOverview A premium, royal-themed background music player.
  * Features:
- * - Aggressive autoplay logic (with browser compliance fallback)
+ * - Syncs with the IntroOverlay tap event
  * - Cinematic volume fade-in
  * - Shimmering luxury button design
  * - Floating musical note animations
@@ -50,10 +50,7 @@ export function MusicPlayer() {
       });
     };
 
-    // Attempt autoplay immediately on mount
-    startPlayback();
-
-    // Aggressive listeners to catch any first interaction
+    // Aggressive listeners to catch the intro tap or any scroll/click
     const interactions = ['click', 'touchstart', 'scroll', 'mousedown'];
     const handleFirstInteraction = () => {
       if (!isPlaying) {
@@ -95,18 +92,6 @@ export function MusicPlayer() {
           "absolute inset-0 rounded-full blur-xl bg-accent/20 transition-opacity duration-1000",
           isPlaying ? "opacity-100 animate-pulse" : "opacity-0"
         )} />
-
-        {/* Interaction Hint */}
-        {!hasInteracted && !isPlaying && (
-          <div className="absolute bottom-full right-0 mb-6 animate-bounce">
-            <div className="bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-2xl border border-accent/30 flex items-center gap-2">
-              <Sparkles size={14} className="text-accent animate-pulse" />
-              <span className="text-[10px] uppercase tracking-[0.2em] text-primary font-bold whitespace-nowrap">
-                Tap for Music
-              </span>
-            </div>
-          </div>
-        )}
 
         <Button
           variant="outline"
