@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Heart, Sparkles } from "lucide-react";
+import { Heart, Sparkles, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -12,11 +12,25 @@ import { cn } from "@/lib/utils";
  * - Interactive tap-to-open logic
  * - Synchronized activation of background music
  * - Decorative gold botanical elements
+ * - Luxury glowing button with sparkle particles
  */
 
 export function IntroOverlay() {
   const [isOpen, setIsOpen] = useState(false);
   const [shouldRender, setShouldRender] = useState(true);
+  const [sparkles, setSparkles] = useState<{ id: number; top: string; left: string; scale: number; delay: string }[]>([]);
+
+  useEffect(() => {
+    // Generate sparkles specifically for the button area
+    const newSparkles = Array.from({ length: 8 }).map((_, i) => ({
+      id: i,
+      top: `${20 + Math.random() * 60}%`,
+      left: `${20 + Math.random() * 60}%`,
+      scale: 0.5 + Math.random() * 0.5,
+      delay: `${Math.random() * 2}s`,
+    }));
+    setSparkles(newSparkles);
+  }, []);
 
   // Prevent scrolling when the overlay is active
   useEffect(() => {
@@ -42,7 +56,7 @@ export function IntroOverlay() {
     >
       {/* Royal Background Texture */}
       <div className="absolute inset-0 silk-overlay opacity-40" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(212,175,55,0.1)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(212,175,55,0.12)_0%,transparent_70%)]" />
 
       {/* Decorative Corners */}
       <div className="absolute top-12 left-12 w-32 h-32 border-t-2 border-l-2 border-accent/30 rounded-tl-3xl" />
@@ -61,35 +75,60 @@ export function IntroOverlay() {
           <h2 className="text-primary font-headline text-2xl md:text-3xl tracking-[0.2em] uppercase mb-2">
             Groom & Sakshi
           </h2>
-          <div className="h-[1px] w-24 bg-accent/40 mx-auto mb-8" />
+          <div className="h-[1px] w-24 bg-accent/40 mx-auto mb-12" />
           
-          <button 
-            className="group relative px-12 py-4 overflow-hidden rounded-full border border-accent/30 bg-white/50 backdrop-blur-md shadow-2xl transition-all hover:scale-105 active:scale-95"
-          >
-            <div className="absolute inset-0 animate-shimmer-gold opacity-30" />
-            <span className="relative flex items-center gap-3 text-primary font-bold uppercase tracking-[0.3em] text-sm">
-              <Sparkles size={18} className="text-accent group-hover:rotate-12 transition-transform" />
-              Open Invitation
-              <Sparkles size={18} className="text-accent group-hover:-rotate-12 transition-transform" />
-            </span>
-          </button>
+          <div className="relative group">
+            {/* Pulsing Ambient Glow around the button */}
+            <div className="absolute -inset-8 bg-accent/10 blur-3xl rounded-full animate-pulse" />
+            <div className="absolute -inset-4 bg-primary/5 blur-2xl rounded-full animate-pulse delay-700" />
+
+            {/* Sparkle Particles circling the button */}
+            {sparkles.map((s) => (
+              <div
+                key={s.id}
+                className="absolute text-accent/40 animate-pulse pointer-events-none"
+                style={{
+                  top: s.top,
+                  left: s.left,
+                  transform: `scale(${s.scale})`,
+                  animationDelay: s.delay,
+                }}
+              >
+                <Star size={12} fill="currentColor" />
+              </div>
+            ))}
+
+            <button 
+              className="group relative px-14 py-5 overflow-hidden rounded-full border border-accent/40 bg-white/60 backdrop-blur-md shadow-[0_20px_50px_rgba(212,175,55,0.2)] transition-all hover:scale-105 active:scale-95"
+            >
+              {/* Golden Shimmer Effect */}
+              <div className="absolute inset-0 animate-shimmer-gold opacity-40" />
+              
+              <span className="relative flex items-center gap-4 text-primary font-bold uppercase tracking-[0.3em] text-sm">
+                <Sparkles size={20} className="text-accent group-hover:rotate-12 transition-transform" />
+                Open Invitation
+                <Sparkles size={20} className="text-accent group-hover:-rotate-12 transition-transform" />
+              </span>
+            </button>
+          </div>
         </div>
 
-        <p className="text-muted-foreground italic text-sm tracking-widest opacity-60">
+        <p className="text-muted-foreground italic text-sm tracking-widest opacity-60 mt-8">
           Tap anywhere to enter the celebration
         </p>
       </div>
 
-      {/* Floating Sparkles in Overlay */}
+      {/* Background Floating Ambient Particles */}
       <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 15 }).map((_, i) => (
+        {Array.from({ length: 20 }).map((_, i) => (
           <div 
             key={i}
-            className="absolute w-1 h-1 bg-accent/40 rounded-full animate-pulse"
+            className="absolute w-1 h-1 bg-accent/30 rounded-full animate-pulse"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 4}s`
             }}
           />
         ))}
