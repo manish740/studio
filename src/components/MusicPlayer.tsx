@@ -1,13 +1,18 @@
+
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Music2, Music, Volume2, VolumeX } from "lucide-react";
+import { Music, Volume2, VolumeX, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 /**
- * @fileOverview A romantic background music player for the wedding invitation.
- * Features a luxurious toggle button, subtle animations, and autoplay support.
+ * @fileOverview A premium, royal-themed background music player.
+ * Features:
+ * - Aggressive autoplay logic (with browser compliance fallback)
+ * - Cinematic volume fade-in
+ * - Shimmering luxury button design
+ * - Floating musical note animations
  */
 
 export function MusicPlayer() {
@@ -15,52 +20,52 @@ export function MusicPlayer() {
   const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // A soft, romantic instrumental track URL (Pachelbel's Canon or similar style)
+  // A high-quality romantic instrumental track (Royalty-free)
   const musicUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"; 
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
+    // Set initial volume to 0 for the cinematic fade-in
     audio.volume = 0;
     
-    const playAttempt = () => {
+    const startPlayback = () => {
       audio.play().then(() => {
         setIsPlaying(true);
-        // Gentle cinematic fade-in effect
+        setHasInteracted(true);
+        // Cinematic volume fade-in
         let vol = 0;
         const fadeInterval = setInterval(() => {
-          if (vol < 0.25) {
+          if (vol < 0.3) {
             vol += 0.01;
-            audio.volume = vol;
+            audio.volume = parseFloat(vol.toFixed(2));
           } else {
             clearInterval(fadeInterval);
           }
-        }, 150);
+        }, 100);
       }).catch(() => {
-        // Autoplay likely blocked by browser, waiting for first interaction
+        // Autoplay blocked by browser policy
+        console.log("Autoplay blocked. Waiting for guest interaction.");
       });
     };
 
-    // Interaction listener to start music if autoplay was initially blocked
+    // Attempt autoplay immediately on mount
+    startPlayback();
+
+    // Aggressive listeners to catch any first interaction
+    const interactions = ['click', 'touchstart', 'scroll', 'mousedown'];
     const handleFirstInteraction = () => {
       if (!isPlaying) {
-        playAttempt();
-        setHasInteracted(true);
+        startPlayback();
       }
-      window.removeEventListener('click', handleFirstInteraction);
-      window.removeEventListener('touchstart', handleFirstInteraction);
-      window.removeEventListener('scroll', handleFirstInteraction);
+      interactions.forEach(event => window.removeEventListener(event, handleFirstInteraction));
     };
 
-    window.addEventListener('click', handleFirstInteraction);
-    window.addEventListener('touchstart', handleFirstInteraction);
-    window.addEventListener('scroll', handleFirstInteraction);
+    interactions.forEach(event => window.addEventListener(event, handleFirstInteraction));
 
     return () => {
-      window.removeEventListener('click', handleFirstInteraction);
-      window.removeEventListener('touchstart', handleFirstInteraction);
-      window.removeEventListener('scroll', handleFirstInteraction);
+      interactions.forEach(event => window.removeEventListener(event, handleFirstInteraction));
     };
   }, [isPlaying]);
 
@@ -81,18 +86,24 @@ export function MusicPlayer() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 md:bottom-12 md:right-12 z-[200]">
-      <audio ref={audioRef} src={musicUrl} loop />
+    <div className="fixed bottom-8 right-8 md:bottom-12 md:right-12 z-[300]">
+      <audio ref={audioRef} src={musicUrl} loop preload="auto" />
       
       <div className="relative group">
-        {/* Interaction Hint for First-time Guests */}
+        {/* Shimmering Aura around button */}
+        <div className={cn(
+          "absolute inset-0 rounded-full blur-xl bg-accent/20 transition-opacity duration-1000",
+          isPlaying ? "opacity-100 animate-pulse" : "opacity-0"
+        )} />
+
+        {/* Interaction Hint */}
         {!hasInteracted && !isPlaying && (
-          <div className="absolute bottom-full right-0 mb-4 animate-fade-in whitespace-nowrap pointer-events-none">
-            <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-xl border border-accent/20 flex items-center gap-3">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-primary font-bold">
-                Play Romantic Theme
+          <div className="absolute bottom-full right-0 mb-6 animate-bounce">
+            <div className="bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-2xl border border-accent/30 flex items-center gap-2">
+              <Sparkles size={14} className="text-accent animate-pulse" />
+              <span className="text-[10px] uppercase tracking-[0.2em] text-primary font-bold whitespace-nowrap">
+                Tap for Music
               </span>
-              <div className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
             </div>
           </div>
         )}
@@ -102,24 +113,24 @@ export function MusicPlayer() {
           size="icon"
           onClick={toggleMusic}
           className={cn(
-            "w-14 h-14 rounded-full border-2 bg-white/80 backdrop-blur-xl shadow-[0_10px_40px_rgba(212,175,55,0.25)] transition-all duration-700",
-            isPlaying ? "border-accent scale-100" : "border-primary/20 scale-95 opacity-80",
-            "hover:scale-110 hover:rotate-6 active:scale-95 group-hover:border-accent/60"
+            "w-16 h-16 rounded-full border-2 bg-white/90 backdrop-blur-2xl shadow-[0_15px_50px_rgba(212,175,55,0.3)] transition-all duration-700",
+            isPlaying ? "border-accent scale-100 rotate-0" : "border-primary/10 scale-90 -rotate-12 opacity-80",
+            "hover:scale-110 hover:border-accent active:scale-95 overflow-visible"
           )}
         >
           <div className="relative flex items-center justify-center">
             {isPlaying ? (
-              <Volume2 className="text-accent w-6 h-6 transition-all" />
+              <Volume2 className="text-accent w-7 h-7 animate-in fade-in zoom-in duration-500" />
             ) : (
-              <VolumeX className="text-primary/40 w-6 h-6 transition-all" />
+              <VolumeX className="text-primary/30 w-7 h-7 animate-in fade-in zoom-in duration-500" />
             )}
             
-            {/* Ambient Animated Musical Notes */}
+            {/* Animated Musical Particles */}
             {isPlaying && (
-              <>
-                <Music size={12} className="absolute -top-6 -right-2 text-accent/40 animate-bounce" style={{ animationDuration: '3s' }} />
-                <Music2 size={10} className="absolute -bottom-5 -left-4 text-primary/30 animate-bounce" style={{ animationDuration: '4.5s' }} />
-              </>
+              <div className="absolute inset-0 pointer-events-none">
+                <Music size={12} className="absolute -top-8 -right-2 text-accent/60 animate-bounce" style={{ animationDuration: '2s' }} />
+                <Music size={10} className="absolute -top-4 -left-6 text-primary/40 animate-bounce" style={{ animationDuration: '3s' }} />
+              </div>
             )}
           </div>
         </Button>

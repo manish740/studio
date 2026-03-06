@@ -1,7 +1,8 @@
+
 "use client";
 
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Heart } from "lucide-react";
+import { Heart, Sparkles } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -138,10 +139,10 @@ export function InvitationHero() {
                   Groom
                 </h1>
 
-                {/* Embossed Golden Heart Frame for WEDS */}
-                <div className="relative flex items-center justify-center mt-8 translate-y-6">
+                {/* Embossed Golden Heart Frame for WEDS - Positioned slightly lower for balance */}
+                <div className="relative flex items-center justify-center mt-12 md:mt-20 translate-y-4 md:translate-y-8">
                   <div className="absolute inset-0 bg-accent/20 blur-2xl rounded-full animate-pulse group-hover/names:bg-accent/40" />
-                  <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-24 md:h-24 drop-shadow-2xl transition-transform duration-500 group-hover/names:scale-110">
+                  <svg viewBox="0 0 100 100" className="w-12 h-12 md:w-20 md:h-20 drop-shadow-2xl transition-transform duration-500 group-hover/names:scale-110">
                     <defs>
                       <linearGradient id="heartGold" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" stopColor="#d4af37" />
@@ -161,7 +162,6 @@ export function InvitationHero() {
                       d="M50 88.9L43.4 82.3C17.2 58.5 0 42.9 0 24C0 10.7 10.4 0 23.7 0C31.2 0 38.4 3.5 43.1 9C47.8 3.5 55 0 62.5 0C75.8 0 86.2 10.7 86.2 24C86.2 42.9 69 58.5 42.8 82.3L50 88.9Z" 
                       fill="url(#heartGold)" 
                       filter="url(#innerShadow)"
-                      className="transition-all"
                     />
                     <text 
                       x="43" 
