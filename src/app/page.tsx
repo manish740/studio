@@ -3,7 +3,6 @@ import { CoupleIntroduction } from "@/components/CoupleIntroduction";
 import { PhotoGallery } from "@/components/PhotoGallery";
 import { FamilyDetails } from "@/components/FamilyDetails";
 import { WeddingEvents } from "@/components/WeddingEvents";
-import { WishesWall } from "@/components/WishesWall";
 import { EventMap } from "@/components/EventMap";
 import { Toaster } from "@/components/ui/toaster";
 import { Heart } from "lucide-react";
@@ -16,7 +15,6 @@ export default function Home() {
       <PhotoGallery />
       <FamilyDetails />
       <WeddingEvents />
-      <WishesWall />
       <EventMap />
       
       {/* Footer */}
