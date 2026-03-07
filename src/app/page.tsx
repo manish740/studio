@@ -21,7 +21,7 @@ export default function Home() {
       <footer className="py-24 bg-white/60 backdrop-blur-sm text-center relative">
         <div className="max-w-4xl mx-auto px-4 flex flex-col items-center">
           <Heart className="text-accent mb-6 opacity-50" size={32} />
-          <h3 className="text-4xl font-headline text-primary mb-4">Groom & Sakshi</h3>
+          <h3 className="text-4xl font-headline text-primary mb-4">Shiv & Sakshi</h3>
           <p className="text-xl text-muted-foreground italic mb-12">
             "We are better together."
           </p>

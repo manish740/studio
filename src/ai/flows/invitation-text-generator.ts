@@ -3,8 +3,8 @@
  * @fileOverview A Genkit flow for generating creative and heartfelt wedding invitation text.
  *
  * - generateInvitationText - A function that handles the invitation text generation process.
- * - InvitationTextGeneratorInput - The input type for the generateInvitationText function.
- * - InvitationTextGeneratorOutput - The return type for the generateInvitationText function.
+ * - InvitationTextGeneratorInput - The input type for the invitation text generation process.
+ * - InvitationTextGeneratorOutput - The return type for the invitation text generation process.
  */
 
 import {ai} from '@/ai/genkit';
@@ -13,7 +13,7 @@ import {z} from 'genkit';
 const InvitationTextGeneratorInputSchema = z.object({
   coupleNames: z
     .string()
-    .describe('The names of the couple getting married (e.g., "Groom and Sakshi").'),
+    .describe('The names of the couple getting married (e.g., "Shiv and Sakshi").'),
   weddingDate: z.string().describe('The date of the wedding (e.g., "October 26, 2026").'),
   weddingTime: z.string().describe('The time of the wedding (e.g., "5:00 PM").'),
   venueName: z.string().describe('The name of the wedding venue (e.g., "The Grand Ballroom").'),

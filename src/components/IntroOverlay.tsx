@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -73,7 +72,7 @@ export function IntroOverlay() {
           </div>
           
           <h2 className="text-primary font-headline text-2xl md:text-3xl tracking-[0.2em] uppercase mb-2">
-            Groom & Sakshi
+            Shiv & Sakshi
           </h2>
           <div className="h-[1px] w-24 bg-accent/40 mx-auto mb-12" />
           

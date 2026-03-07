@@ -1,4 +1,3 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 import Image from "next/image";
@@ -7,8 +6,8 @@ import { MusicPlayer } from "@/components/MusicPlayer";
 import { IntroOverlay } from "@/components/IntroOverlay";
 
 export const metadata: Metadata = {
-  title: 'Royal Union | Groom & Sakshi',
-  description: 'A celebration of love and luxury. Digital wedding invitation for the Groom & Sakshi.',
+  title: 'Royal Union | Shiv & Sakshi',
+  description: 'A celebration of love and luxury. Digital wedding invitation for Shiv & Sakshi.',
 };
 
 const RoseCorner = ({ className }: { className?: string }) => (

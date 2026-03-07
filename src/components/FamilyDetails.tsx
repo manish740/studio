@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -33,7 +32,7 @@ export function FamilyDetails() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
-          {/* Groom's Family */}
+          {/* Shiv's Family */}
           <ScrollReveal delay={100} className="h-full">
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-primary/10 relative overflow-hidden group hover:border-accent/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col justify-center">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
@@ -45,7 +44,7 @@ export function FamilyDetails() {
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-accent/10 group-hover:text-accent transition-colors">
                     <Heart size={24} className="group-hover:fill-current" />
                   </div>
-                  <h3 className="text-3xl font-headline text-primary group-hover:text-accent transition-colors">Groom's Family</h3>
+                  <h3 className="text-3xl font-headline text-primary group-hover:text-accent transition-colors">Shiv's Family</h3>
                 </div>
                 
                 <div className="space-y-4">

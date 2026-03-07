@@ -135,11 +135,11 @@ export function InvitationHero() {
             <div className="relative py-12 flex flex-col items-center justify-center gap-4 transition-all duration-700 group-hover/names:scale-[1.02]">
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 w-full">
                 <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold tracking-tighter group-hover/names:tracking-normal transition-all duration-700 group-hover/names:brightness-110">
-                  Groom
+                  Shiv
                 </h1>
 
                 {/* Embossed Golden Heart Frame for WEDS - Perfectly Centered and Symmetrical */}
-                <div className="relative flex items-center justify-center shrink-0 mt-4 md:mt-0">
+                <div className="relative flex items-center justify-center shrink-0 mt-4 md:mt-12">
                   <div className="absolute inset-0 bg-accent/20 blur-2xl rounded-full animate-pulse group-hover/names:bg-accent/40" />
                   <svg viewBox="0 0 100 100" className="w-12 h-12 md:w-20 md:h-20 drop-shadow-2xl transition-transform duration-500 group-hover/names:scale-110">
                     <defs>
