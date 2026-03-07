@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -39,7 +38,7 @@ export function RSVPForm() {
             <div className="h-2 bg-primary w-full" />
             <CardHeader className="text-center pb-2">
               <CardTitle className="text-4xl font-headline text-primary">Join Our Celebration</CardTitle>
-              <CardDescription className="text-lg italic">Please RSVP by September 30th, 2024</CardDescription>
+              <CardDescription className="text-lg italic">Please RSVP by September 30th, 2026</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-8 py-6">

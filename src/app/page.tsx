@@ -28,10 +28,10 @@ export default function Home() {
           
           <div className="h-[1px] w-32 bg-primary/20 mb-8" />
           <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground/60 font-semibold">
-            Celebrating Love Since 2024
+            Celebrating Love Since 2026
           </p>
           <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/40 mt-2">
-            Made with LoveBloom Invites &copy; 2024
+            Made with LoveBloom Invites &copy; 2026
           </p>
         </div>
       </footer>
