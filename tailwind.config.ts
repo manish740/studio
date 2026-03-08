@@ -13,6 +13,7 @@ export default {
         body: ['PT Sans', 'sans-serif'],
         headline: ['Playfair Display', 'serif'],
         cursive: ['Great Vibes', 'cursive'],
+        handwriting: ['Caveat', 'cursive'],
         code: ['monospace'],
       },
       colors: {
