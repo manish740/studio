@@ -1,4 +1,3 @@
-
 import type {Config} from 'tailwind-merge';
 
 export default {
@@ -13,6 +12,7 @@ export default {
       fontFamily: {
         body: ['PT Sans', 'sans-serif'],
         headline: ['Playfair Display', 'serif'],
+        cursive: ['Great Vibes', 'cursive'],
         code: ['monospace'],
       },
       colors: {
