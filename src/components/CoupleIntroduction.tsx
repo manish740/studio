@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -31,29 +30,29 @@ export function CoupleIntroduction() {
           {/* Subtle Ambient Overlay */}
           <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />
           
-          {/* Internal Footer Overlay for Names */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 md:p-8">
-            <div className="flex items-center justify-center gap-3 md:gap-6 max-w-xl mx-auto">
+          {/* Internal Footer Area for Names (Transparency Restored) */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            <div className="flex items-center justify-center gap-2 md:gap-4 max-w-lg mx-auto">
               {/* Sakshi */}
-              <h3 className="text-[16px] font-headline text-[#F9F295] drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] whitespace-nowrap uppercase tracking-widest">
+              <h3 className="text-[16px] font-headline text-[#F9F295] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] whitespace-nowrap uppercase tracking-widest">
                 Sakshi
               </h3>
 
               {/* Glowing Heart and Dividers */}
-              <div className="flex items-center gap-2 md:gap-3 flex-1 max-w-[60px] md:max-w-[100px]">
-                <div className="h-[1px] flex-1 bg-[#F9F295]/50 shadow-[0_0_8px_rgba(249,242,149,0.3)]" />
+              <div className="flex items-center gap-2 md:gap-3 flex-1 max-w-[50px] md:max-w-[80px]">
+                <div className="h-[1px] flex-1 bg-[#F9F295]/50 shadow-[0_0_8px_rgba(249,242,149,0.5)]" />
                 <div className="relative shrink-0">
                   <div className="absolute inset-0 bg-[#F9F295]/40 blur-lg rounded-full animate-pulse" />
                   <Heart 
                     fill="#F9F295" 
-                    className="text-[#F9F295] w-4 h-4 md:w-5 md:h-5 relative z-10 animate-pulse drop-shadow-[0_0_10px_rgba(249,242,149,0.6)]" 
+                    className="text-[#F9F295] w-4 h-4 md:w-5 md:h-5 relative z-10 animate-pulse drop-shadow-[0_0_10px_rgba(249,242,149,0.8)]" 
                   />
                 </div>
-                <div className="h-[1px] flex-1 bg-[#F9F295]/50 shadow-[0_0_8px_rgba(249,242,149,0.3)]" />
+                <div className="h-[1px] flex-1 bg-[#F9F295]/50 shadow-[0_0_8px_rgba(249,242,149,0.5)]" />
               </div>
 
               {/* Shiv */}
-              <h3 className="text-[16px] font-headline text-[#F9F295] drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] whitespace-nowrap uppercase tracking-widest">
+              <h3 className="text-[16px] font-headline text-[#F9F295] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] whitespace-nowrap uppercase tracking-widest">
                 Shiv
               </h3>
             </div>
