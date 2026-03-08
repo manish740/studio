@@ -13,13 +13,13 @@ import {z} from 'genkit';
 const InvitationTextGeneratorInputSchema = z.object({
   coupleNames: z
     .string()
-    .describe('The names of the couple getting married (e.g., "Shiv and Sakshi").'),
-  weddingDate: z.string().describe('The date of the wedding (e.g., "October 26, 2026").'),
+    .describe('The names of the couple getting married (e.g., "Sakshi and Shiv").'),
+  weddingDate: z.string().describe('The date of the wedding (e.g., "April 20, 2026").'),
   weddingTime: z.string().describe('The time of the wedding (e.g., "5:00 PM").'),
-  venueName: z.string().describe('The name of the wedding venue (e.g., "The Grand Ballroom").'),
+  venueName: z.string().describe('The name of the wedding venue (e.g., "Isckon Temple").'),
   venueAddress: z
     .string()
-    .describe('The full address of the wedding venue (e.g., "123 Main St, Anytown, USA").'),
+    .describe('The full address of the wedding venue (e.g., "Greater Kailash, New Delhi").'),
   coupleStory: z
     .string()
     .optional()

@@ -1,42 +1,14 @@
 "use client";
 
 import { ScrollReveal } from "./ScrollReveal";
-import { Music, Heart, Clock } from "lucide-react";
+import { Music, Heart, Utensils, MapPin, Clock, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-
-const GroomOnHorse = ({ className, size = 24 }: { className?: string, size?: number }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    {/* Horse Body */}
-    <path d="M4 18c0-2 2-3 4-3h6c2 0 4 1 4 3" />
-    <path d="M6 15v4" />
-    <path d="M10 15v4" />
-    <path d="M14 15v4" />
-    <path d="M18 15v4" />
-    <path d="M18 15c1-1 2-4 1-6s-3-2-5-1" />
-    <path d="M14 8c1-2 1-4 0-5" />
-    {/* Groom */}
-    <circle cx="12" cy="7" r="2" fill="currentColor" opacity="0.3" />
-    <path d="M10 9c0 0 1 2 2 2s2-2 2-2" strokeWidth="1" />
-    <path d="M12 9v4" />
-    <path d="M10 11h4" />
-  </svg>
-);
 
 interface WeddingEvent {
   id: string;
   title: string;
   time: string;
+  location: string;
   description: string;
   icon: React.ReactNode;
 }
@@ -45,24 +17,27 @@ export function WeddingEvents() {
   const events: WeddingEvent[] = [
     {
       id: "1",
-      title: "Sangeet & Dance",
-      time: "Oct 25, 07:00 PM",
-      description: "An evening of music, dance, and celebration with the couple.",
+      title: "Mehandi & Sangeet",
+      time: "April 19, 2026",
+      location: "Aggarwal Dharamshala, Shakarpur",
+      description: "An evening of vibrant colors, music, and henna as we celebrate the union. Agarshen Marg, Master Block.",
       icon: <Music className="text-accent" size={24} />,
     },
     {
       id: "2",
-      title: "Arrival of Barat",
-      time: "Oct 26, 04:00 PM",
-      description: "Welcoming the groom and his family with grand celebrations.",
-      icon: <GroomOnHorse className="text-primary" size={24} />,
+      title: "Wedding Ceremony",
+      time: "April 20, 2026",
+      location: "Isckon, Greater Kailash",
+      description: "Witness our sacred vows and the beginning of our new journey in a divine atmosphere.",
+      icon: <Heart className="text-primary" size={24} />,
     },
     {
       id: "3",
-      title: "Vidai Ceremony",
-      time: "Oct 27, 04:00 AM",
-      description: "The emotional farewell as the bride starts her new journey.",
-      icon: <Heart className="text-accent" size={24} />,
+      title: "Reception Dinner",
+      time: "April 20, 2026",
+      location: "Eros, Nehru Place",
+      description: "Join us for a grand celebration dinner and dance as we celebrate our first evening as husband and wife.",
+      icon: <Utensils className="text-accent" size={24} />,
     },
   ];
 
@@ -88,9 +63,15 @@ export function WeddingEvents() {
                   
                   <h3 className="text-2xl font-headline text-primary group-hover:text-accent transition-colors">{event.title}</h3>
                   
-                  <div className="flex items-center gap-2 px-4 py-1.5 bg-primary/10 rounded-full text-primary font-semibold text-sm group-hover:bg-accent group-hover:text-white transition-all duration-300">
-                    <Clock size={14} className="group-hover:animate-spin-slow" />
-                    <span className="truncate max-w-[150px]">{event.time}</span>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-center gap-2 px-4 py-1.5 bg-primary/10 rounded-full text-primary font-semibold text-xs group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                      <Clock size={14} />
+                      <span>{event.time}</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-1 text-muted-foreground text-xs italic">
+                      <MapPin size={12} className="text-accent" />
+                      <span>{event.location}</span>
+                    </div>
                   </div>
                   
                   <p className="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground transition-colors">

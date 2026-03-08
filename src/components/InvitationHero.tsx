@@ -137,8 +137,8 @@ export function InvitationHero() {
                   Sakshi
                 </h1>
 
-                {/* Embossed Golden Heart Frame for WEDS - Positioned slightly lower and centered */}
-                <div className="relative flex items-center justify-center shrink-0 mt-8 md:mt-24">
+                {/* Embossed Golden Heart Frame for WEDS - Positioned perfectly centered */}
+                <div className="relative flex items-center justify-center shrink-0">
                   <div className="absolute inset-0 bg-accent/20 blur-2xl rounded-full animate-pulse group-hover/names:bg-accent/40" />
                   <svg viewBox="0 0 100 100" className="w-12 h-12 md:w-20 md:h-20 drop-shadow-2xl transition-transform duration-500 group-hover/names:scale-110">
                     <defs>
@@ -187,9 +187,9 @@ export function InvitationHero() {
 
         <ScrollReveal delay={400}>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 py-12 bg-white/40 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_rgba(212,175,55,0.1)] border border-white/60 px-8">
-            <ScratchToReveal label="The Date" value="October 26, 2026" />
-            <ScratchToReveal label="The Hour" value="Five O'Clock" />
-            <ScratchToReveal label="The Venue" value="Grand Ballroom" />
+            <ScratchToReveal label="Mehandi & Sangeet" value="April 19, 2026" />
+            <ScratchToReveal label="Wedding Date" value="April 20, 2026" />
+            <ScratchToReveal label="Reception" value="April 20, 2026" />
           </div>
         </ScrollReveal>
       </div>
