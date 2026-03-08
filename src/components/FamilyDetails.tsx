@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ScrollReveal } from "./ScrollReveal";
-import { Users, MapPin, Heart } from "lucide-react";
+import { Users, Heart } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function FamilyDetails() {
@@ -10,13 +10,11 @@ export function FamilyDetails() {
 
   const groomFamily = {
     parents: "Mr. Vinod Kumar & Mrs. Abha",
-    origin: "New Delhi",
     relation: "Son of"
   };
 
   const brideFamily = {
     parents: "Late Satish Singh & Mrs. Reema Singh",
-    origin: "Jaipur, Rajasthan",
     relation: "Daughter of"
   };
 
@@ -63,15 +61,9 @@ export function FamilyDetails() {
                   <div className="space-y-4">
                     <div className="group/item transition-all duration-200">
                       <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1 group-hover/item:text-accent/60">Parents</span>
-                      <p className="text-2xl md:text-3xl font-cursive text-primary/80 group-hover/item:text-primary transition-colors">{brideFamily.parents}</p>
-                    </div>
-                    
-                    <div className="flex items-start gap-2 group/item transition-all duration-200">
-                      <MapPin size={18} className="text-accent mt-1 shrink-0 group-hover/item:animate-bounce" />
-                      <div>
-                        <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1 group-hover/item:text-accent/60">Hailing From</span>
-                        <p className="text-lg text-muted-foreground group-hover/item:text-foreground transition-colors">{brideFamily.origin}</p>
-                      </div>
+                      <p className="text-3xl md:text-4xl font-cursive text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed">
+                        {brideFamily.parents}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -97,15 +89,9 @@ export function FamilyDetails() {
                 <div className="space-y-4">
                   <div className="group/item transition-all duration-200">
                     <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1 group-hover/item:text-accent/60">Parents</span>
-                    <p className="text-2xl md:text-3xl font-cursive text-primary/80 group-hover/item:text-primary transition-colors">{groomFamily.parents}</p>
-                  </div>
-                  
-                  <div className="flex items-start gap-2 group/item transition-all duration-200">
-                    <MapPin size={18} className="text-accent mt-1 shrink-0 group-hover/item:animate-bounce" />
-                    <div>
-                      <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1 group-hover/item:text-accent/60">Hailing From</span>
-                      <p className="text-lg text-muted-foreground group-hover/item:text-foreground transition-colors">{groomFamily.origin}</p>
-                    </div>
+                    <p className="text-3xl md:text-4xl font-cursive text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed">
+                      {groomFamily.parents}
+                    </p>
                   </div>
                 </div>
               </div>
