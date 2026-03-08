@@ -4,8 +4,9 @@ import React, { useEffect, useRef } from "react";
 import { MusicConfig } from "@/lib/music-config";
 
 /**
- * @fileOverview A hidden background music player that handles browser autoplay restrictions.
- * It waits for the first user interaction (click, scroll, touch) to start playback.
+ * @fileOverview A hidden background music player.
+ * Music starts directly at full configured volume upon the first user interaction 
+ * to comply with browser autoplay policies.
  */
 
 export function MusicPlayer() {
@@ -15,37 +16,38 @@ export function MusicPlayer() {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Set volume from config
+    // Set target volume immediately with no fade
     audio.volume = MusicConfig.volume;
 
     const startPlayback = () => {
-      audio.play().then(() => {
-        // Success! Remove listeners once playing.
-        removeInteractionListeners();
-      }).catch((error) => {
-        // Autoplay likely blocked, will try again on next interaction.
-        console.log("Autoplay blocked, waiting for interaction...");
+      audio.play().catch(() => {
+        // Autoplay blocked, wait for next interaction
       });
     };
 
-    const removeInteractionListeners = () => {
-      window.removeEventListener("click", startPlayback);
-      window.removeEventListener("keydown", startPlayback);
-      window.removeEventListener("touchstart", startPlayback);
-      window.removeEventListener("scroll", startPlayback);
+    // Events that signal a user interaction
+    const interactionEvents = ["click", "touchstart", "scroll", "keydown"];
+    
+    const handleInteraction = () => {
+      startPlayback();
+      // Once music starts, we stop listening for initial triggers
+      interactionEvents.forEach(event => 
+        window.removeEventListener(event, handleInteraction)
+      );
     };
 
-    // Add listeners for various user interactions to bypass autoplay policy
-    window.addEventListener("click", startPlayback, { once: true });
-    window.addEventListener("keydown", startPlayback, { once: true });
-    window.addEventListener("touchstart", startPlayback, { once: true });
-    window.addEventListener("scroll", startPlayback, { once: true });
+    // Listen for the first interaction to start music directly
+    interactionEvents.forEach(event => 
+      window.addEventListener(event, handleInteraction, { once: true })
+    );
 
-    // Initial attempt (browsers might block this until interaction)
+    // Initial attempt for browsers that might allow it
     startPlayback();
 
     return () => {
-      removeInteractionListeners();
+      interactionEvents.forEach(event => 
+        window.removeEventListener(event, handleInteraction)
+      );
     };
   }, []);
 
