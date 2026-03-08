@@ -3,7 +3,6 @@ import './globals.css';
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { MusicPlayer } from "@/components/MusicPlayer";
-import { IntroOverlay } from "@/components/IntroOverlay";
 
 export const metadata: Metadata = {
   title: 'Royal Union | Shiv & Sakshi',
@@ -52,8 +51,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased bg-background relative min-h-screen">
-        <IntroOverlay />
+      <body className="font-body antialiased bg-background relative min-h-screen overflow-x-hidden">
         <div className="silk-overlay" />
         
         {/* Global Background Layer */}
