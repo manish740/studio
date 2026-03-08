@@ -20,7 +20,7 @@ export function EventMap() {
     },
     {
       name: "Eros Hotel",
-      address: "Nehru Place, Delhi",
+      address: "Nehru Place, New Delhi, Delhi 110019",
       event: "Reception",
       time: "7:00 PM"
     }

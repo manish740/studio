@@ -35,7 +35,7 @@ export function WeddingEvents() {
       id: "3",
       title: "Reception Dinner",
       time: "April 20, 2026 • 7:00 PM",
-      location: "Eros, Nehru Place",
+      location: "EROS HOTEL, Nehru Place, New Delhi, Delhi 110019",
       description: "Join us for a grand celebration dinner and dance as we celebrate our first evening as husband and wife.",
       icon: <Utensils className="text-accent" size={24} />,
     },
