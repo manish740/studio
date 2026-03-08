@@ -15,6 +15,7 @@ export function MusicPlayer() {
     const audio = audioRef.current;
     if (!audio) return;
 
+    // Set volume from config
     audio.volume = MusicConfig.volume;
 
     const startPlayback = () => {
@@ -34,13 +35,13 @@ export function MusicPlayer() {
       window.removeEventListener("scroll", startPlayback);
     };
 
-    // Add listeners for various user interactions
+    // Add listeners for various user interactions to bypass autoplay policy
     window.addEventListener("click", startPlayback, { once: true });
     window.addEventListener("keydown", startPlayback, { once: true });
     window.addEventListener("touchstart", startPlayback, { once: true });
     window.addEventListener("scroll", startPlayback, { once: true });
 
-    // Initial attempt
+    // Initial attempt (browsers might block this until interaction)
     startPlayback();
 
     return () => {
@@ -53,6 +54,7 @@ export function MusicPlayer() {
       ref={audioRef}
       src={MusicConfig.audioPath}
       loop
+      preload="auto"
       style={{ display: "none" }}
       aria-hidden="true"
     />
