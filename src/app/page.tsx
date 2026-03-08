@@ -2,7 +2,6 @@ import { InvitationHero } from "@/components/InvitationHero";
 import { CoupleIntroduction } from "@/components/CoupleIntroduction";
 import { FamilyDetails } from "@/components/FamilyDetails";
 import { WeddingEvents } from "@/components/WeddingEvents";
-import { EventMap } from "@/components/EventMap";
 import { Toaster } from "@/components/ui/toaster";
 import { Heart } from "lucide-react";
 
@@ -13,7 +12,6 @@ export default function Home() {
       <CoupleIntroduction />
       <FamilyDetails />
       <WeddingEvents />
-      <EventMap />
       
       {/* Footer */}
       <footer className="py-24 bg-white/60 backdrop-blur-sm text-center relative">
