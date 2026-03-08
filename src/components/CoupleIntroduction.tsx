@@ -36,33 +36,27 @@ export function CoupleIntroduction() {
             </div>
           </ScrollReveal>
 
-          {/* Biographies */}
+          {/* Names - Details Removed */}
           <div className="space-y-12">
             <ScrollReveal delay={400} className="space-y-4 group">
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-accent font-headline text-4xl italic transition-transform group-hover:scale-110">S</span>
-                <h3 className="text-3xl font-headline text-primary group-hover:text-accent transition-colors">Sakshi</h3>
+                <span className="text-accent font-headline text-5xl italic transition-transform group-hover:scale-110">S</span>
+                <h3 className="text-5xl md:text-6xl font-headline text-primary group-hover:text-accent transition-colors">Sakshi</h3>
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed italic transition-colors group-hover:text-foreground">
-                Radiant and kind-hearted, Sakshi brings light to every room she enters. Her passion for life and art is matched only by her devotion to those she holds dear.
-              </p>
               <div className="h-[1px] w-full bg-primary/10 group-hover:bg-accent/30 transition-colors" />
             </ScrollReveal>
 
             <ScrollReveal delay={600} className="space-y-4 group">
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-accent font-headline text-4xl italic transition-transform group-hover:scale-110">S</span>
-                <h3 className="text-3xl font-headline text-primary group-hover:text-accent transition-colors">Shiv</h3>
+                <span className="text-accent font-headline text-5xl italic transition-transform group-hover:scale-110">S</span>
+                <h3 className="text-5xl md:text-6xl font-headline text-primary group-hover:text-accent transition-colors">Shiv</h3>
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed italic transition-colors group-hover:text-foreground">
-                A dreamer and a doer, Shiv is known for his calm nature and infectious smile. He believes that true love is found in the smallest moments of everyday life.
-              </p>
               <div className="h-[1px] w-full bg-primary/10 group-hover:bg-accent/30 transition-colors" />
             </ScrollReveal>
 
             <ScrollReveal delay={800} className="pt-4">
                <blockquote className="border-l-4 border-accent pl-6 py-2 hover:bg-accent/5 transition-colors rounded-r-lg">
-                  <p className="text-xl font-headline text-primary/80 italic">
+                  <p className="text-2xl font-headline text-primary/80 italic">
                     "Two souls, one heart. We found in each other what we never knew was missing."
                   </p>
                </blockquote>
