@@ -8,14 +8,12 @@ import { EventMap } from "@/components/EventMap";
 import { RSVPForm } from "@/components/RSVPForm";
 import { WishesWall } from "@/components/WishesWall";
 import { MusicPlayer } from "@/components/MusicPlayer";
-import { IntroOverlay } from "@/components/IntroOverlay";
 import { Toaster } from "@/components/ui/toaster";
 import { Heart } from "lucide-react";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <IntroOverlay />
       <MusicPlayer />
       <InvitationHero />
       <CoupleIntroduction />
