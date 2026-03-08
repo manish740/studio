@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { MusicPlayer } from "@/components/MusicPlayer";
 
 export const metadata: Metadata = {
   title: 'Royal Union | Sakshi & Shiv',
@@ -104,6 +105,9 @@ export default function RootLayout({
         <div className="relative z-10 px-6 sm:px-12 md:px-24 py-12 md:py-24 max-w-[100vw]">
           {children}
         </div>
+
+        {/* Hidden Background Music Player */}
+        <MusicPlayer />
       </body>
     </html>
   );
