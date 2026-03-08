@@ -1,3 +1,4 @@
+
 import { InvitationHero } from "@/components/InvitationHero";
 import { CoupleIntroduction } from "@/components/CoupleIntroduction";
 import { PhotoGallery } from "@/components/PhotoGallery";
@@ -5,18 +6,22 @@ import { FamilyDetails } from "@/components/FamilyDetails";
 import { WeddingEvents } from "@/components/WeddingEvents";
 import { EventMap } from "@/components/EventMap";
 import { RSVPForm } from "@/components/RSVPForm";
+import { WishesWall } from "@/components/WishesWall";
+import { MusicPlayer } from "@/components/MusicPlayer";
 import { Toaster } from "@/components/ui/toaster";
 import { Heart } from "lucide-react";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <MusicPlayer />
       <InvitationHero />
       <CoupleIntroduction />
       <PhotoGallery />
       <FamilyDetails />
       <WeddingEvents />
       <EventMap />
+      <WishesWall />
       <RSVPForm />
       
       {/* Footer */}

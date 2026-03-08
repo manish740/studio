@@ -21,8 +21,7 @@ export function MusicPlayer() {
   const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Updated to a high-quality romantic track. 
-  // Spotify URLs point to web pages, not audio files, so we use a direct MP3 source.
+  // High-quality romantic track placeholder since Spotify URLs are not direct audio files.
   const musicUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"; 
 
   useEffect(() => {
