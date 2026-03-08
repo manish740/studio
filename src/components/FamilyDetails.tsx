@@ -9,12 +9,12 @@ export function FamilyDetails() {
   const bridePhoto = PlaceHolderImages.find(img => img.id === 'bride-sakshi');
 
   const groomFamily = {
-    parents: "Mr. Vinod Kumar & Mrs. Abha",
+    parents: "Mr. Vinod Kumar Mrs. Abha",
     relation: "Son of"
   };
 
   const brideFamily = {
-    parents: "Late Satish Singh & Mrs. Reema Singh",
+    parents: "Late Satish Singh Mrs. Reema Singh",
     relation: "Daughter of"
   };
 
@@ -61,7 +61,7 @@ export function FamilyDetails() {
                   <div className="space-y-4">
                     <div className="group/item transition-all duration-200">
                       <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1 group-hover/item:text-accent/60">Parents</span>
-                      <p className="text-4xl md:text-5xl font-handwriting text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed">
+                      <p className="text-2xl md:text-3xl font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed">
                         {brideFamily.parents}
                       </p>
                     </div>
@@ -89,7 +89,7 @@ export function FamilyDetails() {
                 <div className="space-y-4">
                   <div className="group/item transition-all duration-200">
                     <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1 group-hover/item:text-accent/60">Parents</span>
-                    <p className="text-4xl md:text-5xl font-handwriting text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed">
+                    <p className="text-2xl md:text-3xl font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed">
                       {groomFamily.parents}
                     </p>
                   </div>
