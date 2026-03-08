@@ -187,9 +187,9 @@ export function InvitationHero() {
 
         <ScrollReveal delay={400}>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 py-12 bg-white/40 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_rgba(212,175,55,0.1)] border border-white/60 px-8">
-            <ScratchToReveal label="Mehandi & Sangeet" value="April 19 • 6:00 PM" />
-            <ScratchToReveal label="Wedding Ceremony" value="April 20 • 11:00 AM" />
-            <ScratchToReveal label="Reception Dinner" value="April 20 • 7:00 PM" />
+            <ScratchToReveal label="Mehandi & Sangeet" value="April 19, 2026" subValue="6:00 PM" />
+            <ScratchToReveal label="Wedding Ceremony" value="April 20, 2026" subValue="11:00 AM" />
+            <ScratchToReveal label="Reception Dinner" value="April 20, 2026" subValue="7:00 PM" />
           </div>
         </ScrollReveal>
       </div>

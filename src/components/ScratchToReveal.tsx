@@ -5,9 +5,10 @@ import React, { useRef, useEffect, useState } from "react";
 interface ScratchToRevealProps {
   label: string;
   value: string;
+  subValue?: string;
 }
 
-export function ScratchToReveal({ label, value }: ScratchToRevealProps) {
+export function ScratchToReveal({ label, value, subValue }: ScratchToRevealProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFullyScratched, setIsFullyScratched] = useState(false);
@@ -129,9 +130,16 @@ export function ScratchToReveal({ label, value }: ScratchToRevealProps) {
         ref={containerRef}
         className="relative w-full h-20 sm:h-24 bg-white/60 backdrop-blur-sm rounded-2xl overflow-hidden flex items-center justify-center cursor-pointer shadow-[inset_0_2px_10px_rgba(0,0,0,0.05)] border border-white/80 group"
       >
-        <span className="text-lg md:text-xl font-headline text-primary z-0 px-6 text-center select-none">
-          {value}
-        </span>
+        <div className="flex flex-col items-center z-0 px-6 text-center select-none">
+          <span className="text-lg md:text-xl font-headline text-primary leading-tight">
+            {value}
+          </span>
+          {subValue && (
+            <span className="text-[10px] md:text-xs font-semibold text-accent/80 uppercase tracking-[0.2em] mt-1">
+              {subValue}
+            </span>
+          )}
+        </div>
         <canvas
           ref={canvasRef}
           className="absolute inset-0 z-10 touch-none cursor-crosshair transition-opacity duration-1500"
