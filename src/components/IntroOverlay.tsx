@@ -5,10 +5,8 @@ import { Heart, Sparkles, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
- * @fileOverview A full-screen luxury intro overlay for the wedding invitation.
- * Features:
- * - Interactive tap-to-open logic
- * - Synchronized activation of background music via custom event
+ * @fileOverview A luxury intro overlay that creates the "User Interaction"
+ * required by mobile browsers to enable background music.
  */
 
 export function IntroOverlay() {
@@ -17,6 +15,7 @@ export function IntroOverlay() {
   const [sparkles, setSparkles] = useState<{ id: number; top: string; left: string; scale: number; delay: string }[]>([]);
 
   useEffect(() => {
+    // Generate decorative sparkles
     const newSparkles = Array.from({ length: 8 }).map((_, i) => ({
       id: i,
       top: `${20 + Math.random() * 60}%`,
@@ -39,7 +38,7 @@ export function IntroOverlay() {
 
   const handleOpenInvitation = () => {
     setIsOpen(true);
-    // Dispatch custom event to trigger music player
+    // Dispatch custom event to trigger the hidden music player
     window.dispatchEvent(new CustomEvent("start-wedding-music"));
   };
 
@@ -88,7 +87,10 @@ export function IntroOverlay() {
             ))}
 
             <button 
-              onClick={handleOpenInvitation}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleOpenInvitation();
+              }}
               className="group relative px-14 py-5 overflow-hidden rounded-full border border-accent/40 bg-white/60 backdrop-blur-md shadow-[0_20px_50px_rgba(212,175,55,0.2)] transition-all hover:scale-105 active:scale-95"
             >
               <div className="absolute inset-0 animate-shimmer-gold opacity-40" />

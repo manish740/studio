@@ -1,13 +1,12 @@
-
 "use client";
 
 import React, { useEffect, useRef } from "react";
 import { MusicConfig } from "@/lib/music-config";
 
 /**
- * @fileOverview A hidden background music player optimized for automatic playback.
- * Attempts to bypass browser autoplay restrictions by trying to play immediately on mount
- * and listening for any page-level interaction to start as soon as permitted.
+ * @fileOverview A hidden background music player optimized for mobile devices.
+ * Uses a combination of custom event triggers and general interaction listeners
+ * to ensure playback starts on the first valid user gesture (tap/click).
  */
 
 export function MusicPlayer() {
@@ -17,10 +16,9 @@ export function MusicPlayer() {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Set volume directly as requested
     audio.volume = MusicConfig.volume;
 
-    const attemptPlay = () => {
+    const startPlayback = () => {
       if (!audio) return;
       
       const playPromise = audio.play();
@@ -28,41 +26,40 @@ export function MusicPlayer() {
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
-            // Success! We can stop trying to play.
-            interactionEvents.forEach(event => 
-              window.removeEventListener(event, attemptPlay)
-            );
+            // Success! Remove all interaction listeners
+            removeListeners();
           })
-          .catch(() => {
-            // Autoplay was likely prevented by the browser. 
-            // The interaction listeners will handle it as soon as the user touches the screen.
+          .catch((error) => {
+            // Autoplay prevented, waiting for next interaction
+            console.log("Waiting for user gesture to permit audio...");
           });
       }
     };
 
-    // Attempt immediate playback on mount
-    attemptPlay();
-
-    // Reliable fallback events to trigger playback if immediate autoplay fails.
-    // Browsers often require at least one of these to 'unlock' audio.
-    const interactionEvents = ["click", "touchstart", "mousedown", "keydown", "scroll"];
-    
-    interactionEvents.forEach(event => 
-      window.addEventListener(event, attemptPlay, { once: true })
-    );
-
-    return () => {
-      interactionEvents.forEach(event => 
-        window.removeEventListener(event, attemptPlay)
-      );
+    const removeListeners = () => {
+      window.removeEventListener("start-wedding-music", startPlayback);
+      window.removeEventListener("click", startPlayback);
+      window.removeEventListener("touchstart", startPlayback);
+      window.removeEventListener("mousedown", startPlayback);
+      window.removeEventListener("keydown", startPlayback);
     };
+
+    // Listener for the "Open Invitation" button custom event
+    window.addEventListener("start-wedding-music", startPlayback);
+    
+    // Fallback interaction listeners for mobile compatibility
+    window.addEventListener("click", startPlayback);
+    window.addEventListener("touchstart", startPlayback, { passive: true });
+    window.addEventListener("mousedown", startPlayback);
+    window.addEventListener("keydown", startPlayback);
+
+    return () => removeListeners();
   }, []);
 
   return (
     <audio
       ref={audioRef}
       src={MusicConfig.audioPath}
-      autoPlay
       loop
       preload="auto"
       style={{ display: "none" }}
