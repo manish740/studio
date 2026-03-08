@@ -1,12 +1,13 @@
+
 "use client";
 
 import React, { useEffect, useRef } from "react";
 import { MusicConfig } from "@/lib/music-config";
 
 /**
- * @fileOverview A hidden background music player optimized for cross-device compatibility.
- * Starts playback immediately upon the first valid user gesture (tap/click) to 
- * bypass strict mobile/desktop autoplay policies.
+ * @fileOverview A hidden background music player optimized for automatic playback.
+ * Attempts to bypass browser autoplay restrictions by trying to play immediately on mount
+ * and listening for any page-level interaction to start as soon as permitted.
  */
 
 export function MusicPlayer() {
@@ -16,42 +17,43 @@ export function MusicPlayer() {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Set initial volume
+    // Set volume directly as requested
     audio.volume = MusicConfig.volume;
 
-    const startPlayback = () => {
+    const attemptPlay = () => {
       if (!audio) return;
       
-      audio.play()
-        .then(() => {
-          // If successful, we can stop listening for interaction triggers
-          interactionEvents.forEach(event => 
-            window.removeEventListener(event, handleInteraction)
-          );
-        })
-        .catch(() => {
-          // Playback failed, likely due to browser restrictions. 
-          // We wait for the next user interaction.
-        });
+      const playPromise = audio.play();
+      
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            // Success! We can stop trying to play.
+            interactionEvents.forEach(event => 
+              window.removeEventListener(event, attemptPlay)
+            );
+          })
+          .catch(() => {
+            // Autoplay was likely prevented by the browser. 
+            // The interaction listeners will handle it as soon as the user touches the screen.
+          });
+      }
     };
 
-    const handleInteraction = () => {
-      startPlayback();
-    };
+    // Attempt immediate playback on mount
+    attemptPlay();
 
-    // Reliable user-initiated events for audio playback (scroll is often ignored)
-    const interactionEvents = ["click", "touchstart", "mousedown", "keydown"];
+    // Reliable fallback events to trigger playback if immediate autoplay fails.
+    // Browsers often require at least one of these to 'unlock' audio.
+    const interactionEvents = ["click", "touchstart", "mousedown", "keydown", "scroll"];
     
     interactionEvents.forEach(event => 
-      window.addEventListener(event, handleInteraction, { once: false })
+      window.addEventListener(event, attemptPlay, { once: true })
     );
-
-    // Attempt to play immediately (some browsers allow this if previously permitted)
-    startPlayback();
 
     return () => {
       interactionEvents.forEach(event => 
-        window.removeEventListener(event, handleInteraction)
+        window.removeEventListener(event, attemptPlay)
       );
     };
   }, []);
@@ -60,6 +62,7 @@ export function MusicPlayer() {
     <audio
       ref={audioRef}
       src={MusicConfig.audioPath}
+      autoPlay
       loop
       preload="auto"
       style={{ display: "none" }}
