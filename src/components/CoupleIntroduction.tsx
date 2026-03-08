@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -34,25 +35,25 @@ export function CoupleIntroduction() {
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 md:p-12">
             <div className="flex items-center justify-center gap-4 md:gap-12 max-w-3xl mx-auto">
               {/* Sakshi */}
-              <h3 className="text-4xl md:text-6xl lg:text-7xl font-headline text-[#D4AF37] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] whitespace-nowrap">
+              <h3 className="text-2xl md:text-4xl lg:text-5xl font-headline text-[#F9F295] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] whitespace-nowrap">
                 Sakshi
               </h3>
 
               {/* Glowing Heart and Dividers */}
-              <div className="flex items-center gap-2 md:gap-6 flex-1 max-w-[120px] md:max-w-[300px]">
-                <div className="h-[1px] flex-1 bg-[#D4AF37]/50 shadow-[0_0_8px_rgba(212,175,55,0.4)]" />
+              <div className="flex items-center gap-2 md:gap-6 flex-1 max-w-[100px] md:max-w-[250px]">
+                <div className="h-[1px] flex-1 bg-[#F9F295]/50 shadow-[0_0_8px_rgba(249,242,149,0.3)]" />
                 <div className="relative shrink-0">
-                  <div className="absolute inset-0 bg-[#D4AF37]/60 blur-xl rounded-full animate-pulse" />
+                  <div className="absolute inset-0 bg-[#F9F295]/40 blur-xl rounded-full animate-pulse" />
                   <Heart 
-                    fill="#D4AF37" 
-                    className="text-[#D4AF37] w-6 h-6 md:w-12 md:h-12 relative z-10 animate-pulse drop-shadow-[0_0_15px_rgba(212,175,55,0.8)]" 
+                    fill="#F9F295" 
+                    className="text-[#F9F295] w-5 h-5 md:w-10 md:h-10 relative z-10 animate-pulse drop-shadow-[0_0_15px_rgba(249,242,149,0.6)]" 
                   />
                 </div>
-                <div className="h-[1px] flex-1 bg-[#D4AF37]/50 shadow-[0_0_8px_rgba(212,175,55,0.4)]" />
+                <div className="h-[1px] flex-1 bg-[#F9F295]/50 shadow-[0_0_8px_rgba(249,242,149,0.3)]" />
               </div>
 
               {/* Shiv */}
-              <h3 className="text-4xl md:text-6xl lg:text-7xl font-headline text-[#D4AF37] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] whitespace-nowrap">
+              <h3 className="text-2xl md:text-4xl lg:text-5xl font-headline text-[#F9F295] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] whitespace-nowrap">
                 Shiv
               </h3>
             </div>
