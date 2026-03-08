@@ -4,9 +4,8 @@ import React, { useEffect, useRef } from "react";
 import { MusicConfig } from "@/lib/music-config";
 
 /**
- * @fileOverview A high-performance background music player.
- * Optimized for zero-delay playback by using low-latency event triggers
- * and immediate audio buffer warming.
+ * @fileOverview A background music player optimized for cross-browser autoplay compliance.
+ * Listens for standard user gestures to trigger high-fidelity audio playback.
  */
 
 export function MusicPlayer() {
@@ -26,33 +25,31 @@ export function MusicPlayer() {
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
-            // Success! Remove all interaction listeners immediately
+            // Success! We can stop listening for gestures
             removeListeners();
           })
           .catch((error) => {
-            // Audio was blocked by browser, we keep listeners active for next attempt
-            console.log("Autoplay prevented, waiting for further interaction...");
+            // Browser still blocking, wait for next interaction
           });
       }
     };
 
     const removeListeners = () => {
-      window.removeEventListener("pointerdown", startPlayback);
-      window.removeEventListener("touchstart", startPlayback, true);
+      window.removeEventListener("click", startPlayback);
+      window.removeEventListener("touchstart", startPlayback);
       window.removeEventListener("mousedown", startPlayback);
       window.removeEventListener("keydown", startPlayback);
-      window.removeEventListener("scroll", startPlayback);
     };
 
-    // 1. Attempt immediate playback
-    startPlayback();
-
-    // 2. Aggressive low-latency triggers for mobile and desktop
-    window.addEventListener("pointerdown", startPlayback, { once: true });
-    window.addEventListener("touchstart", startPlayback, { once: true, capture: true });
+    // Browsers require a user gesture (click, tap, keypress) to play audio with sound.
+    // We attach listeners to the window so ANY interaction starts the music.
+    window.addEventListener("click", startPlayback, { once: true });
+    window.addEventListener("touchstart", startPlayback, { once: true });
     window.addEventListener("mousedown", startPlayback, { once: true });
     window.addEventListener("keydown", startPlayback, { once: true });
-    window.addEventListener("scroll", startPlayback, { once: true });
+
+    // Initial attempt (might work if user has interacted with the domain before)
+    startPlayback();
 
     return () => removeListeners();
   }, []);
