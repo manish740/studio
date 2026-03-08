@@ -9,12 +9,14 @@ export function FamilyDetails() {
   const bridePhoto = PlaceHolderImages.find(img => img.id === 'bride-sakshi');
 
   const groomFamily = {
-    parents: "Mr. Vinod Kumar Mrs. Abha",
+    father: "Mr. Vinod Kumar",
+    mother: "Mrs. Abha",
     relation: "Son of"
   };
 
   const brideFamily = {
-    parents: "Late Satish Singh Mrs. Reema Singh",
+    father: "Late Satish Singh",
+    mother: "Mrs. Reema Singh",
     relation: "Daughter of"
   };
 
@@ -61,9 +63,10 @@ export function FamilyDetails() {
                   <div className="space-y-4">
                     <div className="group/item transition-all duration-200">
                       <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1 group-hover/item:text-accent/60">Parents</span>
-                      <p className="text-2xl md:text-3xl font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed">
-                        {brideFamily.parents}
-                      </p>
+                      <div className="text-xl md:text-2xl font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed">
+                        <p>{brideFamily.father}</p>
+                        <p>{brideFamily.mother}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -89,9 +92,10 @@ export function FamilyDetails() {
                 <div className="space-y-4">
                   <div className="group/item transition-all duration-200">
                     <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1 group-hover/item:text-accent/60">Parents</span>
-                    <p className="text-2xl md:text-3xl font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed">
-                      {groomFamily.parents}
-                    </p>
+                    <div className="text-xl md:text-2xl font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed">
+                      <p>{groomFamily.father}</p>
+                      <p>{groomFamily.mother}</p>
+                    </div>
                   </div>
                 </div>
               </div>
