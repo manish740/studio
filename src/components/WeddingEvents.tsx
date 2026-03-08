@@ -1,7 +1,7 @@
 "use client";
 
 import { ScrollReveal } from "./ScrollReveal";
-import { Music, Heart, Utensils, MapPin, Clock, Sparkles } from "lucide-react";
+import { Music, Heart, Utensils, MapPin, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface WeddingEvent {
@@ -18,7 +18,7 @@ export function WeddingEvents() {
     {
       id: "1",
       title: "Mehandi & Sangeet",
-      time: "April 19, 2026",
+      time: "April 19, 2026 • 6:00 PM",
       location: "Aggarwal Dharamshala, Shakarpur",
       description: "An evening of vibrant colors, music, and henna as we celebrate the union. Agarshen Marg, Master Block.",
       icon: <Music className="text-accent" size={24} />,
@@ -26,7 +26,7 @@ export function WeddingEvents() {
     {
       id: "2",
       title: "Wedding Ceremony",
-      time: "April 20, 2026",
+      time: "April 20, 2026 • 11:00 AM",
       location: "Isckon, Greater Kailash",
       description: "Witness our sacred vows and the beginning of our new journey in a divine atmosphere.",
       icon: <Heart className="text-primary" size={24} />,
@@ -34,7 +34,7 @@ export function WeddingEvents() {
     {
       id: "3",
       title: "Reception Dinner",
-      time: "April 20, 2026",
+      time: "April 20, 2026 • 7:00 PM",
       location: "Eros, Nehru Place",
       description: "Join us for a grand celebration dinner and dance as we celebrate our first evening as husband and wife.",
       icon: <Utensils className="text-accent" size={24} />,
@@ -68,7 +68,7 @@ export function WeddingEvents() {
                       <Clock size={14} />
                       <span>{event.time}</span>
                     </div>
-                    <div className="flex items-center justify-center gap-1 text-muted-foreground text-xs italic">
+                    <div className="flex items-center justify-center gap-1 text-muted-foreground text-[10px] italic">
                       <MapPin size={12} className="text-accent" />
                       <span>{event.location}</span>
                     </div>

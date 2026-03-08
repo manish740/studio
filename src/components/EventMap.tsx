@@ -1,25 +1,28 @@
 "use client";
 
 import { ScrollReveal } from "./ScrollReveal";
-import { MapPin, Navigation } from "lucide-react";
+import { MapPin, Navigation, Clock } from "lucide-react";
 import { Button } from "./ui/button";
 
 export function EventMap() {
   const locations = [
     {
       name: "Aggarwal Dharamshala",
-      address: "Agarshen Marg, Master Block, Shakarpur",
+      address: "Shakarpur, Delhi",
       event: "Mehandi & Sangeet",
+      time: "6:00 PM"
     },
     {
       name: "Isckon Temple",
-      address: "Greater Kailash, New Delhi",
+      address: "Greater Kailash, Delhi",
       event: "Wedding Ceremony",
+      time: "11:00 AM"
     },
     {
       name: "Eros Hotel",
-      address: "Nehru Place, New Delhi",
+      address: "Nehru Place, Delhi",
       event: "Reception",
+      time: "7:00 PM"
     }
   ];
 
@@ -38,6 +41,10 @@ export function EventMap() {
                 <div className="flex items-center gap-3 text-primary">
                   <MapPin size={20} className="text-accent group-hover:scale-110 transition-transform" />
                   <h3 className="text-xl font-headline group-hover:text-accent transition-colors">{loc.name}</h3>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+                  <Clock size={12} className="text-accent" />
+                  <span>{loc.time}</span>
                 </div>
                 <p className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
                   {loc.address}
@@ -70,10 +77,6 @@ export function EventMap() {
                     Our celebrations span across beautiful venues in Delhi. Tap the directions on the left to navigate to each event seamlessly.
                   </p>
                 </div>
-              </div>
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur p-2 rounded shadow-sm flex flex-col gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
-                 <div className="w-8 h-8 flex items-center justify-center border-b border-muted hover:bg-muted/30 cursor-pointer">+</div>
-                 <div className="w-8 h-8 flex items-center justify-center hover:bg-muted/30 cursor-pointer">-</div>
               </div>
             </div>
           </ScrollReveal>
