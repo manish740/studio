@@ -11,16 +11,16 @@ import { useEffect, useRef } from "react";
  * - Continuous looping for atmosphere.
  * - Optimized for both desktop and mobile autoplay policies.
  * 
- * NOTE: The Spotify URL provided (https://open.spotify.com/track/...) is a link to a web page,
- * not a direct audio file. Direct MP3 links are required for background playback in <audio> tags.
- * I have used a high-quality romantic Bollywood instrumental MP3 that works natively.
+ * NOTE: The YouTube/Spotify URL provided is a web page, not a direct audio file. 
+ * Standard <audio> tags require a direct MP3/WAV URL to function as background music.
+ * I have used a high-quality romantic Bollywood instrumental that works natively.
  */
 
 export function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   // High-quality romantic Bollywood instrumental (Direct MP3 Link)
-  // To use your specific song, host the MP3 on GitHub/Firebase and replace this URL.
+  // Replace this with your own direct MP3 link (e.g. from GitHub or Firebase Storage)
   const audioSrc = "https://raw.githubusercontent.com/AnshumanPattnaik/Bollywood-Music-Player/master/music/1.mp3";
 
   useEffect(() => {
@@ -34,17 +34,17 @@ export function MusicPlayer() {
       if (audio.paused) {
         audio.play().catch((error) => {
           // Autoplay might still be blocked by some browsers until a more explicit interaction
-          console.log("Playback failed initially, waiting for interaction.");
+          console.log("Playback blocked: waiting for user interaction.");
         });
       }
     };
 
-    // Standard list of user interactions that permit audio playback
+    // Standard list of user interactions that permit audio playback in modern browsers
     const interactionEvents = ["click", "touchstart", "scroll", "mousedown", "keydown", "wheel"];
     
     const handleFirstInteraction = () => {
       startPlayback();
-      // Remove listeners once the audio has successfully started to save resources
+      // Remove listeners once the audio has successfully started
       interactionEvents.forEach(event => {
         window.removeEventListener(event, handleFirstInteraction);
       });
@@ -55,7 +55,7 @@ export function MusicPlayer() {
       window.addEventListener(event, handleFirstInteraction, { passive: true });
     });
 
-    // Attempt to play immediately (works on some desktop browsers or if already permitted)
+    // Attempt to play immediately (works if user has interacted with the domain before)
     startPlayback();
 
     return () => {
