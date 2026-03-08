@@ -134,7 +134,7 @@ export function InvitationHero() {
             <div className="relative py-12 flex flex-col items-center justify-center gap-4 transition-all duration-700 group-hover/names:scale-[1.02]">
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 w-full">
                 <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold tracking-tighter group-hover/names:tracking-normal transition-all duration-700 group-hover/names:brightness-110 relative z-10">
-                  Shiv
+                  Sakshi
                 </h1>
 
                 {/* Embossed Golden Heart Frame for WEDS - Positioned slightly lower and centered */}
@@ -174,7 +174,7 @@ export function InvitationHero() {
                 </div>
 
                 <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold tracking-tighter group-hover/names:tracking-normal transition-all duration-700 group-hover/names:brightness-110 relative z-10">
-                  Sakshi
+                  Shiv
                 </h1>
               </div>
             </div>

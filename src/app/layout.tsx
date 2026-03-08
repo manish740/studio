@@ -5,8 +5,8 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { MusicPlayer } from "@/components/MusicPlayer";
 
 export const metadata: Metadata = {
-  title: 'Royal Union | Shiv & Sakshi',
-  description: 'A celebration of love and luxury. Digital wedding invitation for Shiv & Sakshi.',
+  title: 'Royal Union | Sakshi & Shiv',
+  description: 'A celebration of love and luxury. Digital wedding invitation for Sakshi & Shiv.',
 };
 
 const RoseCorner = ({ className }: { className?: string }) => (
