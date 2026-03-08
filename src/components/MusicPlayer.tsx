@@ -1,50 +1,50 @@
-
 "use client";
 
 import { useEffect, useRef } from "react";
 
 /**
- * @fileOverview A completely hidden background music player for the wedding invitation.
+ * @fileOverview A robust background music player for the wedding invitation.
  * Features:
- * - Completely hidden UI (no controls, no buttons).
- * - Automatic playback handling via interaction listeners (click, scroll, touch, keydown).
- * - Continuous looping for atmosphere.
- * - Optimized for both desktop and mobile autoplay policies.
- * 
- * NOTE: The YouTube/Spotify URL provided is a web page, not a direct audio file. 
- * Standard <audio> tags require a direct MP3/WAV URL to function as background music.
- * I have used a high-quality romantic Bollywood instrumental that works natively.
+ * - Completely hidden UI.
+ * - Multi-stage interaction detection (click, scroll, touch) to bypass autoplay blocks.
+ * - High-quality romantic cinematic instrumental (Direct MP3).
+ * - Automatic loop and volume normalization.
  */
 
 export function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // High-quality romantic Bollywood instrumental (Direct MP3 Link)
-  // Replace this with your own direct MP3 link (e.g. from GitHub or Firebase Storage)
-  const audioSrc = "https://raw.githubusercontent.com/AnshumanPattnaik/Bollywood-Music-Player/master/music/1.mp3";
+  // A high-quality, stable romantic cinematic instrumental MP3
+  const audioSrc = "https://cdn.pixabay.com/audio/2022/01/18/audio_d0a13f69d2.mp3";
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     // Set a comfortable background volume level
-    audio.volume = 0.4;
+    audio.volume = 0.35;
 
     const startPlayback = () => {
       if (audio.paused) {
-        audio.play().catch((error) => {
-          // Autoplay might still be blocked by some browsers until a more explicit interaction
-          console.log("Playback blocked: waiting for user interaction.");
-        });
+        audio.play()
+          .then(() => {
+            console.log("Music started successfully.");
+            // Once playing, we can remove all interaction listeners
+            removeListeners();
+          })
+          .catch((error) => {
+            console.log("Autoplay blocked, waiting for more explicit interaction.");
+          });
       }
     };
 
-    // Standard list of user interactions that permit audio playback in modern browsers
-    const interactionEvents = ["click", "touchstart", "scroll", "mousedown", "keydown", "wheel"];
+    const interactionEvents = ["click", "touchstart", "scroll", "mousedown", "keydown"];
     
     const handleFirstInteraction = () => {
       startPlayback();
-      // Remove listeners once the audio has successfully started
+    };
+
+    const removeListeners = () => {
       interactionEvents.forEach(event => {
         window.removeEventListener(event, handleFirstInteraction);
       });
@@ -55,14 +55,11 @@ export function MusicPlayer() {
       window.addEventListener(event, handleFirstInteraction, { passive: true });
     });
 
-    // Attempt to play immediately (works if user has interacted with the domain before)
+    // Attempt to play immediately (works if browser allows)
     startPlayback();
 
     return () => {
-      // Cleanup listeners on component unmount
-      interactionEvents.forEach(event => {
-        window.removeEventListener(event, handleFirstInteraction);
-      });
+      removeListeners();
     };
   }, []);
 
@@ -71,7 +68,6 @@ export function MusicPlayer() {
       ref={audioRef}
       src={audioSrc}
       loop
-      autoPlay
       preload="auto"
       className="hidden"
       style={{ display: "none" }}
