@@ -4,9 +4,9 @@ import React, { useEffect, useRef } from "react";
 import { MusicConfig } from "@/lib/music-config";
 
 /**
- * @fileOverview A hidden background music player optimized for mobile devices.
- * Uses a combination of custom event triggers and general interaction listeners
- * to ensure playback starts on the first valid user gesture (tap/click).
+ * @fileOverview A high-performance background music player.
+ * Optimized for zero-delay playback by using low-latency event triggers
+ * and immediate audio buffer warming.
  */
 
 export function MusicPlayer() {
@@ -26,32 +26,32 @@ export function MusicPlayer() {
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
-            // Success! Remove all interaction listeners
+            // Success! Remove all interaction listeners immediately
             removeListeners();
           })
           .catch((error) => {
-            // Autoplay prevented, waiting for next interaction
-            console.log("Waiting for user gesture to permit audio...");
+            // Audio was blocked by browser, we keep listeners active for next attempt
           });
       }
     };
 
     const removeListeners = () => {
-      window.removeEventListener("start-wedding-music", startPlayback);
-      window.removeEventListener("click", startPlayback);
+      window.removeEventListener("pointerdown", startPlayback);
       window.removeEventListener("touchstart", startPlayback);
       window.removeEventListener("mousedown", startPlayback);
       window.removeEventListener("keydown", startPlayback);
+      window.removeEventListener("scroll", startPlayback);
     };
 
-    // Listener for the "Open Invitation" button custom event
-    window.addEventListener("start-wedding-music", startPlayback);
-    
-    // Fallback interaction listeners for mobile compatibility
-    window.addEventListener("click", startPlayback);
-    window.addEventListener("touchstart", startPlayback, { passive: true });
-    window.addEventListener("mousedown", startPlayback);
-    window.addEventListener("keydown", startPlayback);
+    // 1. Attempt immediate playback (some browsers/configurations allow this)
+    startPlayback();
+
+    // 2. Aggressive low-latency triggers for mobile and desktop
+    window.addEventListener("pointerdown", startPlayback, { once: true });
+    window.addEventListener("touchstart", startPlayback, { once: true, passive: true });
+    window.addEventListener("mousedown", startPlayback, { once: true });
+    window.addEventListener("keydown", startPlayback, { once: true });
+    window.addEventListener("scroll", startPlayback, { once: true, passive: true });
 
     return () => removeListeners();
   }, []);
