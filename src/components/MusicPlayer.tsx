@@ -42,16 +42,12 @@ export function MusicPlayer() {
       window.removeEventListener("mousedown", startPlayback);
       window.removeEventListener("keydown", startPlayback);
       window.removeEventListener("scroll", startPlayback);
-      window.removeEventListener("start-wedding-music", startPlayback as EventListener);
     };
 
     // 1. Attempt immediate playback
     startPlayback();
 
-    // 2. Custom event listener from the IntroOverlay
-    window.addEventListener("start-wedding-music", startPlayback, { once: true });
-
-    // 3. Aggressive low-latency triggers for mobile and desktop
+    // 2. Aggressive low-latency triggers for mobile and desktop
     window.addEventListener("pointerdown", startPlayback, { once: true });
     window.addEventListener("touchstart", startPlayback, { once: true, capture: true });
     window.addEventListener("mousedown", startPlayback, { once: true });
