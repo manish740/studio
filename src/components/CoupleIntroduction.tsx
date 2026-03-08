@@ -16,7 +16,7 @@ export function CoupleIntroduction() {
           <div className="h-1 w-20 bg-accent mx-auto" />
         </ScrollReveal>
 
-        <ScrollReveal delay={200} className="relative aspect-[4/5] md:aspect-square lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl border-8 border-white group mx-auto">
+        <ScrollReveal delay={200} className="relative aspect-[4/5] md:aspect-square lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl border-8 border-white group mx-auto mb-12">
           {couplePhoto && (
             <Image
               src={couplePhoto.imageUrl}
@@ -26,35 +26,35 @@ export function CoupleIntroduction() {
               data-ai-hint={couplePhoto.imageHint}
             />
           )}
-          
-          {/* Darker overlay at the bottom for text readability */}
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity group-hover:from-black/90" />
+          <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+        </ScrollReveal>
 
-          {/* Names and Heart Overlay */}
-          <div className="absolute bottom-12 left-0 right-0 flex flex-col items-center justify-center gap-6 px-6 text-center">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
-              <h3 className="text-5xl md:text-7xl font-headline text-[#D4AF37] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-                Sakshi
-              </h3>
-              
-              <div className="flex items-center gap-2">
-                <div className="h-[1px] w-8 bg-[#D4AF37]/50 hidden md:block" />
-                <Heart 
-                  fill="#D4AF37" 
-                  className="text-[#D4AF37] animate-pulse w-8 h-8 md:w-12 md:h-12 drop-shadow-[0_0_10px_rgba(212,175,55,0.5)]" 
-                />
-                <div className="h-[1px] w-8 bg-[#D4AF37]/50 hidden md:block" />
-              </div>
-
-              <h3 className="text-5xl md:text-7xl font-headline text-[#D4AF37] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-                Shiv
-              </h3>
+        <ScrollReveal delay={400} className="text-center space-y-8">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12">
+            <div className="space-y-2">
+              <h3 className="text-5xl md:text-6xl font-headline text-primary">Sakshi</h3>
+              <p className="text-muted-foreground italic max-w-xs mx-auto">
+                A soul full of sunshine, Sakshi brings grace and joy to every moment.
+              </p>
             </div>
             
-            <p className="text-white/90 text-lg md:text-xl font-headline italic max-w-lg drop-shadow-md">
-              "Two souls, one heart. We found in each other what we never knew was missing."
-            </p>
+            <div className="flex items-center gap-4">
+              <div className="h-[1px] w-12 bg-accent/30 hidden md:block" />
+              <Heart fill="currentColor" className="text-accent animate-pulse w-8 h-8" />
+              <div className="h-[1px] w-12 bg-accent/30 hidden md:block" />
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="text-5xl md:text-6xl font-headline text-primary">Shiv</h3>
+              <p className="text-muted-foreground italic max-w-xs mx-auto">
+                With a heart of gold, Shiv is the calm and steady anchor in their journey.
+              </p>
+            </div>
           </div>
+          
+          <p className="text-xl font-headline italic text-primary/70 pt-8 border-t border-primary/10 max-w-lg mx-auto">
+            "Two souls, one heart. We found in each other what we never knew was missing."
+          </p>
         </ScrollReveal>
       </div>
     </section>
