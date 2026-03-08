@@ -1,6 +1,5 @@
 import { InvitationHero } from "@/components/InvitationHero";
 import { CoupleIntroduction } from "@/components/CoupleIntroduction";
-import { PhotoGallery } from "@/components/PhotoGallery";
 import { FamilyDetails } from "@/components/FamilyDetails";
 import { WeddingEvents } from "@/components/WeddingEvents";
 import { EventMap } from "@/components/EventMap";
@@ -12,7 +11,6 @@ export default function Home() {
     <main className="min-h-screen">
       <InvitationHero />
       <CoupleIntroduction />
-      <PhotoGallery />
       <FamilyDetails />
       <WeddingEvents />
       <EventMap />

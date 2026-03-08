@@ -28,14 +28,14 @@ export function EventMap() {
 
   return (
     <section className="py-24 px-4 bg-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <ScrollReveal className="text-center mb-16">
           <h2 className="text-4xl font-headline text-primary mb-4">Locations & Directions</h2>
           <div className="h-1 w-20 bg-accent mx-auto" />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <ScrollReveal className="lg:col-span-1 space-y-6">
+        <div className="grid grid-cols-1 gap-8">
+          <ScrollReveal className="space-y-6 max-w-2xl mx-auto w-full">
             {locations.map((loc, idx) => (
               <div key={idx} className="bg-primary/5 p-6 rounded-2xl space-y-3 group hover:bg-primary/10 transition-colors duration-300 shadow-sm border border-transparent hover:border-primary/10">
                 <div className="flex items-center gap-3 text-primary">
@@ -63,22 +63,6 @@ export function EventMap() {
                 </div>
               </div>
             ))}
-          </ScrollReveal>
-
-          <ScrollReveal delay={200} className="lg:col-span-2">
-            <div className="w-full h-full min-h-[450px] bg-muted rounded-2xl overflow-hidden relative shadow-lg group">
-              <div className="absolute inset-0 bg-[#f8f9fa] flex items-center justify-center transition-all duration-700 group-hover:bg-[#f1f3f4]">
-                <div className="text-center space-y-4 p-8 group-hover:scale-105 transition-transform duration-500">
-                  <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
-                    <MapPin size={32} className="text-accent" />
-                  </div>
-                  <h4 className="text-xl font-headline text-primary">Venues Overview</h4>
-                  <p className="text-muted-foreground max-w-sm text-sm">
-                    Our celebrations span across beautiful venues in Delhi. Tap the directions on the left to navigate to each event seamlessly.
-                  </p>
-                </div>
-              </div>
-            </div>
           </ScrollReveal>
         </div>
       </div>
