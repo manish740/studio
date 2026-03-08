@@ -4,16 +4,12 @@ import { PhotoGallery } from "@/components/PhotoGallery";
 import { FamilyDetails } from "@/components/FamilyDetails";
 import { WeddingEvents } from "@/components/WeddingEvents";
 import { EventMap } from "@/components/EventMap";
-import { IntroOverlay } from "@/components/IntroOverlay";
 import { Toaster } from "@/components/ui/toaster";
 import { Heart } from "lucide-react";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* Grand Entrance Overlay - Enables Music on mobile */}
-      <IntroOverlay />
-
       <InvitationHero />
       <CoupleIntroduction />
       <PhotoGallery />
