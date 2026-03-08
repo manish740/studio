@@ -9,13 +9,13 @@ export function FamilyDetails() {
   const bridePhoto = PlaceHolderImages.find(img => img.id === 'bride-sakshi');
 
   const groomFamily = {
-    parents: "Mr. & Mrs. Ramesh Kumar",
+    parents: "Mr. Vinod Kumar & Mrs. Abha",
     origin: "New Delhi",
     relation: "Son of"
   };
 
   const brideFamily = {
-    parents: "Mr. & Mrs. Sunil Sharma",
+    parents: "Late Satish Singh & Mrs. Reema Singh",
     origin: "Jaipur, Rajasthan",
     relation: "Daughter of"
   };
