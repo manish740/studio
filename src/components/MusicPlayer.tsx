@@ -2,17 +2,18 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Music, Volume2, VolumeX, Sparkles } from "lucide-react";
+import { Music, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 /**
  * @fileOverview A premium, royal-themed background music player.
  * Features:
- * - Syncs with the IntroOverlay tap event
  * - Cinematic volume fade-in
  * - Shimmering luxury button design
  * - Floating musical note animations
+ * - NOTE: Standard <audio> tags require direct media links (e.g., .mp3).
+ *   Spotify links are not supported for direct background playback.
  */
 
 export function MusicPlayer() {
@@ -20,8 +21,9 @@ export function MusicPlayer() {
   const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // A high-quality romantic instrumental track (Royalty-free)
-  const musicUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"; 
+  // Updated to a high-quality romantic track. 
+  // Spotify URLs point to web pages, not audio files, so we use a direct MP3 source.
+  const musicUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"; 
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -45,12 +47,12 @@ export function MusicPlayer() {
           }
         }, 100);
       }).catch(() => {
-        // Autoplay blocked by browser policy
+        // Autoplay blocked by browser policy until interaction
         console.log("Autoplay blocked. Waiting for guest interaction.");
       });
     };
 
-    // Aggressive listeners to catch the intro tap or any scroll/click
+    // Global listeners to trigger music on any initial interaction
     const interactions = ['click', 'touchstart', 'scroll', 'mousedown'];
     const handleFirstInteraction = () => {
       if (!isPlaying) {
