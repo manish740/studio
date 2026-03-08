@@ -19,8 +19,8 @@ export function WeddingEvents() {
       id: "1",
       title: "Mehandi & Sangeet",
       time: "April 19, 2026 • 6:00 PM",
-      location: "Aggarwal Dharamshala, Shakarpur",
-      description: "An evening of vibrant colors, music, and henna as we celebrate the union. Agarshen Marg, Master Block.",
+      location: "J7MP+P7P, Madhuban Rd, Veer Savarkar Block, Dayanand Colony, Shakarpur, Delhi, 110092",
+      description: "An evening of vibrant colors, music, and henna as we celebrate the union at Dayanand Colony, Shakarpur.",
       icon: <Music className="text-accent" size={24} />,
     },
     {

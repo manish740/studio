@@ -8,7 +8,7 @@ export function EventMap() {
   const locations = [
     {
       name: "Aggarwal Dharamshala",
-      address: "Shakarpur, Delhi",
+      address: "J7MP+P7P, Madhuban Rd, Veer Savarkar Block, Dayanand Colony, Shakarpur, Delhi, 110092",
       event: "Mehandi & Sangeet",
       time: "6:00 PM"
     },
