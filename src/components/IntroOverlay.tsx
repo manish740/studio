@@ -7,9 +7,8 @@ import { cn } from "@/lib/utils";
 /**
  * @fileOverview A full-screen luxury intro overlay for the wedding invitation.
  * Features:
- * - High z-index "Royal Gate" entry
  * - Interactive tap-to-open logic
- * - Synchronized activation of background music via user interaction
+ * - Synchronized activation of background music via custom event
  */
 
 export function IntroOverlay() {
@@ -18,7 +17,6 @@ export function IntroOverlay() {
   const [sparkles, setSparkles] = useState<{ id: number; top: string; left: string; scale: number; delay: string }[]>([]);
 
   useEffect(() => {
-    // Generate sparkles specifically for the button area
     const newSparkles = Array.from({ length: 8 }).map((_, i) => ({
       id: i,
       top: `${20 + Math.random() * 60}%`,
@@ -39,6 +37,12 @@ export function IntroOverlay() {
     }
   }, [isOpen]);
 
+  const handleOpenInvitation = () => {
+    setIsOpen(true);
+    // Dispatch custom event to trigger music player
+    window.dispatchEvent(new CustomEvent("start-wedding-music"));
+  };
+
   if (!shouldRender) return null;
 
   return (
@@ -48,12 +52,11 @@ export function IntroOverlay() {
         isOpen ? "opacity-0 pointer-events-none scale-110" : "opacity-100"
       )}
       style={{ transitionDuration: '2000ms' }}
-      onClick={() => setIsOpen(true)}
+      onClick={handleOpenInvitation}
     >
       <div className="absolute inset-0 silk-overlay opacity-40" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(212,175,55,0.12)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.12)_0%,transparent_60%)]" />
 
-      {/* Center Content */}
       <div className="relative z-10 text-center space-y-8 animate-in fade-in zoom-in duration-1000">
         <div className="flex flex-col items-center">
           <div className="relative mb-6">
@@ -85,6 +88,7 @@ export function IntroOverlay() {
             ))}
 
             <button 
+              onClick={handleOpenInvitation}
               className="group relative px-14 py-5 overflow-hidden rounded-full border border-accent/40 bg-white/60 backdrop-blur-md shadow-[0_20px_50px_rgba(212,175,55,0.2)] transition-all hover:scale-105 active:scale-95"
             >
               <div className="absolute inset-0 animate-shimmer-gold opacity-40" />
