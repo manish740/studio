@@ -13,8 +13,8 @@ export function EventMap() {
       time: "6:00 PM"
     },
     {
-      name: "Isckon Temple",
-      address: "Greater Kailash, Delhi",
+      name: "Iskcon Temple",
+      address: "Iskcon Temple Rd, Sant Nagar, East of Kailash, New Delhi, Delhi 110065",
       event: "Wedding Ceremony",
       time: "11:00 AM"
     },

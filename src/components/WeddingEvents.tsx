@@ -27,7 +27,7 @@ export function WeddingEvents() {
       id: "2",
       title: "Wedding Ceremony",
       time: "April 20, 2026 • 11:00 AM",
-      location: "Isckon, Greater Kailash",
+      location: "Iskcon Temple Rd, Sant Nagar, East of Kailash, New Delhi, Delhi 110065",
       description: "Witness our sacred vows and the beginning of our new journey in a divine atmosphere.",
       icon: <Heart className="text-primary" size={24} />,
     },
@@ -70,7 +70,7 @@ export function WeddingEvents() {
                     </div>
                     <div className="flex items-center justify-center gap-1 text-muted-foreground text-[10px] italic">
                       <MapPin size={12} className="text-accent" />
-                      <span>{event.location}</span>
+                      <span className="max-w-[200px]">{event.location}</span>
                     </div>
                   </div>
                   
