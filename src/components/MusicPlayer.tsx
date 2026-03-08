@@ -28,19 +28,19 @@ export function MusicPlayer() {
     };
 
     const removeInteractionListeners = () => {
-      window.removeEventListener("mousedown", startPlayback);
+      window.removeEventListener("click", startPlayback);
       window.removeEventListener("keydown", startPlayback);
       window.removeEventListener("touchstart", startPlayback);
       window.removeEventListener("scroll", startPlayback);
     };
 
     // Add listeners for various user interactions
-    window.addEventListener("mousedown", startPlayback);
-    window.addEventListener("keydown", startPlayback);
-    window.addEventListener("touchstart", startPlayback);
-    window.addEventListener("scroll", startPlayback);
+    window.addEventListener("click", startPlayback, { once: true });
+    window.addEventListener("keydown", startPlayback, { once: true });
+    window.addEventListener("touchstart", startPlayback, { once: true });
+    window.addEventListener("scroll", startPlayback, { once: true });
 
-    // Initial attempt (often blocked but worth trying)
+    // Initial attempt
     startPlayback();
 
     return () => {
