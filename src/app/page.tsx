@@ -4,7 +4,6 @@ import { PhotoGallery } from "@/components/PhotoGallery";
 import { FamilyDetails } from "@/components/FamilyDetails";
 import { WeddingEvents } from "@/components/WeddingEvents";
 import { EventMap } from "@/components/EventMap";
-import { WishesWall } from "@/components/WishesWall";
 import { Toaster } from "@/components/ui/toaster";
 import { Heart } from "lucide-react";
 
@@ -17,7 +16,6 @@ export default function Home() {
       <FamilyDetails />
       <WeddingEvents />
       <EventMap />
-      <WishesWall />
       
       {/* Footer */}
       <footer className="py-24 bg-white/60 backdrop-blur-sm text-center relative">
