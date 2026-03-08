@@ -28,9 +28,6 @@ export default function Home() {
           <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground/60 font-semibold">
             Celebrating Love in April 2026
           </p>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/40 mt-2">
-            Made with LoveBloom Invites &copy; 2026
-          </p>
         </div>
       </footer>
       
