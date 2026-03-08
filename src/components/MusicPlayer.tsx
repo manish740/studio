@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useRef } from "react";
@@ -5,7 +6,7 @@ import { MusicConfig } from "@/lib/music-config";
 
 /**
  * @fileOverview A background music player optimized for cross-browser autoplay compliance.
- * Listens for standard user gestures to trigger high-fidelity audio playback.
+ * It attempts autoplay on load and falls back to user interaction listeners (click, tap, scroll).
  */
 
 export function MusicPlayer() {
@@ -15,7 +16,9 @@ export function MusicPlayer() {
     const audio = audioRef.current;
     if (!audio) return;
 
+    // Set volume and ensure standard audio properties
     audio.volume = MusicConfig.volume;
+    audio.loop = true;
 
     const startPlayback = () => {
       if (!audio) return;
@@ -25,33 +28,41 @@ export function MusicPlayer() {
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
-            // Success! We can stop listening for gestures
-            removeListeners();
+            // Successfully started! Remove interaction listeners.
+            cleanup();
           })
           .catch((error) => {
-            // Browser still blocking, wait for next interaction
+            // Autoplay was prevented by browser policy. 
+            // The interaction listeners will handle the next attempt.
           });
       }
     };
 
-    const removeListeners = () => {
+    const cleanup = () => {
       window.removeEventListener("click", startPlayback);
       window.removeEventListener("touchstart", startPlayback);
       window.removeEventListener("mousedown", startPlayback);
       window.removeEventListener("keydown", startPlayback);
+      window.removeEventListener("scroll", startPlayback);
+      window.removeEventListener("wheel", startPlayback);
+      // Fallback for document-level scrolls
+      document.removeEventListener("scroll", startPlayback);
     };
 
-    // Browsers require a user gesture (click, tap, keypress) to play audio with sound.
-    // We attach listeners to the window so ANY interaction starts the music.
+    // Attach listeners for interaction fallback. 
+    // Browsers like Safari and Chrome require a user-initiated event to unlock audio.
     window.addEventListener("click", startPlayback, { once: true });
     window.addEventListener("touchstart", startPlayback, { once: true });
     window.addEventListener("mousedown", startPlayback, { once: true });
     window.addEventListener("keydown", startPlayback, { once: true });
+    window.addEventListener("scroll", startPlayback, { once: true });
+    window.addEventListener("wheel", startPlayback, { once: true });
+    document.addEventListener("scroll", startPlayback, { once: true });
 
-    // Initial attempt (might work if user has interacted with the domain before)
+    // Initial attempt: Some desktop browsers allow autoplay if the user has visited the site before.
     startPlayback();
 
-    return () => removeListeners();
+    return () => cleanup();
   }, []);
 
   return (
