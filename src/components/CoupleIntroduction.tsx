@@ -16,7 +16,7 @@ export function CoupleIntroduction() {
           <div className="h-1 w-20 bg-accent mx-auto" />
         </ScrollReveal>
 
-        <ScrollReveal delay={200} className="relative aspect-[4/5] md:aspect-square lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl border-8 border-white group mx-auto mb-12">
+        <ScrollReveal delay={200} className="relative aspect-[4/5] md:aspect-square lg:h-[700px] rounded-3xl overflow-hidden shadow-2xl border-8 border-white group mx-auto mb-12">
           {couplePhoto && (
             <Image
               src={couplePhoto.imageUrl}
@@ -26,33 +26,41 @@ export function CoupleIntroduction() {
               data-ai-hint={couplePhoto.imageHint}
             />
           )}
-          <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
-        </ScrollReveal>
+          
+          {/* Subtle Ambient Overlay */}
+          <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />
+          
+          {/* Internal Footer Overlay for Names */}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 md:p-12">
+            <div className="flex items-center justify-center gap-4 md:gap-12 max-w-3xl mx-auto">
+              {/* Sakshi */}
+              <h3 className="text-4xl md:text-6xl lg:text-7xl font-headline text-[#D4AF37] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] whitespace-nowrap">
+                Sakshi
+              </h3>
 
-        <ScrollReveal delay={400} className="text-center space-y-8">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12">
-            <div className="space-y-2">
-              <h3 className="text-5xl md:text-6xl font-headline text-primary">Sakshi</h3>
-              <p className="text-muted-foreground italic max-w-xs mx-auto">
-                A soul full of sunshine, Sakshi brings grace and joy to every moment.
-              </p>
-            </div>
-            
-            <div className="flex items-center gap-4">
-              <div className="h-[1px] w-12 bg-accent/30 hidden md:block" />
-              <Heart fill="currentColor" className="text-accent animate-pulse w-8 h-8" />
-              <div className="h-[1px] w-12 bg-accent/30 hidden md:block" />
-            </div>
+              {/* Glowing Heart and Dividers */}
+              <div className="flex items-center gap-2 md:gap-6 flex-1 max-w-[120px] md:max-w-[300px]">
+                <div className="h-[1px] flex-1 bg-[#D4AF37]/50 shadow-[0_0_8px_rgba(212,175,55,0.4)]" />
+                <div className="relative shrink-0">
+                  <div className="absolute inset-0 bg-[#D4AF37]/60 blur-xl rounded-full animate-pulse" />
+                  <Heart 
+                    fill="#D4AF37" 
+                    className="text-[#D4AF37] w-6 h-6 md:w-12 md:h-12 relative z-10 animate-pulse drop-shadow-[0_0_15px_rgba(212,175,55,0.8)]" 
+                  />
+                </div>
+                <div className="h-[1px] flex-1 bg-[#D4AF37]/50 shadow-[0_0_8px_rgba(212,175,55,0.4)]" />
+              </div>
 
-            <div className="space-y-2">
-              <h3 className="text-5xl md:text-6xl font-headline text-primary">Shiv</h3>
-              <p className="text-muted-foreground italic max-w-xs mx-auto">
-                With a heart of gold, Shiv is the calm and steady anchor in their journey.
-              </p>
+              {/* Shiv */}
+              <h3 className="text-4xl md:text-6xl lg:text-7xl font-headline text-[#D4AF37] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] whitespace-nowrap">
+                Shiv
+              </h3>
             </div>
           </div>
-          
-          <p className="text-xl font-headline italic text-primary/70 pt-8 border-t border-primary/10 max-w-lg mx-auto">
+        </ScrollReveal>
+
+        <ScrollReveal delay={400} className="text-center pt-8">
+          <p className="text-xl md:text-2xl font-headline italic text-primary/70 max-w-lg mx-auto leading-relaxed">
             "Two souls, one heart. We found in each other what we never knew was missing."
           </p>
         </ScrollReveal>
