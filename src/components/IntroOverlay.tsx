@@ -48,9 +48,10 @@ export function IntroOverlay() {
   return (
     <div 
       className={cn(
-        "fixed inset-0 z-[1000] flex items-center justify-center transition-all duration-[2000ms] ease-in-out bg-background",
+        "fixed inset-0 z-[1000] flex items-center justify-center transition-all ease-in-out bg-background",
         isOpen ? "opacity-0 pointer-events-none scale-110" : "opacity-100"
       )}
+      style={{ transitionDuration: '2000ms' }}
       onClick={() => setIsOpen(true)}
     >
       {/* Royal Background Texture */}

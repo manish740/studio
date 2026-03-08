@@ -1,7 +1,6 @@
 "use client";
 
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Heart, Sparkles } from "lucide-react";
+import { Heart } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -134,12 +133,12 @@ export function InvitationHero() {
 
             <div className="relative py-12 flex flex-col items-center justify-center gap-4 transition-all duration-700 group-hover/names:scale-[1.02]">
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 w-full">
-                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold tracking-tighter group-hover/names:tracking-normal transition-all duration-700 group-hover/names:brightness-110">
+                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold tracking-tighter group-hover/names:tracking-normal transition-all duration-700 group-hover/names:brightness-110 relative z-10">
                   Shiv
                 </h1>
 
-                {/* Embossed Golden Heart Frame for WEDS - Perfectly Centered and Symmetrical */}
-                <div className="relative flex items-center justify-center shrink-0 mt-4 md:mt-12">
+                {/* Embossed Golden Heart Frame for WEDS - Positioned slightly lower and centered */}
+                <div className="relative flex items-center justify-center shrink-0 mt-8 md:mt-24">
                   <div className="absolute inset-0 bg-accent/20 blur-2xl rounded-full animate-pulse group-hover/names:bg-accent/40" />
                   <svg viewBox="0 0 100 100" className="w-12 h-12 md:w-20 md:h-20 drop-shadow-2xl transition-transform duration-500 group-hover/names:scale-110">
                     <defs>
@@ -174,7 +173,7 @@ export function InvitationHero() {
                   </svg>
                 </div>
 
-                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold tracking-tighter group-hover/names:tracking-normal transition-all duration-700 group-hover/names:brightness-110">
+                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline embossed-gold tracking-tighter group-hover/names:tracking-normal transition-all duration-700 group-hover/names:brightness-110 relative z-10">
                   Sakshi
                 </h1>
               </div>
