@@ -4,9 +4,9 @@ import React, { useEffect, useRef } from "react";
 import { MusicConfig } from "@/lib/music-config";
 
 /**
- * @fileOverview A hidden background music player.
- * Music starts directly at full configured volume upon the first user interaction 
- * to comply with browser autoplay policies.
+ * @fileOverview A hidden background music player optimized for cross-device compatibility.
+ * Starts playback immediately upon the first valid user gesture (tap/click) to 
+ * bypass strict mobile/desktop autoplay policies.
  */
 
 export function MusicPlayer() {
@@ -16,32 +16,37 @@ export function MusicPlayer() {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Set target volume immediately with no fade
+    // Set initial volume
     audio.volume = MusicConfig.volume;
 
     const startPlayback = () => {
-      audio.play().catch(() => {
-        // Autoplay blocked, wait for next interaction
-      });
+      if (!audio) return;
+      
+      audio.play()
+        .then(() => {
+          // If successful, we can stop listening for interaction triggers
+          interactionEvents.forEach(event => 
+            window.removeEventListener(event, handleInteraction)
+          );
+        })
+        .catch(() => {
+          // Playback failed, likely due to browser restrictions. 
+          // We wait for the next user interaction.
+        });
     };
 
-    // Events that signal a user interaction
-    const interactionEvents = ["click", "touchstart", "scroll", "keydown"];
-    
     const handleInteraction = () => {
       startPlayback();
-      // Once music starts, we stop listening for initial triggers
-      interactionEvents.forEach(event => 
-        window.removeEventListener(event, handleInteraction)
-      );
     };
 
-    // Listen for the first interaction to start music directly
+    // Reliable user-initiated events for audio playback (scroll is often ignored)
+    const interactionEvents = ["click", "touchstart", "mousedown", "keydown"];
+    
     interactionEvents.forEach(event => 
-      window.addEventListener(event, handleInteraction, { once: true })
+      window.addEventListener(event, handleInteraction, { once: false })
     );
 
-    // Initial attempt for browsers that might allow it
+    // Attempt to play immediately (some browsers allow this if previously permitted)
     startPlayback();
 
     return () => {
