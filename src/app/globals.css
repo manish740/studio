@@ -45,6 +45,13 @@
   }
 }
 
+/* Ensure no text cursor appears globally */
+* {
+  caret-color: transparent !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
 .silk-overlay {
   position: fixed;
   inset: 0;
@@ -146,9 +153,4 @@
 
 .animate-petal-fall {
   animation: petal-fall 12s linear infinite;
-}
-
-/* Ensure no text cursor appears on click/tap */
-* {
-  caret-color: transparent !important;
 }

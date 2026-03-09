@@ -27,9 +27,6 @@ export function CoupleIntroduction() {
             />
           )}
           
-          {/* Subtle Ambient Overlay */}
-          <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />
-          
           {/* Internal Footer Area for Names */}
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
             <div className="flex items-center justify-center gap-3 md:gap-4 max-w-lg mx-auto">

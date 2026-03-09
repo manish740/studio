@@ -61,7 +61,7 @@ export function FamilyDetails() {
                   <div className="space-y-4">
                     <div className="group/item transition-all duration-200">
                       <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-2 group-hover/item:text-accent/60">Parents</span>
-                      <div className="text-xs md:text-sm font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed space-y-1">
+                      <div className="font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed space-y-1 text-lg md:text-xl">
                         <p>{brideFamily.father}</p>
                         <p>{brideFamily.mother}</p>
                       </div>
@@ -90,7 +90,7 @@ export function FamilyDetails() {
                 <div className="space-y-4">
                   <div className="group/item transition-all duration-200">
                     <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-2 group-hover/item:text-accent/60">Parents</span>
-                    <div className="text-xs md:text-sm font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed space-y-1">
+                    <div className="font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed space-y-1 text-lg md:text-xl">
                       <p>{groomFamily.father}</p>
                       <p>{groomFamily.mother}</p>
                     </div>
