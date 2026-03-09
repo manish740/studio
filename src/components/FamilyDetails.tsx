@@ -10,14 +10,12 @@ export function FamilyDetails() {
 
   const groomFamily = {
     father: "Mr. Vinod Kumar",
-    mother: "Mrs. Abha",
-    relation: "Son of"
+    mother: "Mrs. Abha"
   };
 
   const brideFamily = {
     father: "Late Satish Singh",
-    mother: "Mrs. Reema Singh",
-    relation: "Daughter of"
+    mother: "Mrs. Reema Singh"
   };
 
   return (
@@ -62,8 +60,8 @@ export function FamilyDetails() {
                   
                   <div className="space-y-4">
                     <div className="group/item transition-all duration-200">
-                      <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1 group-hover/item:text-accent/60">Parents</span>
-                      <div className="text-sm font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed">
+                      <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-2 group-hover/item:text-accent/60">Parents</span>
+                      <div className="text-xs md:text-sm font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed space-y-1">
                         <p>{brideFamily.father}</p>
                         <p>{brideFamily.mother}</p>
                       </div>
@@ -91,8 +89,8 @@ export function FamilyDetails() {
                 
                 <div className="space-y-4">
                   <div className="group/item transition-all duration-200">
-                    <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-1 group-hover/item:text-accent/60">Parents</span>
-                    <div className="text-sm font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed">
+                    <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-2 group-hover/item:text-accent/60">Parents</span>
+                    <div className="text-xs md:text-sm font-headline text-primary/80 group-hover/item:text-primary transition-colors leading-relaxed space-y-1">
                       <p>{groomFamily.father}</p>
                       <p>{groomFamily.mother}</p>
                     </div>

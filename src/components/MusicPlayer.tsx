@@ -4,9 +4,9 @@ import React, { useEffect, useRef } from "react";
 import { MusicConfig } from "@/lib/music-config";
 
 /**
- * @fileOverview A background music player optimized for an "automatic" experience.
- * It attempts autoplay immediately and attaches multiple interaction listeners
- * (scroll, touch, click) to ensure the audio starts on the guest's very first move.
+ * @fileOverview A background music player optimized for a "truly automatic" feel.
+ * It attempts immediate playback on mount and uses highly sensitive interaction 
+ * listeners as a fallback to bypass browser autoplay restrictions seamlessly.
  */
 
 export function MusicPlayer() {
@@ -27,15 +27,16 @@ export function MusicPlayer() {
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
-            // Success! Remove all listeners
+            // Success! Remove all listeners immediately
             cleanup();
           })
           .catch(() => {
-            // Still blocked by browser, listeners will catch the next move
+            // Still blocked by browser, listeners will catch the first micro-interaction
           });
       }
     };
 
+    // A comprehensive list of events that satisfy browser interaction requirements
     const interactionEvents = [
       "click",
       "touchstart",
@@ -43,7 +44,8 @@ export function MusicPlayer() {
       "keydown",
       "scroll",
       "wheel",
-      "pointerdown"
+      "pointerdown",
+      "mousemove" // Added for desktop sensitivity
     ];
 
     const cleanup = () => {
@@ -53,13 +55,13 @@ export function MusicPlayer() {
       });
     };
 
-    // Attach listeners for interaction fallback
+    // Attach listeners for immediate fallback
     interactionEvents.forEach(event => {
       window.addEventListener(event, startPlayback, { once: true, passive: true });
       document.addEventListener(event, startPlayback, { once: true, passive: true });
     });
 
-    // Initial attempt for browsers with low strictness or high engagement index
+    // Attempt immediate play (works on some desktops/browsers with high engagement)
     startPlayback();
 
     return () => cleanup();
