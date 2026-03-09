@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useRef } from "react";
@@ -45,7 +44,6 @@ export function MusicPlayer() {
       window.removeEventListener("keydown", startPlayback);
       window.removeEventListener("scroll", startPlayback);
       window.removeEventListener("wheel", startPlayback);
-      // Fallback for document-level scrolls
       document.removeEventListener("scroll", startPlayback);
     };
 
@@ -69,6 +67,7 @@ export function MusicPlayer() {
     <audio
       ref={audioRef}
       src={MusicConfig.audioPath}
+      autoPlay
       loop
       preload="auto"
       style={{ display: "none" }}
