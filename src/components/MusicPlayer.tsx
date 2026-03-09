@@ -4,8 +4,9 @@ import React, { useEffect, useRef } from "react";
 import { MusicConfig } from "@/lib/music-config";
 
 /**
- * @fileOverview A background music player optimized for cross-browser autoplay compliance.
- * It attempts autoplay on load and falls back to user interaction listeners (click, tap, scroll).
+ * @fileOverview A background music player optimized for an "automatic" experience.
+ * It attempts autoplay immediately and attaches multiple interaction listeners
+ * (scroll, touch, click) to ensure the audio starts on the guest's very first move.
  */
 
 export function MusicPlayer() {
@@ -15,7 +16,6 @@ export function MusicPlayer() {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Set volume and ensure standard audio properties
     audio.volume = MusicConfig.volume;
     audio.loop = true;
 
@@ -27,37 +27,39 @@ export function MusicPlayer() {
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
-            // Successfully started! Remove interaction listeners.
+            // Success! Remove all listeners
             cleanup();
           })
-          .catch((error) => {
-            // Autoplay was prevented by browser policy. 
-            // The interaction listeners will handle the next attempt.
+          .catch(() => {
+            // Still blocked by browser, listeners will catch the next move
           });
       }
     };
 
+    const interactionEvents = [
+      "click",
+      "touchstart",
+      "mousedown",
+      "keydown",
+      "scroll",
+      "wheel",
+      "pointerdown"
+    ];
+
     const cleanup = () => {
-      window.removeEventListener("click", startPlayback);
-      window.removeEventListener("touchstart", startPlayback);
-      window.removeEventListener("mousedown", startPlayback);
-      window.removeEventListener("keydown", startPlayback);
-      window.removeEventListener("scroll", startPlayback);
-      window.removeEventListener("wheel", startPlayback);
-      document.removeEventListener("scroll", startPlayback);
+      interactionEvents.forEach(event => {
+        window.removeEventListener(event, startPlayback);
+        document.removeEventListener(event, startPlayback);
+      });
     };
 
-    // Attach listeners for interaction fallback. 
-    // Browsers like Safari and Chrome require a user-initiated event to unlock audio.
-    window.addEventListener("click", startPlayback, { once: true });
-    window.addEventListener("touchstart", startPlayback, { once: true });
-    window.addEventListener("mousedown", startPlayback, { once: true });
-    window.addEventListener("keydown", startPlayback, { once: true });
-    window.addEventListener("scroll", startPlayback, { once: true });
-    window.addEventListener("wheel", startPlayback, { once: true });
-    document.addEventListener("scroll", startPlayback, { once: true });
+    // Attach listeners for interaction fallback
+    interactionEvents.forEach(event => {
+      window.addEventListener(event, startPlayback, { once: true, passive: true });
+      document.addEventListener(event, startPlayback, { once: true, passive: true });
+    });
 
-    // Initial attempt: Some desktop browsers allow autoplay if the user has visited the site before.
+    // Initial attempt for browsers with low strictness or high engagement index
     startPlayback();
 
     return () => cleanup();
